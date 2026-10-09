@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ratio · Nutrición animal de precisión</title>
+<meta name="description" content="Ratio: aplicaciones gratuitas, abiertas y validadas para formular dietas de mínimo costo para pollo de engorda y bovinos de carne — RatioBos, RatioAvis y FormulAves. · Free, open and validated least-cost diet formulation apps.">
+<meta name="author" content="Héctor Tecumshé Mojica-Zárate">
+<meta property="og:title" content="Ratio · Nutrición animal de precisión">
+<meta property="og:description" content="Formulación de dietas de mínimo costo, abierta, validada y gratuita, para el productor y para el científico.">
+<meta property="og:image" content="img/ratiobos.jpg">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<script>if(!/[?&]estatico/.test(location.search)&&"IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js")</script>
+<style>
+/* =====================================================================
+   Ratio · Portal de la suite de nutrición animal
+   Palatino, verde pino, terracota y oro. Sin recursos de terceros.
+   ===================================================================== */
+:root{
+  color-scheme:light;
+  --bg:#f6f4ee; --paper:#fffefa; --soft:#eeebe1; --text:#1b221e; --muted:#5a645e; --faint:#8a918b;
+  --line:#e0ddd2; --line2:#c9c5b6;
+  --pri:#2f5d50; --pri-d:#1f4037; --pri-s:rgba(47,93,80,.09);
+  --acc:#b05434; --acc-s:rgba(176,84,52,.12);
+  --oro:#c99a3b; --oro-s:rgba(201,154,59,.14);
+  --avis:#c0772b; --bos:#b05434; --fav:#2f6f8f; --sus:#8a5a9b;
+  --font:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,"TeX Gyre Pagella",Georgia,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --shadow:0 1px 2px rgba(30,36,24,.06),0 12px 34px rgba(30,36,24,.09);
+  --shadow-lg:0 2px 8px rgba(30,36,24,.08),0 28px 70px rgba(30,36,24,.16);
+  --r:18px; --max:1180px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  color-scheme:dark; --bg:#111513; --paper:#181d1a; --soft:#1f2521; --text:#e7ebe5; --muted:#a9b2ab; --faint:#7c857e;
+  --line:#2b332e; --line2:#3a443e; --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+  --acc:#ea926b; --acc-s:rgba(234,146,107,.14); --oro:#e3bd6a; --oro-s:rgba(227,189,106,.14);
+  --avis:#e2a15c; --bos:#ea926b; --fav:#7fbddb; --sus:#c3a0d4;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.35); --shadow-lg:0 2px 8px rgba(0,0,0,.45),0 28px 70px rgba(0,0,0,.5); } }
+:root[data-theme="dark"]{
+  color-scheme:dark; --bg:#111513; --paper:#181d1a; --soft:#1f2521; --text:#e7ebe5; --muted:#a9b2ab; --faint:#7c857e;
+  --line:#2b332e; --line2:#3a443e; --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+  --acc:#ea926b; --acc-s:rgba(234,146,107,.14); --oro:#e3bd6a; --oro-s:rgba(227,189,106,.14);
+  --avis:#e2a15c; --bos:#ea926b; --fav:#7fbddb; --sus:#c3a0d4;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.35); --shadow-lg:0 2px 8px rgba(0,0,0,.45),0 28px 70px rgba(0,0,0,.5); }
+
+html[data-lang="es"] [lang="en"]:not(html), html[data-lang="en"] [lang="es"]:not(html){display:none!important}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:lining-nums}
+a{color:var(--pri);text-underline-offset:3px;text-decoration-thickness:1px}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{line-height:1.12;margin:0;font-weight:700}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+.sans{font-family:var(--sans)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15px/1 var(--sans);padding:14px 22px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s}
+.btn.pri{background:var(--pri);color:var(--paper)}
+:root[data-theme="dark"] .btn.pri{color:#0f1a16}
+.btn.pri:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.ghost{background:var(--paper);color:var(--text);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--pri)}
+.btn.sm{padding:9px 14px;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 12.5px/1 var(--sans);padding:7px 11px;border-radius:999px;background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+
+/* ---------- barra superior ---------- */
+.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.brand img{width:36px;height:36px}
+.brand b{font-size:21px;letter-spacing:-.01em}
+.brand small{display:block;font:600 10.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top nav{display:flex;gap:4px;margin-left:auto}
+.top nav a{font:600 14px/1 var(--sans);color:var(--muted);text-decoration:none;padding:9px 11px;border-radius:999px}
+.top nav a:hover,.top nav a.act{color:var(--text);background:var(--soft)}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:3px;background:var(--paper)}
+.seg button{border:0;background:none;font:700 12px/1 var(--sans);letter-spacing:.06em;color:var(--muted);padding:7px 10px;border-radius:999px;cursor:pointer}
+.seg button.on{background:var(--pri);color:var(--paper)}
+:root[data-theme="dark"] .seg button.on{color:#0f1a16}
+.ib{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--paper);color:var(--text);cursor:pointer;font-size:16px}
+#menuBtn{display:none}
+#leido{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pri),var(--oro),var(--acc))}
+
+/* ---------- portada ---------- */
+.hero{position:relative;padding:72px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(44px,6.2vw,86px);letter-spacing:-.025em;line-height:1}
+.hero h1 em{font-style:italic;color:var(--pri);font-weight:500}
+.hero h1 .a{color:var(--acc)}
+.hero p.sub{font-size:21px;color:var(--muted);max-width:36ch;margin:22px 0 28px;line-height:1.5}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.orbita{position:relative;aspect-ratio:1;max-width:540px;width:100%;justify-self:center}
+.orbita svg{width:100%;height:100%;overflow:visible}
+.orbita .giro{transform-origin:270px 270px;animation:giro 60s linear infinite}
+.orbita .contra{animation:contra 60s linear infinite}
+.orbita .flota{animation:flota 6s ease-in-out infinite}
+.orbita .grano{animation:grano 9s linear infinite;opacity:0}
+@keyframes giro{to{transform:rotate(360deg)}}
+@keyframes contra{to{transform:rotate(-360deg)}}
+@keyframes flota{50%{transform:translateY(-8px)}}
+@keyframes grano{0%{opacity:0;transform:translateY(-30px)}10%{opacity:.9}80%{opacity:.9}100%{opacity:0;transform:translateY(120px)}}
+@media (prefers-reduced-motion:reduce){ .orbita *{animation:none!important} html{scroll-behavior:auto} .rev{opacity:1!important;transform:none!important} }
+
+.principios{border-block:1px solid var(--line);background:var(--paper)}
+.principios .wrap{display:grid;grid-template-columns:repeat(6,1fr)}
+.principios div{padding:20px 14px;border-right:1px solid var(--line);font:600 13px/1.35 var(--sans);color:var(--muted)}
+.principios div:last-child{border-right:0}
+.principios b{display:block;font:700 19px/1.2 var(--font);color:var(--text);margin-bottom:4px}
+
+/* ---------- secciones ---------- */
+section.sec{padding:96px 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;margin-bottom:40px}
+.sec-head .num{grid-row:span 2;font-size:96px;line-height:.8;color:var(--line2);font-weight:300;letter-spacing:-.04em}
+.sec-head h2{font-size:clamp(34px,4.2vw,54px);letter-spacing:-.018em}
+.sec-head h2 em{font-style:italic;font-weight:500;color:var(--pri)}
+.sec-head p{grid-column:2;color:var(--muted);font-size:20px;max-width:62ch;margin:10px 0 0}
+.js .rev{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.js .rev.on{opacity:1;transform:none}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* ---------- historia ---------- */
+.historia{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:84px}
+.historia:nth-child(even) .lienzo{order:-1}
+.historia h3{font-size:clamp(28px,3vw,40px);letter-spacing:-.012em;margin:8px 0 14px}
+.historia h3 em{font-style:italic;color:var(--acc);font-weight:500}
+.historia p{color:var(--muted);font-size:19px;margin:0 0 12px}
+.lienzo{padding:26px}
+.lienzo svg{width:100%;height:auto;font-family:var(--sans);overflow:visible}
+.lienzo svg text{fill:var(--text)}
+.lienzo svg .mu{fill:var(--muted)}
+.js .barra-crece{transform-origin:left center;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.rev.on .barra-crece{transform:scaleX(1)}
+.rev.on .barra-crece.d2{transition-delay:.35s}
+.js .cae{opacity:0;transform:translateY(-26px);transition:opacity .6s,transform .9s cubic-bezier(.3,1.4,.5,1)}
+.rev.on .cae{opacity:1;transform:none}
+
+/* texto sobre barras de color: blanco en claro, oscuro en modo oscuro */
+.lienzo svg text.enb{fill:#fff}
+:root[data-theme="dark"] .lienzo svg text.enb,:root[data-theme="dark"] .app .especie{fill:#10201a;color:#10201a}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .lienzo svg text.enb,:root:not([data-theme="light"]) .app .especie{fill:#10201a;color:#10201a} }
+/* ---------- formulador interactivo ---------- */
+.lp{display:grid;grid-template-columns:1.1fr .9fr;gap:0;overflow:hidden}
+.lp .graf{padding:26px 22px 14px;border-right:1px solid var(--line)}
+.lp .graf svg{width:100%;height:auto;font-family:var(--sans)}
+.lp .graf svg text{fill:var(--muted);font-size:12px}
+.lp .ctl{padding:26px 26px 22px;display:flex;flex-direction:column;gap:16px}
+.lp label{display:block;font:600 13.5px/1.3 var(--sans);color:var(--muted)}
+.lp label b{float:right;color:var(--text);font-variant-numeric:tabular-nums}
+.lp input[type=range]{width:100%;accent-color:var(--pri);margin:8px 0 0}
+.lp .res{margin-top:6px;padding:16px;border-radius:14px;background:var(--soft)}
+.lp .mezcla{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:10px 0 12px}
+.lp .mezcla i{display:block;height:100%;transition:width .35s}
+.lp .leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;font:600 13px/1.2 var(--sans);color:var(--muted)}
+.lp .leyenda span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c);vertical-align:-1px}
+.lp .costo{font-size:34px;font-weight:700;margin:4px 0 0;font-variant-numeric:tabular-nums}
+.lp .ata{font:600 12.5px/1.45 var(--sans);color:var(--muted);margin-top:8px}
+.lp .ata b{color:var(--acc)}
+.lp .nota{font:13px/1.5 var(--sans);color:var(--faint)}
+.region{fill:var(--pri);fill-opacity:.14;stroke:var(--pri);stroke-width:2;transition:all .25s}
+.iso{stroke:var(--acc);stroke-width:2;stroke-dasharray:7 6}
+.opt{fill:var(--acc);stroke:var(--paper);stroke-width:3}
+.pulso{fill:none;stroke:var(--acc);stroke-width:2;animation:pulso 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulso{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(3)}}
+.restr{stroke-width:1.5;fill:none}
+
+/* ---------- evidencia ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.kpi{padding:22px 22px 18px}
+.kpi b{display:block;font-size:46px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi span{display:block;font:600 13.5px/1.4 var(--sans);color:var(--muted);margin-top:8px}
+.kpi.a b{color:var(--pri)} .kpi.b b{color:var(--acc)} .kpi.c b{color:var(--oro)}
+.val-tabla{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font:14.5px/1.45 var(--sans)}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line2)}
+td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{white-space:nowrap}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+.punto{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:8px}
+
+/* ---------- apps ---------- */
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.app{display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.app:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.app .shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line)}
+.app .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}
+.app:hover .shot img{transform:scale(1.035)}
+.app .especie{position:absolute;left:14px;top:14px;font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:var(--c);color:#fff}
+.app .in{padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.app h3{font-size:28px;letter-spacing:-.01em}
+.app h3 i{color:var(--c);font-style:italic;font-weight:500}
+.app p{margin:0;color:var(--muted);font-size:16.5px;line-height:1.5}
+.app ul{margin:2px 0 0;padding-left:18px;font:14px/1.55 var(--sans);color:var(--muted)}
+.app .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
+.app .links{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 22px}
+.app .doi{font:600 12px/1 var(--sans);text-decoration:none;color:var(--paper);background:#24425e;padding:6px 9px;border-radius:6px}
+.app .doi b{background:#3b6a97;margin:-6px -9px -6px 7px;padding:6px 8px;border-radius:0 6px 6px 0;display:inline-block}
+.pronto{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.pronto div{padding:18px 20px;border:1px dashed var(--line2);border-radius:var(--r);color:var(--muted);font-size:16px}
+.pronto b{color:var(--text)}
+
+/* ---------- asistente ---------- */
+.asis{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.asis .pregunta{font:700 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.opciones{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.opciones button{font:600 14.5px/1 var(--sans);padding:12px 15px;border-radius:12px;border:1px solid var(--line2);background:var(--paper);color:var(--text);cursor:pointer}
+.opciones button.on{border-color:var(--pri);background:var(--pri-s);color:var(--pri-d)}
+.recomienda{padding:22px;border-radius:14px;background:linear-gradient(135deg,var(--pri-s),var(--oro-s));min-height:100%}
+.recomienda h4{font-size:30px;margin:6px 0 8px}
+.recomienda p{margin:0 0 14px;color:var(--muted)}
+
+/* ---------- manuales ---------- */
+.manuales{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.manual{padding:22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.manual::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c)}
+.manual h4{font-size:21px}
+.manual p{margin:0;font:14px/1.5 var(--sans);color:var(--muted);flex:1}
+.manual .acc{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- publicaciones ---------- */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:22px}
+.filtros button{font:600 13.5px/1 var(--sans);padding:10px 14px;border-radius:999px;border:1px solid var(--line2);background:var(--paper);color:var(--muted);cursor:pointer}
+.filtros button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.filtros input{margin-left:auto;min-width:260px;padding:11px 15px;border-radius:999px;border:1px solid var(--line2);background:var(--paper);color:var(--text);font:15px var(--sans)}
+.anio{font:700 13px/1 var(--sans);letter-spacing:.14em;color:var(--acc);margin:30px 0 10px}
+.obra{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.obra .tipo{font:700 11px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--c);padding-top:4px}
+.obra .tit{font-size:18px;font-weight:700;line-height:1.35}
+.obra .aut{font:14px/1.5 var(--sans);color:var(--muted);margin-top:4px}
+.obra .aut b{color:var(--text)}
+.obra .ven{font-size:15.5px;font-style:italic;color:var(--muted)}
+.obra a.d{font:600 13px var(--sans)}
+#cuenta{font:600 13.5px var(--sans);color:var(--muted)}
+
+/* ---------- autores ---------- */
+.autores{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
+.autor{padding:28px;display:grid;grid-template-columns:88px 1fr;gap:20px;align-items:start}
+.avatar{width:88px;height:88px;border-radius:24px;display:grid;place-items:center;font:700 32px var(--font);color:#fff;background:linear-gradient(135deg,#2f6b5a,#173a31)}
+.avatar.l{background:linear-gradient(135deg,#c99a3b,#8a6420)}
+.autor h4{font-size:25px}
+.autor .rol{font:600 14px/1.45 var(--sans);color:var(--muted);margin:6px 0 12px}
+.autor .enl{display:flex;flex-wrap:wrap;gap:8px}
+.autor p{margin:0 0 12px;color:var(--muted);font-size:16.5px}
+
+/* ---------- citar ---------- */
+.citas{display:grid;gap:14px}
+.cita{padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.cita p{margin:0;font-size:16.5px}
+.cita .c{font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:4px}
+
+footer{border-top:1px solid var(--line);padding:46px 0 60px;color:var(--muted);font:14px/1.6 var(--sans)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+footer b{color:var(--text)}
+footer a{color:var(--muted)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,40px);opacity:0;background:var(--text);color:var(--bg);font:600 14px var(--sans);padding:11px 18px;border-radius:999px;transition:all .3s;z-index:90}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.totop{position:fixed;right:22px;bottom:22px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.totop.on{opacity:1;pointer-events:auto}
+
+/* ---------- adaptable ---------- */
+@media (max-width:1100px){
+  .top nav{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 18px;box-shadow:var(--shadow)}
+  .top nav.open{display:flex}
+  #menuBtn{display:inline-grid}
+  .top .sp{margin-left:auto}
+}
+@media (max-width:980px){
+  .hero .wrap,.historia,.lp,.asis,.autores{grid-template-columns:1fr}
+  .historia:nth-child(even) .lienzo{order:0}
+  .lp .graf{border-right:0;border-bottom:1px solid var(--line)}
+  .apps{grid-template-columns:1fr 1fr}
+  .manuales,.kpis{grid-template-columns:1fr 1fr}
+  .principios .wrap{grid-template-columns:repeat(3,1fr)}
+  .principios div:nth-child(3){border-right:0}
+  .principios div:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 16px}
+  .hero{padding:40px 0 20px}
+  .apps,.manuales,.pronto{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi b{font-size:36px}
+  .sec-head{grid-template-columns:1fr}
+  .sec-head .num{font-size:56px;grid-row:auto}
+  .sec-head p{grid-column:1}
+  section.sec{padding:64px 0}
+  .obra{grid-template-columns:1fr;gap:4px}
+  .filtros input{min-width:0;width:100%;margin-left:0}
+  .autor{grid-template-columns:1fr}
+  .cita{grid-template-columns:1fr}
+  .lp .costo{font-size:26px}
+  .brand small{display:none}
+  .principios .wrap{grid-template-columns:1fr 1fr}
+  .principios div{border-right:0!important;border-bottom:1px solid var(--line)}
+}
+@media print{ .top,.totop,#toast{display:none} .rev{opacity:1;transform:none} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><img src="logo.svg" alt=""><span><b>Ratio</b><small lang="es">Nutrición animal de precisión</small><small lang="en">Precision animal nutrition</small></span></a>
+    <nav id="nav">
+      <a href="#historia"><span lang="es">Método</span><span lang="en">Method</span></a>
+      <a href="#formulador"><span lang="es">Formulador</span><span lang="en">Try it</span></a>
+      <a href="#evidencia"><span lang="es">Evidencia</span><span lang="en">Evidence</span></a>
+      <a href="#apps">Apps</a>
+      <a href="#manuales"><span lang="es">Manuales</span><span lang="en">Guides</span></a>
+      <a href="#publicaciones"><span lang="es">Publicaciones</span><span lang="en">Publications</span></a>
+      <a href="#autores"><span lang="es">Autores</span><span lang="en">Authors</span></a>
+    </nav>
+    <span class="sp"></span>
+    <div class="seg" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><button data-lang="en">EN</button></div>
+    <button class="ib" id="tema" aria-label="Tema / Theme">☾</button>
+    <button class="ib" id="menuBtn" aria-label="Menú / Menu">☰</button>
+  </div>
+  <div id="leido"></div>
+</header>
+
+<main id="inicio">
+<!-- ============================ PORTADA ============================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow" lang="es">Suite abierta de formulación de dietas</div>
+      <div class="eyebrow" lang="en">Open diet-formulation suite</div>
+      <h1 lang="es" style="margin-top:14px">La <em>razón</em> al servicio <span class="a">del animal.</span></h1>
+      <h1 lang="en" style="margin-top:14px">Reason in the <em>service</em> <span class="a">of the animal.</span></h1>
+      <p class="sub" lang="es">Aplicaciones gratuitas para formular la ración más barata que sí cumple, con la ciencia a la vista: para el productor que mezcla y para el científico que publica.</p>
+      <p class="sub" lang="en">Free apps to formulate the cheapest ration that truly meets requirements, with the science in plain sight: for the producer who mixes and the scientist who publishes.</p>
+      <div class="ctas">
+        <a class="btn pri" href="#apps"><span lang="es">Explorar las apps</span><span lang="en">Explore the apps</span> →</a>
+        <a class="btn ghost" href="#formulador"><span lang="es">Probar el formulador</span><span lang="en">Try the formulator</span></a>
+      </div>
+      <div class="facts">
+        <span class="chip" lang="es">3 apps · 2 especies</span><span class="chip" lang="en">3 apps · 2 species</span>
+        <span class="chip" lang="es">33 dietas publicadas reproducidas</span><span class="chip" lang="en">33 published diets reproduced</span>
+        <span class="chip" lang="es">1,300 problemas idénticos a HiGHS</span><span class="chip" lang="en">1,300 problems identical to HiGHS</span>
+      </div>
+    </div>
+    <div class="orbita rev" aria-hidden="true">
+      <svg viewBox="0 0 540 540">
+        <defs>
+          <radialGradient id="halo"><stop offset="0" stop-color="var(--oro)" stop-opacity=".22"/><stop offset="1" stop-color="var(--oro)" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hexg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b5a"/><stop offset="1" stop-color="#173a31"/></linearGradient>
+        </defs>
+        <circle cx="270" cy="270" r="260" fill="url(#halo)"/>
+        <g fill="none" stroke="var(--oro)" stroke-opacity=".55">
+          <ellipse cx="270" cy="270" rx="236" ry="92" transform="rotate(-18 270 270)"/>
+          <ellipse cx="270" cy="270" rx="236" ry="92" transform="rotate(32 270 270)" stroke-opacity=".35"/>
+          <circle cx="270" cy="270" r="200" stroke-dasharray="2 7"/>
+        </g>
+        <!-- granos que caen -->
+        <g fill="var(--oro)">
+          <ellipse class="grano" cx="232" cy="150" rx="4" ry="6" style="animation-delay:0s"/>
+          <ellipse class="grano" cx="300" cy="140" rx="4" ry="6" style="animation-delay:2.2s"/>
+          <ellipse class="grano" cx="262" cy="130" rx="4" ry="6" style="animation-delay:4.5s"/>
+          <ellipse class="grano" cx="318" cy="160" rx="4" ry="6" style="animation-delay:6.6s"/>
+        </g>
+        <!-- emblema -->
+        <g class="flota">
+          <polygon points="270,150 374,210 374,330 270,390 166,330 166,210" fill="url(#hexg)" stroke="var(--oro)" stroke-width="4"/>
+          <g transform="translate(206 206) scale(2)">
+            <rect x="11" y="27" width="7" height="25" rx="2" fill="#f6f1e4"/><rect x="23" y="21" width="7" height="31" rx="2" fill="#f6f1e4"/><rect x="11" y="35" width="19" height="5" rx="1.5" fill="#f6f1e4"/>
+            <rect x="39" y="25" width="7" height="27" rx="2" fill="#e3bd6a"/><rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="#e3bd6a"/>
+            <path d="M42.5 20.5V9" stroke="#e3bd6a" stroke-width="1.6" stroke-linecap="round"/>
+            <g fill="#e3bd6a"><ellipse cx="40.2" cy="15.6" rx="1.5" ry="2.8" transform="rotate(-32 40.2 15.6)"/><ellipse cx="44.8" cy="15.6" rx="1.5" ry="2.8" transform="rotate(32 44.8 15.6)"/><ellipse cx="40.4" cy="11.2" rx="1.4" ry="2.5" transform="rotate(-32 40.4 11.2)"/><ellipse cx="44.6" cy="11.2" rx="1.4" ry="2.5" transform="rotate(32 44.6 11.2)"/><ellipse cx="42.5" cy="7.4" rx="1.4" ry="2.4"/></g>
+          </g>
+          <text x="270" y="372" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" letter-spacing="5" fill="#e3bd6a">RATIO</text>
+        </g>
+        <!-- medallones en órbita -->
+        <g class="giro">
+          <g transform="translate(270 70)"><g class="contra" style="transform-origin:0 0">
+            <circle r="42" fill="var(--paper)" stroke="var(--avis)" stroke-width="2.5"/>
+            <!-- pollo -->
+            <g transform="translate(-22 -22) scale(.44)" fill="var(--avis)"><path d="M62 30c-3-9 4-16 10-12 2-6 10-6 11 0 5-2 9 4 5 9 5 2 4 9-2 9l2 6c10 4 17 14 17 26 0 18-16 30-36 30-17 0-31-9-35-23-2-7 4-9 8-4-3-10 3-21 13-26-6-3-8-10-4-15z"/><path d="M84 37l12 4-11 5z" fill="#d9a441"/><circle cx="75" cy="33" r="3" fill="var(--paper)"/><path d="M50 100l-6 14h14M70 100l-2 14h12" stroke="var(--avis)" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+          </g></g>
+          <g transform="translate(443 370)"><g class="contra" style="transform-origin:0 0">
+            <circle r="42" fill="var(--paper)" stroke="var(--bos)" stroke-width="2.5"/>
+            <!-- bovino -->
+            <g transform="translate(-27 -20) scale(.5)" fill="var(--bos)"><path d="M18 30c-8-1-14-7-15-14 6 4 12 5 18 4l6-4h50l6 4c6 1 12 0 18-4-1 7-7 13-15 14l-2 12c8 4 12 12 10 20l-6 18c-2 6-8 9-14 9H36c-6 0-12-3-14-9l-6-18c-2-8 2-16 10-20z"/><ellipse cx="54" cy="70" rx="20" ry="13" fill="var(--paper)" opacity=".85"/><circle cx="46" cy="70" r="3" fill="var(--bos)"/><circle cx="62" cy="70" r="3" fill="var(--bos)"/><circle cx="38" cy="46" r="4" fill="var(--paper)"/><circle cx="70" cy="46" r="4" fill="var(--paper)"/></g>
+          </g></g>
+          <g transform="translate(97 370)"><g class="contra" style="transform-origin:0 0">
+            <circle r="42" fill="var(--paper)" stroke="var(--sus)" stroke-width="2.5" stroke-dasharray="5 5"/>
+            <!-- cerdo (próximamente) -->
+            <g transform="translate(-26 -17) scale(.48)" fill="var(--sus)"><path d="M20 40c0-18 18-30 42-30 16 0 30 6 38 16l8-6-2 14c4 6 4 12 0 18l6 4-8 4c-6 12-20 20-40 20H40l-4 14H26l-2-16C14 70 10 56 20 40z"/><circle cx="84" cy="34" r="3.5" fill="var(--paper)"/><ellipse cx="100" cy="47" rx="6" ry="8" fill="var(--paper)" opacity=".8"/></g>
+          </g></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="principios">
+  <div class="wrap">
+    <div><b lang="es">Gratis</b><b lang="en">Free</b><span lang="es">y de código abierto (MIT)</span><span lang="en">and open source (MIT)</span></div>
+    <div><b lang="es">Sin instalar</b><b lang="en">No install</b><span lang="es">un solo archivo en tu navegador</span><span lang="en">one file in your browser</span></div>
+    <div><b lang="es">Privado</b><b lang="en">Private</b><span lang="es">ningún dato sale de tu equipo</span><span lang="en">no data leaves your device</span></div>
+    <div><b lang="es">Validado</b><b lang="en">Validated</b><span lang="es">contra dietas publicadas</span><span lang="en">against published diets</span></div>
+    <div><b lang="es">Certificado</b><b lang="en">Certified</b><span lang="es">óptimo probado por dualidad</span><span lang="en">optimum proven by duality</span></div>
+    <div><b lang="es">Citable</b><b lang="en">Citable</b><span lang="es">cada versión con DOI</span><span lang="en">every version has a DOI</span></div>
+  </div>
+</div>
+
+<!-- ============================ HISTORIA ============================ -->
+<section class="sec" id="historia">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">01</span>
+      <div class="eyebrow" lang="es">El método</div><div class="eyebrow" lang="en">The method</div>
+      <h2 lang="es">Del animal a la <em>ración</em>, en cuatro pasos.</h2><h2 lang="en">From the animal to the <em>ration</em>, in four steps.</h2>
+      <p lang="es">Todas las apps de Ratio siguen el mismo razonamiento que un nutriólogo, y te lo muestran mientras lo hacen.</p>
+      <p lang="en">Every Ratio app follows the same reasoning as a nutritionist, and shows it to you as it goes.</p></div>
+
+    <div class="historia">
+      <div class="rev">
+        <div class="eyebrow">01 · <span lang="es">El animal</span><span lang="en">The animal</span></div>
+        <h3 lang="es">Primero, lo que el animal <em>necesita</em>.</h3><h3 lang="en">First, what the animal <em>needs</em>.</h3>
+        <p lang="es">Peso, ganancia, raza, sexo, clima, altura: las ecuaciones de NASEM y de las casas genéticas convierten al animal en requerimientos de energía, proteína y minerales por día.</p>
+        <p lang="en">Weight, gain, breed, sex, climate, altitude: NASEM and breeder equations turn the animal into daily energy, protein and mineral requirements.</p>
+        <p lang="es">Un torete de 380 kg que debe ganar 1.35 kg/d come 7.75 kg de materia seca: el 44 % solo lo mantiene vivo.</p>
+        <p lang="en">A 380 kg bull that must gain 1.35 kg/d eats 7.75 kg of dry matter: 44 % only keeps it alive.</p>
+      </div>
+      <div class="lienzo card rev">
+        <svg viewBox="0 0 520 230">
+          <text x="0" y="18" font-size="14" font-weight="700" lang="es">Consumo diario de un torete · 7.75 kg MS</text>
+          <text x="0" y="18" font-size="14" font-weight="700" lang="en">Daily intake of one bull · 7.75 kg DM</text>
+          <g class="barra-crece"><rect x="0" y="36" width="227" height="58" rx="10" fill="var(--fav)"/></g>
+          <g class="barra-crece d2"><rect x="231" y="36" width="289" height="58" rx="10" fill="var(--acc)"/></g>
+          <text x="113" y="62" text-anchor="middle" font-size="15" font-weight="700" class="enb" lang="es">3.40 kg · mantener</text>
+          <text x="113" y="62" text-anchor="middle" font-size="15" font-weight="700" class="enb" lang="en">3.40 kg · maintain</text>
+          <text x="113" y="82" text-anchor="middle" font-size="12.5" class="enb">ENm 7.20 Mcal</text>
+          <text x="375" y="62" text-anchor="middle" font-size="15" font-weight="700" class="enb" lang="es">4.35 kg · ganar peso</text>
+          <text x="375" y="62" text-anchor="middle" font-size="15" font-weight="700" class="enb" lang="en">4.35 kg · gain weight</text>
+          <text x="375" y="82" text-anchor="middle" font-size="12.5" class="enb">ENg 5.46 Mcal → 1.35 kg/d</text>
+          <g font-size="12.5" class="mu">
+            <text x="0" y="130" class="mu" lang="es">Proteína metabolizable</text><text x="0" y="130" class="mu" lang="en">Metabolizable protein</text>
+            <g class="barra-crece"><rect x="0" y="140" width="229" height="18" rx="5" fill="var(--fav)" opacity=".7"/></g>
+            <g class="barra-crece d2"><rect x="233" y="140" width="287" height="18" rx="5" fill="var(--acc)" opacity=".7"/></g>
+            <text x="0" y="178" class="mu" lang="es">317 g mantenimiento + 403 g crecimiento = 720 g/d</text>
+            <text x="0" y="178" class="mu" lang="en">317 g maintenance + 403 g growth = 720 g/d</text>
+            <text x="0" y="214" class="mu" lang="es">Fuente: RatioBos con NASEM (2016), caso de Jalisco.</text>
+            <text x="0" y="214" class="mu" lang="en">Source: RatioBos with NASEM (2016), Jalisco case.</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="historia">
+      <div class="rev">
+        <div class="eyebrow">02 · <span lang="es">Los ingredientes</span><span lang="en">The ingredients</span></div>
+        <h3 lang="es">Luego, lo que <em>tienes</em> y lo que cuesta.</h3><h3 lang="en">Then, what you <em>have</em> and what it costs.</h3>
+        <p lang="es">Marcas los ingredientes que consigues y escribes su precio puesto en tu granja. La app los compara en base seca y por unidad de nutriente: no importa cuánto cuesta el kilo, sino cuánto cuesta cada Mcal y cada kilo de proteína.</p>
+        <p lang="en">You tick the ingredients you can get and enter their delivered price. The app compares them on a dry basis and per nutrient unit: what matters is not the price per kilo but the price of each Mcal and each kilo of protein.</p>
+      </div>
+      <div class="lienzo card rev">
+        <svg viewBox="0 0 520 250">
+          <text x="0" y="18" font-size="14" font-weight="700" lang="es">$ por Mcal de energía para ganar (ENg)</text>
+          <text x="0" y="18" font-size="14" font-weight="700" lang="en">$ per Mcal of energy for gain (NEg)</text>
+          <g font-size="13">
+            <g class="cae" style="transition-delay:.05s"><text x="0" y="56" lang="es">Sorgo rolado</text><text x="0" y="56" lang="en">Rolled sorghum</text><rect x="170" y="42" width="135" height="20" rx="6" fill="var(--pri)"/><text x="313" y="57" font-weight="700">$ 3.38</text></g>
+            <g class="cae" style="transition-delay:.2s"><text x="0" y="92" lang="es">Ensilaje de maíz</text><text x="0" y="92" lang="en">Corn silage</text><rect x="170" y="78" width="143" height="20" rx="6" fill="var(--pri)" opacity=".85"/><text x="321" y="93" font-weight="700">$ 3.58</text></g>
+            <g class="cae" style="transition-delay:.35s"><text x="0" y="128" lang="es">DDGS</text><text x="0" y="128" lang="en">DDGS</text><rect x="170" y="114" width="160" height="20" rx="6" fill="var(--pri)" opacity=".7"/><text x="338" y="129" font-weight="700">$ 3.99</text></g>
+            <g class="cae" style="transition-delay:.5s"><text x="0" y="164" lang="es">Maíz rolado</text><text x="0" y="164" lang="en">Rolled corn</text><rect x="170" y="150" width="160" height="20" rx="6" fill="var(--pri)" opacity=".6"/><text x="338" y="165" font-weight="700">$ 4.00</text></g>
+            <g class="cae" style="transition-delay:.65s"><text x="0" y="200" lang="es">Heno de alfalfa</text><text x="0" y="200" lang="en">Alfalfa hay</text><rect x="170" y="186" width="316" height="20" rx="6" fill="var(--acc)" opacity=".75"/><text x="494" y="201" font-weight="700">$ 7.91</text></g>
+          </g>
+          <text x="0" y="240" font-size="12.5" class="mu" lang="es">El maíz y el sorgo pesan casi igual; por energía, el sorgo de la región gana.</text>
+          <text x="0" y="240" font-size="12.5" class="mu" lang="en">Corn and sorghum weigh about the same; per unit of energy, local sorghum wins.</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="historia">
+      <div class="rev">
+        <div class="eyebrow">03 · <span lang="es">La ración</span><span lang="en">The ration</span></div>
+        <h3 lang="es">El método símplex busca la <em>más barata</em>.</h3><h3 lang="en">The simplex method finds the <em>cheapest</em>.</h3>
+        <p lang="es">Entre infinitas mezclas posibles, la programación lineal encuentra la de menor costo que cumple cada mínimo y cada máximo. Y un certificado de dualidad prueba que no existe otra más barata.</p>
+        <p lang="en">Among infinitely many blends, linear programming finds the lowest-cost one that meets every minimum and maximum. A duality certificate proves no cheaper one exists.</p>
+        <p><a href="#formulador"><span lang="es">Pruébalo tú mismo abajo ↓</span><span lang="en">Try it yourself below ↓</span></a></p>
+      </div>
+      <div class="lienzo card rev">
+        <svg viewBox="0 0 520 250">
+          <text x="0" y="18" font-size="14" font-weight="700" lang="es">Ración de mínimo costo · % de la materia seca</text>
+          <text x="0" y="18" font-size="14" font-weight="700" lang="en">Least-cost ration · % of dry matter</text>
+          <g transform="translate(130 140)">
+            <circle r="86" fill="none" stroke="var(--soft)" stroke-width="34"/>
+            <circle r="86" fill="none" stroke="var(--acc)" stroke-width="34" stroke-dasharray="452.6 540.4" transform="rotate(-90)" class="cae"/>
+            <circle r="86" fill="none" stroke="var(--pri)" stroke-width="34" stroke-dasharray="60.5 540.4" stroke-dashoffset="-452.6" transform="rotate(-90)" class="cae" style="transition-delay:.25s"/>
+            <circle r="86" fill="none" stroke="var(--oro)" stroke-width="34" stroke-dasharray="27.3 540.4" stroke-dashoffset="-513.1" transform="rotate(-90)" class="cae" style="transition-delay:.45s"/>
+            <text text-anchor="middle" y="-4" font-size="30" font-weight="700">$ 4,513</text>
+            <text text-anchor="middle" y="18" font-size="12.5" class="mu" lang="es">por tonelada de MS</text><text text-anchor="middle" y="18" font-size="12.5" class="mu" lang="en">per tonne DM</text>
+          </g>
+          <g font-size="13.5" transform="translate(290 90)">
+            <rect width="12" height="12" rx="3" fill="var(--acc)"/><text x="20" y="11" lang="es">Sorgo rolado · 83.8 %</text><text x="20" y="11" lang="en">Rolled sorghum · 83.8 %</text>
+            <rect y="30" width="12" height="12" rx="3" fill="var(--pri)"/><text x="20" y="41" lang="es">Rastrojo · 11.2 %</text><text x="20" y="41" lang="en">Corn stover · 11.2 %</text>
+            <rect y="60" width="12" height="12" rx="3" fill="var(--oro)"/><text x="20" y="71" lang="es">DDGS, urea, minerales · 5 %</text><text x="20" y="71" lang="en">DDGS, urea, minerals · 5 %</text>
+            <text y="110" font-size="12.5" class="mu" lang="es">Brecha primal–dual: 2 × 10⁻¹⁵</text><text y="110" font-size="12.5" class="mu" lang="en">Primal–dual gap: 2 × 10⁻¹⁵</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="historia">
+      <div class="rev">
+        <div class="eyebrow">04 · <span lang="es">La decisión</span><span lang="en">The decision</span></div>
+        <h3 lang="es">Al final, una decisión que <em>se sostiene</em>.</h3><h3 lang="en">Finally, a decision that <em>holds up</em>.</h3>
+        <p lang="es">La hoja del carro en kilos húmedos, el costo por kilo ganado, la utilidad por cabeza y la huella ambiental: gases, agua, suelo y estiércol, para elegir con criterio económico y de sostenibilidad.</p>
+        <p lang="en">The wagon sheet in wet kilos, the cost per kilo gained, the profit per head and the environmental footprint: gases, water, land and manure, to choose on economic and sustainability grounds.</p>
+      </div>
+      <div class="lienzo card rev">
+        <svg viewBox="0 0 520 250">
+          <text x="0" y="18" font-size="14" font-weight="700" lang="es">300 toretes · 110 días en corral</text>
+          <text x="0" y="18" font-size="14" font-weight="700" lang="en">300 bulls · 110 days on feed</text>
+          <g class="cae"><rect x="0" y="40" width="160" height="88" rx="14" fill="var(--pri-s)"/><text x="16" y="72" font-size="13" class="mu" lang="es">Utilidad por cabeza</text><text x="16" y="72" font-size="13" class="mu" lang="en">Profit per head</text><text x="16" y="108" font-size="30" font-weight="700" style="fill:var(--pri)">$ 1,216</text></g>
+          <g class="cae" style="transition-delay:.2s"><rect x="180" y="40" width="160" height="88" rx="14" fill="var(--acc-s)"/><text x="196" y="72" font-size="13" class="mu" lang="es">Alimento / kg ganado</text><text x="196" y="72" font-size="13" class="mu" lang="en">Feed / kg gained</text><text x="196" y="108" font-size="30" font-weight="700" style="fill:var(--acc)">$ 31.40</text></g>
+          <g class="cae" style="transition-delay:.4s"><rect x="360" y="40" width="160" height="88" rx="14" fill="var(--oro-s)"/><text x="376" y="72" font-size="13" class="mu">CO₂e / kg</text><text x="376" y="108" font-size="30" font-weight="700" style="fill:var(--oro)">5.1 kg</text></g>
+          <g font-size="12.5">
+            <text x="0" y="166" class="mu" lang="es">Origen de los gases</text><text x="0" y="166" class="mu" lang="en">Where the gases come from</text>
+            <g class="barra-crece"><rect x="0" y="176" width="230" height="24" fill="var(--oro)"/><rect x="232" y="176" width="176" height="24" fill="var(--acc)"/><rect x="410" y="176" width="106" height="24" fill="var(--fav)"/><rect x="518" y="176" width="2" height="24" fill="var(--muted)"/></g>
+            <text x="8" y="193" class="enb" font-weight="700" lang="es">Alimento 44 %</text><text x="8" y="193" class="enb" font-weight="700" lang="en">Feed 44 %</text>
+            <text x="240" y="193" class="enb" font-weight="700" lang="es">Rumen 34 %</text><text x="240" y="193" class="enb" font-weight="700" lang="en">Rumen 34 %</text>
+            <text x="418" y="193" class="enb" font-weight="700">N₂O 21 %</text>
+            <text x="0" y="232" class="mu" lang="es">IPCC (2019) y GWP del AR6 · sostenibilidad en el sentido de la FAO.</text>
+            <text x="0" y="232" class="mu" lang="en">IPCC (2019) and AR6 GWP · sustainability as FAO defines it.</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FORMULADOR ============================ -->
+<section class="sec" id="formulador" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">02</span>
+      <div class="eyebrow" lang="es">Formulador en vivo</div><div class="eyebrow" lang="en">Live formulator</div>
+      <h2 lang="es">Mueve un precio y mira <em>cómo decide</em>.</h2><h2 lang="en">Move a price and watch <em>how it decides</em>.</h2>
+      <p lang="es">Una ración de engorda con los tres ingredientes del caso de RatioBos: sorgo, granos de destilería (DDGS) y rastrojo. Cada línea es un requerimiento; la zona verde, todas las mezclas que lo cumplen; el punto terracota, la más barata. Fíjate: la ración no cambia hasta que un precio cruza su «precio de entrada»; entonces salta a otra esquina. Es el mismo principio que usan las apps, en dos dimensiones.</p>
+      <p lang="en">A feedlot ration with the three ingredients of the RatioBos case: sorghum, distillers grains (DDGS) and stover. Each line is a requirement; the green area, every blend that meets them; the terracotta point, the cheapest. Notice: the ration does not change until a price crosses its “entry price”; then it jumps to another corner. It is the same principle the apps use, in two dimensions.</p></div>
+    <div class="lp card rev">
+      <div class="graf"><svg id="lpSvg" viewBox="0 0 520 470" role="img" aria-label="Región factible / Feasible region"></svg></div>
+      <div class="ctl">
+        <div><label><span lang="es">Precio del sorgo rolado ($/kg MS)</span><span lang="en">Rolled sorghum price ($/kg DM)</span> <b id="vPm"></b></label><input type="range" id="pm" min="3" max="8" step="0.05" value="4.70"></div>
+        <div><label><span lang="es">Precio de los DDGS ($/kg MS)</span><span lang="en">DDGS price ($/kg DM)</span> <b id="vPs"></b></label><input type="range" id="ps" min="3.5" max="10" step="0.05" value="6.07"></div>
+        <div><label><span lang="es">Energía para ganar mínima (Mcal ENg/kg)</span><span lang="en">Minimum energy for gain (Mcal NEg/kg)</span> <b id="vE"></b></label><input type="range" id="E" min="0.9" max="1.45" step="0.01" value="1.25"></div>
+        <div><label><span lang="es">Proteína cruda mínima (%)</span><span lang="en">Minimum crude protein (%)</span> <b id="vP"></b></label><input type="range" id="P" min="9" max="20" step="0.1" value="13"></div>
+        <div class="res">
+          <div class="sans muted" style="font-size:13px;font-weight:600" lang="es">Ración de mínimo costo</div><div class="sans muted" style="font-size:13px;font-weight:600" lang="en">Least-cost ration</div>
+          <div class="costo" id="costo"></div>
+          <div class="mezcla" id="mezcla"><i style="background:var(--oro)"></i><i style="background:var(--acc)"></i><i style="background:var(--pri)"></i></div>
+          <div class="leyenda" id="leyenda"></div>
+          <div class="ata" id="ata"></div>
+        </div>
+        <div class="nota" lang="es">Valores en base seca de la tabla de Oklahoma State (Beck et al., 2024) que usa RatioBos; forraje entre 10 y 40 % y DDGS hasta 30 %. Rastrojo a $ 1.95/kg MS.</div>
+        <div class="nota" lang="en">Dry-basis values from the Oklahoma State table (Beck et al., 2024) used by RatioBos; forage between 10 and 40 % and DDGS up to 30 %. Stover at $ 1.95/kg DM.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EVIDENCIA ============================ -->
+<section class="sec" id="evidencia">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">03</span>
+      <div class="eyebrow" lang="es">Evidencia</div><div class="eyebrow" lang="en">Evidence</div>
+      <h2 lang="es">Confianza que <em>se puede comprobar</em>.</h2><h2 lang="en">Trust you <em>can check</em>.</h2>
+      <p lang="es">Cada app se valida con dietas publicadas en revistas científicas y su motor se compara con HiGHS, un solucionador de referencia independiente. Los guiones están en cada repositorio para que cualquiera repita las pruebas.</p>
+      <p lang="en">Every app is validated with diets published in scientific journals, and its engine is compared with HiGHS, an independent reference solver. The scripts are in each repository so anyone can repeat the tests.</p></div>
+    <div class="kpis">
+      <div class="kpi card a rev"><b data-cuenta="33">0</b><span lang="es">dietas publicadas reproducidas en 3 apps</span><span lang="en">published diets reproduced across 3 apps</span></div>
+      <div class="kpi card b rev"><b data-cuenta="1300" data-miles="1">0</b><span lang="es">problemas resueltos igual que HiGHS, sin un solo desacuerdo</span><span lang="en">problems solved exactly as HiGHS, with no disagreement</span></div>
+      <div class="kpi card c rev"><b data-cuenta="0.5" data-dec="1" data-suf=" %">0</b><span lang="es">error al reproducir la energía neta observada en corrales (RatioBos)</span><span lang="en">error reproducing observed net energy in feedlot trials (RatioBos)</span></div>
+      <div class="kpi card a rev"><b data-cuenta="31">0</b><span lang="es">de 31 fórmulas publicadas reencontradas o mejoradas por el optimizador</span><span lang="en">of 31 published formulas recovered or improved by the optimiser</span></div>
+    </div>
+    <div class="card val-tabla rev">
+      <table>
+        <thead><tr><th lang="es">App</th><th lang="en">App</th><th lang="es">Validación con literatura</th><th lang="en">Validation against literature</th><th class="r" lang="es">Dietas</th><th class="r" lang="en">Diets</th><th class="r" lang="es">Prueba con HiGHS</th><th class="r" lang="en">HiGHS test</th></tr></thead>
+        <tbody>
+          <tr><td><span class="punto" style="--c:var(--bos)"></span><b>RatioBos</b></td><td lang="es">9 artículos (2017–2025): error de 3.0 % en energía neta y 2.1 % en proteína; energía observada 0.5 %; economía 0.2 %; 19 de 19 dietas igualadas o abaratadas.</td><td lang="en">9 papers (2017–2025): 3.0 % error in net energy and 2.1 % in protein; observed energy 0.5 %; economics 0.2 %; 19 of 19 diets matched or made cheaper.</td><td class="r">19</td><td class="r">500 / 500</td></tr>
+          <tr><td><span class="punto" style="--c:var(--avis)"></span><b>RatioAvis</b></td><td lang="es">Rev. Mex. Cienc. Pecu. (2020), <i>Animals</i> (2025) y <i>Poultry</i> (2022): reencuentra exactamente 6 de 6 fórmulas publicadas.</td><td lang="en">Rev. Mex. Cienc. Pecu. (2020), <i>Animals</i> (2025) and <i>Poultry</i> (2022): recovers exactly 6 of 6 published formulas.</td><td class="r">6</td><td class="r">400 / 400</td></tr>
+          <tr><td><span class="punto" style="--c:var(--fav)"></span><b>FormulAves</b></td><td lang="es">4 artículos: error de 0.9 % en energía metabolizable y 2.7 % en proteína; 6 fórmulas reencontradas.</td><td lang="en">4 papers: 0.9 % error in metabolizable energy and 2.7 % in protein; 6 formulas recovered.</td><td class="r">8</td><td class="r">400 / 400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APPS ============================ -->
+<section class="sec" id="apps" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">04</span>
+      <div class="eyebrow">Apps</div>
+      <h2 lang="es">Una app para cada <em>especie</em>.</h2><h2 lang="en">One app for each <em>species</em>.</h2>
+      <p lang="es">Todas funcionan en la computadora, la tableta o el celular, sin instalar nada y sin conexión una vez abiertas.</p>
+      <p lang="en">They all work on computer, tablet or phone, with nothing to install and offline once opened.</p></div>
+    <div class="apps">
+      <article class="app card rev" style="--c:var(--bos)">
+        <div class="shot"><img src="img/ratiobos.jpg" alt="RatioBos" loading="lazy"><span class="especie" lang="es">Bovinos de carne</span><span class="especie" lang="en">Beef cattle</span></div>
+        <div class="in">
+          <h3>Ratio<i>Bos</i></h3>
+          <p lang="es">Raciones para becerros, engorda en corral, vaquillas y vacas de cría, con el clima de tu región de México.</p>
+          <p lang="en">Rations for calves, feedlot cattle, heifers and beef cows, with the climate of your Mexican region.</p>
+          <ul lang="es"><li>NASEM (2016): energía neta y proteína metabolizable</li><li>Mapa de 9 regiones, ITH y precios regionales</li><li>Programa de engorda, tablero y huella ambiental</li></ul>
+          <ul lang="en"><li>NASEM (2016): net energy and metabolizable protein</li><li>Map of 9 regions, THI and regional prices</li><li>Feeding program, dashboard and footprint</li></ul>
+          <div class="meta"><a class="doi" href="https://doi.org/10.5281/zenodo.23197134">DOI<b>10.5281/zenodo.23197134</b></a><span class="chip">v1.0.0 · ES/EN</span></div>
+        </div>
+        <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioBos/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo-productor.html" lang="es">Instructivos</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo-productor.html" lang="en">Guides</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/RatioBos">GitHub</a></div>
+      </article>
+      <article class="app card rev" style="--c:var(--avis)">
+        <div class="shot"><img src="img/ratioavis.jpg" alt="RatioAvis" loading="lazy"><span class="especie" lang="es">Pollo de engorda</span><span class="especie" lang="en">Broilers</span></div>
+        <div class="in">
+          <h3>Ratio<i>Avis</i></h3>
+          <p lang="es">Dietas por fase para Ross 308, Cobb 500, Arbor Acres, Hubbard y pollo criollo, con ajustes por altitud y calor.</p>
+          <p lang="en">Phase diets for Ross 308, Cobb 500, Arbor Acres, Hubbard and slow-growing birds, with altitude and heat adjustments.</p>
+          <ul lang="es"><li>Aminoácidos digestibles y proteína ideal</li><li>Hoja de mezclado en kg y costo por ave</li><li>Bilingüe, con instructivos de productor y científico</li></ul>
+          <ul lang="en"><li>Digestible amino acids and ideal protein</li><li>Mixing sheet in kg and cost per bird</li><li>Bilingual, with producer and scientist guides</li></ul>
+          <div class="meta"><a class="doi" href="https://doi.org/10.5281/zenodo.23123050">DOI<b>10.5281/zenodo.23123050</b></a><span class="chip">v1.1.1 · ES/EN</span></div>
+        </div>
+        <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioAvis/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-productor.html" lang="es">Instructivos</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-productor.html" lang="en">Guides</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/RatioAvis">GitHub</a></div>
+      </article>
+      <article class="app card rev" style="--c:var(--fav)">
+        <div class="shot"><img src="img/formulaves.jpg" alt="FormulAves" loading="lazy"><span class="especie" lang="es">Pollo de engorda</span><span class="especie" lang="en">Broilers</span></div>
+        <div class="in">
+          <h3>Formul<i>Aves</i></h3>
+          <p lang="es">La primera de la familia: una plataforma en español para formular, mezclar y costear la dieta del pollo paso a paso.</p>
+          <p lang="en">The first of the family: a Spanish-language platform to formulate, mix and cost broiler diets step by step.</p>
+          <ul lang="es"><li>29 ingredientes con aminoácidos totales y digestibles</li><li>Programa multifase y precios sombra</li><li>Marco teórico en cada bloque</li></ul>
+          <ul lang="en"><li>29 ingredients with total and digestible amino acids</li><li>Multiphase program and shadow prices</li><li>Theory in every block</li></ul>
+          <div class="meta"><a class="doi" href="https://doi.org/10.5281/zenodo.23094626">DOI<b>10.5281/zenodo.23094626</b></a><span class="chip">v2.1.0 · ES</span></div>
+        </div>
+        <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/FormulAves/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/FormulAves">GitHub</a></div>
+      </article>
+    </div>
+    <div class="pronto rev">
+      <div><b lang="es">RatioSus · cerdos</b><b lang="en">RatioSus · pigs</b> — <span lang="es">en desarrollo.</span><span lang="en">in development.</span></div>
+      <div><b lang="es">Más especies</b><b lang="en">More species</b> — <span lang="es">ovinos, caprinos y bovinos lecheros, en la misma familia de apps.</span><span lang="en">sheep, goats and dairy cattle, in the same app family.</span></div>
+    </div>
+
+    <!-- asistente -->
+    <div class="card asis rev" style="margin-top:34px" id="asistente">
+      <div>
+        <div class="eyebrow" lang="es">¿Cuál me conviene?</div><div class="eyebrow" lang="en">Which one is for me?</div>
+        <h3 style="font-size:30px;margin:8px 0 18px" lang="es">Tres preguntas y te digo.</h3><h3 style="font-size:30px;margin:8px 0 18px" lang="en">Three questions and I’ll tell you.</h3>
+        <p class="pregunta" lang="es">1 · ¿Qué animal alimentas?</p><p class="pregunta" lang="en">1 · Which animal do you feed?</p>
+        <div class="opciones" data-p="esp"><button data-v="pollo" lang="es">Pollo de engorda</button><button data-v="pollo" lang="en">Broilers</button><button data-v="bovino" lang="es">Bovinos de carne</button><button data-v="bovino" lang="en">Beef cattle</button><button data-v="cerdo" lang="es">Cerdos</button><button data-v="cerdo" lang="en">Pigs</button></div>
+        <p class="pregunta" lang="es">2 · ¿Quién la va a usar?</p><p class="pregunta" lang="en">2 · Who will use it?</p>
+        <div class="opciones" data-p="uso"><button data-v="prod" lang="es">Productor o técnico</button><button data-v="prod" lang="en">Producer or advisor</button><button data-v="cien" lang="es">Investigación o docencia</button><button data-v="cien" lang="en">Research or teaching</button></div>
+        <p class="pregunta" lang="es">3 · ¿En qué idioma?</p><p class="pregunta" lang="en">3 · Which language?</p>
+        <div class="opciones" data-p="idi"><button data-v="es" lang="es">Español</button><button data-v="es" lang="en">Spanish</button><button data-v="en" lang="es">Inglés o ambos</button><button data-v="en" lang="en">English or both</button></div>
+      </div>
+      <div class="recomienda" id="recomienda"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MANUALES ============================ -->
+<section class="sec" id="manuales">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">05</span>
+      <div class="eyebrow" lang="es">Manuales</div><div class="eyebrow" lang="en">Guides</div>
+      <h2 lang="es">Un instructivo para cada <em>mirada</em>.</h2><h2 lang="en">A guide for each <em>reader</em>.</h2>
+      <p lang="es">El del productor sigue un caso real de principio a fin, con capturas marcadas paso a paso. El del científico documenta cada ecuación, el método y la validación, con texto listo para la sección de Métodos de un artículo.</p>
+      <p lang="en">The producer guide follows one real case start to finish, with marked screenshots step by step. The scientist guide documents every equation, the method and the validation, with text ready for a paper’s Methods section.</p></div>
+    <div class="manuales">
+      <div class="manual card rev" style="--c:var(--bos)"><div class="eyebrow" style="color:var(--bos)">RatioBos</div><h4 lang="es">Instructivo del Productor</h4><h4 lang="en">Producer Guide</h4><p lang="es">300 toretes en Jalisco: del mapa a la hoja del carro, la utilidad y la huella. 64 páginas.</p><p lang="en">300 bulls in Jalisco: from the map to the wagon sheet, profit and footprint. 62 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo-productor.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Instructivo-Productor.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Producer-Guide.pdf">PDF EN</a></div></div>
+      <div class="manual card rev" style="--c:var(--bos)"><div class="eyebrow" style="color:var(--bos)">RatioBos</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">NASEM en ecuaciones, punto fijo energía–consumo, frontera costo–huella y validación. 30 páginas.</p><p lang="en">NASEM in equations, energy–intake fixed point, cost–footprint frontier and validation. 29 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Scientist-Guide.pdf">PDF EN</a></div></div>
+      <div class="manual card rev" style="--c:var(--avis)"><div class="eyebrow" style="color:var(--avis)">RatioAvis</div><h4 lang="es">Instructivo del Productor</h4><h4 lang="en">Producer Guide</h4><p lang="es">10,000 pollos Ross 308 a 2,200 m de altitud: de la genética a la mezcladora.</p><p lang="en">10,000 Ross 308 birds at 2,200 m altitude: from genetics to the mixer.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-productor.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Instructivo-Productor.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Producer-Guide.pdf">PDF EN</a></div></div>
+      <div class="manual card rev" style="--c:var(--avis)"><div class="eyebrow" style="color:var(--avis)">RatioAvis</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">Del modelo lineal al certificado de optimalidad, con el guion de verificación en SciPy.</p><p lang="en">From the linear model to the optimality certificate, with the SciPy verification script.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Scientist-Guide.pdf">PDF EN</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PUBLICACIONES ============================ -->
+<section class="sec" id="publicaciones" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">06</span>
+      <div class="eyebrow" lang="es">Publicaciones</div><div class="eyebrow" lang="en">Publications</div>
+      <h2 lang="es">La investigación <em>detrás</em> de las apps.</h2><h2 lang="en">The research <em>behind</em> the apps.</h2>
+      <p lang="es">Software, artículos, libros y memorias del grupo, sincronizados con el registro ORCID. Cada obra enlaza a su DOI.</p>
+      <p lang="en">The group’s software, articles, books and proceedings, synced with the ORCID record. Every work links to its DOI.</p></div>
+    <div class="filtros">
+      <button data-f="todo" class="on" lang="es">Todo</button><button data-f="todo" class="on" lang="en">All</button>
+      <button data-f="software">Software</button>
+      <button data-f="articulo" lang="es">Artículos</button><button data-f="articulo" lang="en">Articles</button>
+      <button data-f="libro" lang="es">Libros y capítulos</button><button data-f="libro" lang="en">Books and chapters</button>
+      <button data-f="congreso" lang="es">Congresos</button><button data-f="congreso" lang="en">Proceedings</button>
+      <input id="busca" type="search" placeholder="Buscar…" aria-label="Buscar / Search">
+    </div>
+    <div id="cuenta"></div>
+    <div id="obras"></div>
+  </div>
+</section>
+
+<!-- ============================ AUTORES ============================ -->
+<section class="sec" id="autores">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">07</span>
+      <div class="eyebrow" lang="es">Autores</div><div class="eyebrow" lang="en">Authors</div>
+      <h2 lang="es">Hecho en <em>Chapingo</em>, para el campo.</h2><h2 lang="en">Made at <em>Chapingo</em>, for the field.</h2></div>
+    <div class="autores">
+      <div class="autor card rev">
+        <div class="avatar">HT</div>
+        <div>
+          <h4>Héctor Tecumshé Mojica-Zárate</h4>
+          <div class="rol" lang="es">Profesor-investigador · Universidad Autónoma Chapingo, Centro Regional Universitario Oriente (Huatusco, Veracruz) · Doctor en Ciencias Técnicas, Universidad Central «Marta Abreu» de Las Villas, Cuba</div>
+          <div class="rol" lang="en">Professor-researcher · Chapingo Autonomous University, Eastern Regional University Centre (Huatusco, Veracruz) · PhD in Technical Sciences, Central University “Marta Abreu” of Las Villas, Cuba</div>
+          <p lang="es">Autor principal de la suite Ratio. Trabaja en sistemas agroproductivos sostenibles, territorios áridos y nutrición animal de precisión.</p>
+          <p lang="en">Lead author of the Ratio suite. Works on sustainable agro-productive systems, arid territories and precision animal nutrition.</p>
+          <div class="enl"><a class="btn ghost sm" href="https://orcid.org/0000-0002-9067-3983">ORCID 0000-0002-9067-3983</a><a class="btn ghost sm" href="https://www.researchgate.net/profile/Hector-Tecumshe-Mojica-Zarate">ResearchGate</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai">GitHub</a></div>
+        </div>
+      </div>
+      <div class="autor card rev">
+        <div class="avatar l">LB</div>
+        <div>
+          <h4>Luis Ángel Barrera-Guzmán</h4>
+          <div class="rol" lang="es">Coautor de todas las apps de la suite</div>
+          <div class="rol" lang="en">Co-author of every app in the suite</div>
+          <p lang="es">Creador de la suite LABG de herramientas científicas para estadística, genética, biogeografía y agronomía.</p>
+          <p lang="en">Creator of the LABG suite of scientific tools for statistics, genetics, biogeography and agronomy.</p>
+          <div class="enl"><a class="btn ghost sm" href="https://luisangelbg.github.io/"><span lang="es">Suite LABG</span><span lang="en">LABG suite</span> ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CITAR ============================ -->
+<section class="sec" id="citar" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">08</span>
+      <div class="eyebrow" lang="es">Cómo citar</div><div class="eyebrow" lang="en">How to cite</div>
+      <h2 lang="es">Si te sirvió, <em>cítalo</em>.</h2><h2 lang="en">If it helped, <em>cite it</em>.</h2>
+      <p lang="es">Citar el software con su DOI permite reproducir tus resultados y sostiene el desarrollo gratuito de nuevas apps.</p>
+      <p lang="en">Citing the software with its DOI makes your results reproducible and sustains free development of new apps.</p></div>
+    <div class="citas">
+      <div class="cita card rev" style="--c:var(--bos)"><div><div class="c">RatioBos</div><p id="c1">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Version 1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23197134</p></div><button class="btn ghost sm" data-copia="c1"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+      <div class="cita card rev" style="--c:var(--avis)"><div><div class="c">RatioAvis</div><p id="c2">Mojica-Zárate, H. T., Barrera-Guzmán, L. A., &amp; Velázquez-Vázquez, G. (2026). <i>RatioAvis: Guided least-cost diet formulation for broiler chickens</i> (Version 1.1.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23123050</p></div><button class="btn ghost sm" data-copia="c2"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+      <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">FormulAves</div><p id="c3">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>FormulAves: Plataforma guiada para la formulación de dietas de mínimo costo para pollo de engorda</i> (Versión 2.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23094626</p></div><button class="btn ghost sm" data-copia="c3"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Ratio</b> · <span lang="es">Nutrición animal de precisión</span><span lang="en">Precision animal nutrition</span><br>
+      <span lang="es">Herramientas de apoyo: los resultados deben revisarse con un profesional en nutrición animal.</span><span lang="en">Decision-support tools: results should be reviewed by a qualified animal nutritionist.</span><br>
+      © 2026 Héctor Tecumshé Mojica-Zárate · <span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
+    <div><b lang="es">Apps</b><b lang="en">Apps</b><br><a href="https://hectortecumshe-ai.github.io/RatioBos/">RatioBos</a> · <a href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis</a> · <a href="https://hectortecumshe-ai.github.io/FormulAves/">FormulAves</a></div>
+    <div><b lang="es">Esta página</b><b lang="en">This page</b><br><span lang="es">Sin cookies, sin rastreadores y sin recursos de terceros. Actualizada en octubre de 2026.</span><span lang="en">No cookies, no trackers and no third-party resources. Updated October 2026.</span></div>
+  </div>
+</footer>
+
+<a class="ib totop" href="#inicio" aria-label="Arriba / Top">↑</a>
+<div id="toast"></div>
+
+<script>
+"use strict";
+const $ = (s, e = document) => e.querySelector(s), $$ = (s, e = document) => [...e.querySelectorAll(s)];
+const OBRAS = [{"titulo":"RatioBos: Guided least-cost diet formulation for beef cattle","tipo":"software","anio":2026,"revista":"Zenodo","doi":"10.5281/zenodo.23197134","autores":["Mojica-Zárate, Héctor Tecumshé","Barrera-Guzmán, Luis Ángel"]},{"titulo":"RatioAvis: Guided least-cost diet formulation for broiler chickens","tipo":"software","anio":2026,"revista":"Zenodo","doi":"10.5281/zenodo.23050776","autores":["Mojica-Zárate, Héctor Tecumshé","Barrera-Guzmán, Luis Ángel","Velázquez-Vázquez, Guadalupe"]},{"titulo":"FormulAves: Plataforma guiada para la formulación de dietas de mínimo costo para pollo de engorda","tipo":"software","anio":2026,"revista":"Zenodo","doi":"10.5281/zenodo.23094626","autores":["Mojica-Zárate, Héctor Tecumshé","Barrera-Guzmán, Luis Ángel"]},{"titulo":"BioModelling Pro: biogeography and species distribution modelling in the browser","tipo":"software","anio":2026,"revista":"Zenodo","doi":"10.5281/zenodo.22923343","autores":["Barrera-Guzmán, Luis Ángel","Ramírez-Ojeda, Gabriela","Cadena-Iñiguez, Jorge","Cadena-Zamudio, Daniel Alejandro","Cadena-Zamudio, Jorge David","Mojica-Zárate, Héctor Tecumshé"]},{"titulo":"Diversidad morfológica de Vitis tiliifolia Humb. Bonpl. ex Roem. Schult. (Vitaceae) en poblaciones silvestres de cuatro localidades del estado de Veracruz, México","tipo":"journal-article","anio":2026,"revista":"Polibotánica","doi":"10.18387/polibotanica.62.2","autores":["Mata Alejandro, Humberto","Castañeda-Chávez, María Del Refugio","Aguilar Pérez, Luis Alfonso","Mójica-Zárate, Héctor Tecumshé","Cruz-Castillo, Juan Guillermo"]},{"titulo":"conocimiento agrícola local: el stack del maíz criollo en Calpan, Puebla","tipo":"journal-article","anio":2026,"revista":"Agricultura, Sociedad y Desarrollo","doi":"10.22231/asyd.v23i3.1822","autores":["Díaz-José, Oscar","Mojica-Zárate, Héctor Tecumshé","Díaz-José, Julio","Vilaboa-Arróniz, Julio"]},{"titulo":"Global Perspective and the Current Characterization of Buffelgrass (Pennisetum ciliare (L.) Link) with Emphasis on Arid Mexican Territories","tipo":"journal-article","anio":2026,"revista":"Grasses","doi":"10.3390/grasses5020022","autores":["Barrera-Guzmán, Luis Ángel","Mojica-Zárate, Héctor Tecumshé","Cadena-Iñiguez, Jorge","Cruz-Castillo, Juan Guillermo","Díaz-José, Óscar","Tinoco-Rueda, Juan Ángel","Alejo-Bello, Sergio","Rojas-Reyes, José Orlando","Partida-Sedas, José Gervasio","Téllez-Hernández, Haydée Xanat"]},{"titulo":"Almacenes de carbono aéreo y en suelos en sistemas agroforestales, pastizal y bosque mesófilo de montaña en Veracruz, México","tipo":"journal-article","anio":2026,"revista":"Revista Mexicana de Ciencias Pecuarias","doi":"10.22319/rmcp.v17i1.6886","autores":["Acevedo Cruz, Saulo","Valdés Velarde, Eduardo","Tinoco Rueda, Juan Angel","Martínez Hueto, Eunice","Escamilla Prado, Esteban","Barrera Guzmán, Luis Angel","Mojica Zárate, Héctor Tecumshé"]},{"titulo":"Determination of a space-time flight model of Apis mellifera defined from the floral stimulation of columnar cacti in arid Mexican territories","tipo":"journal-article","anio":2026,"revista":"Revista Colombiana de Ciencias Pecuarias","doi":"10.17533/udea.rccp.e361534","autores":["Mojica-Zárate, Héctor Tecumshé","Barrera-Guzmán, Luis Ángel","Díaz-José, Oscar","Tinoco-Rueda, Juan Ángel","Rojas-Reyes, José Orlando","Alejo-Bello, Sergio"]},{"titulo":"Multivariate Analysis of the Bioclimatic and Soil Determinants That Model the Distribution of Bidens pilosa L. in Veracruz, Mexico","tipo":"journal-article","anio":2025,"revista":"Grasses","doi":"10.3390/grasses4040051","autores":["Barrera-Guzmán, Luis Ángel","Cruz-Castillo, Juan Guillermo","Tinoco-Rueda, Juan Ángel","Mojica-Zárate, Héctor Tecumshé","Cadena-Iñiguez, Jorge","Ramírez-Ojeda, Gabriela","Reina-García, Jhusua David","Morales-Téllez, Juan Miguel"]},{"titulo":"Ethnobotany of Sechium edule (Jacq.) Sw.: from ancestral practices to scientific innovation","tipo":"journal-article","anio":2025,"revista":"Revista Colombiana de Ciencias Hortícolas","doi":"10.19053/uptc.24223719.18144","autores":["Barrera-Guzmán, Luis Ángel","Mojica-Zárate, Héctor Tecumshé","Cadena-Iñiguez, Jorge","Cisneros-Solano, Víctor Manuel","Tinoco-Rueda, Juan Ángel","Castillo-Cruz, Juan Guillermo"]},{"titulo":"Ganadería sostenible en Tenango de Doria: Guía Técnica para el Control Sanitario en bovinos","tipo":"edited-book","anio":2025,"revista":"Sophia Editions","doi":"10.64092/cdii3740","autores":["Mojica-Zárate, Héctor Tecumshé","Lezama-Juárez, Dulce María","Partida-Sedas, José Gervasio","López-García, Francisco Javier","Antonio-Hurtado, Sebastián"]},{"titulo":"Ámbitos de investigación en producción de frutales ante el cambio climático","tipo":"book-chapter","anio":2025,"revista":"Producción de frutales en cambio climático: Experiencias en América Latina","doi":"10.52501/cc.296.02","autores":["Torres Lima, Pablo Alberto","Cruz Castillo, Juan Guillermo","Barrera Guzmán, Luis Ángel","Galindo Tovar, María Elena","Mata Alejandro, Humberto","Murguía González, Joaquín","Mojica Zárate, Héctor Tecumshé"]},{"titulo":"Trends and evolution in the scientific research of Sechium edule (Jacq.) Swartz","tipo":"journal-article","anio":2024,"revista":"Agro Productividad","doi":"10.32854/agrop.v17i7.2956","autores":["Barrera-Guzmán, Luis A.","Cadena-Iñiguez, J.","Mojica-Zárate, Héctor T.","Cisneros-Solano, Víctor M.","Alejo-Bello, S."]},{"titulo":"Micropropagation and phytopathology of calla lily (Zantedeschia spp.)","tipo":"journal-article","anio":2024,"revista":"Revista Colombiana de Ciencias Hortícolas","doi":"10.17584/rcch.2024v18i2.17623","autores":["Martínez Hernández, Amparo","Rodríguez de la O, José Luis","Cruz-Castillo, Juan Guillermo","Mascorro-Gallardo, José Oscar","Juárez-Hernández, Ma de Jesús","Barrera-Guzmán, Luis Ángel","Mójica-Zárate, Héctor Tecumshé"]},{"titulo":"Assessment of an Organic Vineyard as a Strategic Multifactorial Node in the Conservation of Natural Resources in an Intermountain Territory of the Sonoran Desert, Mexico","tipo":"conference-paper","anio":2022,"revista":"The 1st International Electronic Conference on Horticulturae","doi":"10.3390/iecho2022-12495","autores":["Mojica-Zárate, Héctor Tecumshé"]},{"titulo":"Sustainable Character of Agroproductive Nodes in Intermontane Arid Territories of Sonora, Mexico","tipo":"conference-paper","anio":2022,"revista":"The 1st International Online Conference on Agriculture&amp;amp;mdash;Advances in Agricultural Science and Technology","doi":"10.3390/iocag2022-12346","autores":["Mojica-Zárate, Héctor Tecumshé"]},{"titulo":"Harvest Flight Synapse of Apis mellifera on the Vegetative Architecture of Cacti in the Sonoran Desert, Mexico","tipo":"conference-paper","anio":2021,"revista":"Proceedings of The 1st International Electronic Conference on Entomology","doi":"10.3390/iece-10533","autores":["Mojica-Zárate, Héctor Tecumshé","Campos-Cardoso, Ph D Luis Miguel"]}];
+let LANG = 'es';
+const T = (es, en) => LANG === 'es' ? es : en;
+const fmt = (v, d = 0) => v.toLocaleString(LANG === 'es' ? 'es-MX' : 'en-US', {minimumFractionDigits: d, maximumFractionDigits: d});
+function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('on'), 1800); }
+
+/* ---------- idioma y tema ---------- */
+function setLang(l){
+  LANG = l; document.documentElement.lang = l; document.documentElement.dataset.lang = l;
+  $$('.seg button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  document.title = T('Ratio · Nutrición animal de precisión', 'Ratio · Precision animal nutrition');
+  $('#busca').placeholder = T('Buscar por título, autor o revista…', 'Search title, author or journal…');
+  try { localStorage.setItem('ratio_lang', l); } catch (_) {}
+  dibujaLP(); pintaObras(); recomienda();
+}
+$$('.seg button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+function setTema(t){ if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+  const osc = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; $('#tema').textContent = osc ? '☀' : '☾'; }
+try { setTema(localStorage.getItem('ratio_tema')); } catch (_) { setTema(null); }
+$('#tema').addEventListener('click', () => { const c = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const n = c === 'dark' ? 'light' : 'dark'; setTema(n); try { localStorage.setItem('ratio_tema', n); } catch (_) {} });
+$('#menuBtn').addEventListener('click', () => $('#nav').classList.toggle('open'));
+$$('#nav a').forEach(a => a.addEventListener('click', () => $('#nav').classList.remove('open')));
+
+/* ---------- aparición al desplazarse y contadores ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); cuenta(e.target); io.unobserve(e.target); } }), {threshold: .05, rootMargin: '0px 0px -40px 0px'});
+if (document.documentElement.classList.contains('js')) $$('.rev').forEach(e => io.observe(e)); else $$('[data-cuenta]').forEach(b => { b.textContent = fmt(+b.dataset.cuenta, +(b.dataset.dec || 0)) + (b.dataset.suf || ''); });
+function cuenta(el){ $$('[data-cuenta]', el).concat(el.matches('[data-cuenta]') ? [el] : []).forEach(b => {
+  const fin = +b.dataset.cuenta, dec = +(b.dataset.dec || 0), suf = b.dataset.suf || '', t0 = performance.now(), dur = 1400;
+  const paso = t => { const k = Math.min(1, (t - t0) / dur), v = fin * (1 - Math.pow(1 - k, 3)); b.textContent = fmt(v, dec) + suf; if (k < 1) requestAnimationFrame(paso); };
+  requestAnimationFrame(paso); }); }
+addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - innerHeight; $('#leido').style.width = (h > 0 ? 100 * scrollY / h : 0) + '%';
+  $('.totop').classList.toggle('on', scrollY > 900);
+  let cur = null; $$('main section[id]').forEach(s => { if (s.getBoundingClientRect().top < 120) cur = s.id; });
+  $$('#nav a').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+}, {passive: true});
+
+/* ---------- formulador: programación lineal en dos variables ----------
+   x = sorgo rolado, y = DDGS (fracciones de la MS); rastrojo = 1 − x − y.
+   Composición en base seca (Beck et al., 2024): ENg 1.39 / 1.52 / 0.42 Mcal/kg; PC 11 / 31 / 6 %. */
+const ING = {m: {E: 1.39, P: 11}, s: {E: 1.52, P: 31}, r: {E: 0.42, P: 6}}, PR = 1.95, FMIN = .10, FMAX = .40;
+function restricciones(E, P){   // a·x + b·y ≥ c
+  return [
+    {id: 'E', a: ING.m.E - ING.r.E, b: ING.s.E - ING.r.E, c: E - ING.r.E, col: 'var(--oro)', es: 'energía', en: 'energy'},
+    {id: 'P', a: ING.m.P - ING.r.P, b: ING.s.P - ING.r.P, c: P - ING.r.P, col: 'var(--fav)', es: 'proteína', en: 'protein'},
+    {id: 'Fmin', a: -1, b: -1, c: FMIN - 1, col: 'var(--pri)', es: 'forraje mínimo', en: 'minimum forage'},
+    {id: 'Fmax', a: 1, b: 1, c: 1 - FMAX, col: 'var(--pri)', es: 'forraje máximo', en: 'maximum forage'},
+    {id: 'Dmax', a: 0, b: -1, c: -.30, col: 'var(--sus)', es: 'DDGS máximo', en: 'maximum DDGS'}];
+}
+function recorta(poli, r){   // Sutherland–Hodgman
+  const dentro = p => r.a * p[0] + r.b * p[1] >= r.c - 1e-12, out = [];
+  for (let i = 0; i < poli.length; i++) {
+    const p = poli[i], q = poli[(i + 1) % poli.length], ip = dentro(p), iq = dentro(q);
+    if (ip) out.push(p);
+    if (ip !== iq) { const fp = r.a * p[0] + r.b * p[1] - r.c, fq = r.a * q[0] + r.b * q[1] - r.c, t = fp / (fp - fq); out.push([p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1])]); }
+  }
+  return out;
+}
+function resuelve(pm, ps, E, P){
+  let poli = [[0, 0], [1, 0], [1, 1], [0, 1]];
+  const R = restricciones(E, P); R.forEach(r => { poli = recorta(poli, r); });
+  if (poli.length < 3) return {ok: false, R};
+  const costo = p => pm * p[0] + ps * p[1] + PR * (1 - p[0] - p[1]);
+  let best = poli[0]; poli.forEach(p => { if (costo(p) < costo(best) - 1e-12) best = p; });
+  const act = R.filter(r => Math.abs(r.a * best[0] + r.b * best[1] - r.c) < 1e-7);
+  return {ok: true, poli, best, c: costo(best), R, act};
+}
+function dibujaLP(){
+  const pm = +$('#pm').value, ps = +$('#ps').value, E = +$('#E').value, P = +$('#P').value;
+  $('#vPm').textContent = '$ ' + fmt(pm, 2); $('#vPs').textContent = '$ ' + fmt(ps, 2); $('#vE').textContent = fmt(E, 2); $('#vP').textContent = fmt(P, 1) + ' %';
+  const s = resuelve(pm, ps, E, P);
+  const W = 520, H = 470, x0 = 58, x1 = 500, y0 = 410, y1 = 20, X = v => x0 + v * (x1 - x0), Y = v => y0 - v * (y0 - y1);
+  let g = '';
+  for (let k = 0; k <= 10; k++) { const v = k / 10;
+    g += `<line x1="${X(v)}" x2="${X(v)}" y1="${y0}" y2="${y1}" stroke="var(--line)"/><line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/>`;
+    if (k % 2 === 0) g += `<text x="${X(v)}" y="${y0 + 18}" text-anchor="middle">${k * 10}</text><text x="${x0 - 8}" y="${Y(v) + 4}" text-anchor="end">${k * 10}</text>`; }
+  g += `<text x="${(x0 + x1) / 2}" y="${H - 14}" text-anchor="middle" style="font-weight:700">${T('Sorgo rolado (% de la MS)', 'Rolled sorghum (% of DM)')}</text>`;
+  g += `<text transform="translate(16 ${(y0 + y1) / 2}) rotate(-90)" text-anchor="middle" style="font-weight:700">${T('DDGS (% de la MS)', 'DDGS (% of DM)')}</text>`;
+  if (s.ok) g += `<polygon class="region" points="${s.poli.map(p => X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join(' ')}"/>`;
+  // líneas de restricción
+  s.R.forEach(r => { const pts = [];
+    [[0, null], [1, null], [null, 0], [null, 1]].forEach(([fx, fy]) => { if (fx !== null && Math.abs(r.b) > 1e-9) { const y = (r.c - r.a * fx) / r.b; if (y >= -1e-9 && y <= 1 + 1e-9) pts.push([fx, y]); }
+      if (fy !== null && Math.abs(r.a) > 1e-9) { const x = (r.c - r.b * fy) / r.a; if (x >= -1e-9 && x <= 1 + 1e-9) pts.push([x, fy]); } });
+    if (pts.length >= 2) { const [p, q] = pts; g += `<line class="restr" x1="${X(p[0])}" y1="${Y(p[1])}" x2="${X(q[0])}" y2="${Y(q[1])}" stroke="${r.col}" stroke-dasharray="${r.id[0] === 'F' || r.id === 'Dmax' ? '3 4' : ''}"/>`;
+    } });
+  /* leyenda */
+  const ley = [[T('energía', 'energy'), 'var(--oro)', ''], [T('proteína', 'protein'), 'var(--fav)', ''], [T('forraje 10–40 %', 'forage 10–40 %'), 'var(--pri)', '3 4'], [T('DDGS ≤ 30 %', 'DDGS ≤ 30 %'), 'var(--sus)', '3 4'], [T('igual costo', 'equal cost'), 'var(--acc)', '7 6']];
+  g += `<rect x="${x1 - 150}" y="${y1 + 8}" width="142" height="${ley.length * 20 + 12}" rx="8" fill="var(--paper)" stroke="var(--line)"/>`;
+  ley.forEach(([t, c, d], i) => { const yy = y1 + 26 + i * 20; g += `<line x1="${x1 - 140}" x2="${x1 - 114}" y1="${yy - 4}" y2="${yy - 4}" stroke="${c}" stroke-width="2.5" stroke-dasharray="${d}"/><text x="${x1 - 106}" y="${yy}" style="fill:var(--text);font-weight:600">${t}</text>`; });
+  if (s.ok) {
+    const b = s.best, a = pm - PR, bb = ps - PR, k = a * b[0] + bb * b[1];   // isocosto
+    const cand = []; [[0, null], [1, null], [null, 0], [null, 1]].forEach(([fx, fy]) => { if (fx !== null && Math.abs(bb) > 1e-9) { const y = (k - a * fx) / bb; if (y >= 0 && y <= 1) cand.push([fx, y]); } if (fy !== null && Math.abs(a) > 1e-9) { const x = (k - bb * fy) / a; if (x >= 0 && x <= 1) cand.push([x, fy]); } });
+    if (cand.length >= 2) g += `<line class="iso" x1="${X(cand[0][0])}" y1="${Y(cand[0][1])}" x2="${X(cand[1][0])}" y2="${Y(cand[1][1])}"/>`;
+    g += `<circle class="pulso" cx="${X(b[0])}" cy="${Y(b[1])}" r="8"/><circle class="opt" cx="${X(b[0])}" cy="${Y(b[1])}" r="8"/>`;
+  }
+  $('#lpSvg').innerHTML = g;
+  const lg = $('#leyenda'), mz = $$('#mezcla i');
+  if (!s.ok) { $('#costo').textContent = T('Sin solución', 'No solution'); mz.forEach(i => i.style.width = '0'); lg.innerHTML = '';
+    $('#ata').innerHTML = T('Ninguna mezcla de estos tres ingredientes cumple todo: baja la energía o la proteína.', 'No blend of these three ingredients meets everything: lower energy or protein.'); return; }
+  const x = s.best[0], y = s.best[1], r = 1 - x - y;
+  $('#costo').textContent = '$ ' + fmt(s.c * 1000, 0) + T(' por t de MS', ' per t DM');
+  mz[0].style.width = 100 * x + '%'; mz[1].style.width = 100 * y + '%'; mz[2].style.width = 100 * r + '%';
+  lg.innerHTML = `<span style="--c:var(--oro)">${T('Sorgo', 'Sorghum')} ${fmt(100 * x, 1)} %</span><span style="--c:var(--acc)">DDGS ${fmt(100 * y, 1)} %</span><span style="--c:var(--pri)">${T('Rastrojo', 'Stover')} ${fmt(100 * r, 1)} %</span>`;
+  const sp = id => { const d = id === 'E' ? .01 : .1, s2 = id === 'E' ? resuelve(pm, ps, E + d, P) : resuelve(pm, ps, E, P + d); return s2.ok ? (s2.c - s.c) * 1000 : null; };
+  const ac = s.act.filter(r => r.id === 'E' || r.id === 'P').map(r => { const v = sp(r.id); return `<b>${T(r.es, r.en)}</b>${v != null ? T(` (subirla ${r.id === 'E' ? '0.01 Mcal' : '0.1 punto'} cuesta $ ${fmt(v, 1)}/t)`, ` (raising it ${r.id === 'E' ? '0.01 Mcal' : '0.1 point'} costs $ ${fmt(v, 1)}/t)`) : ''}`; });
+  const af = s.act.filter(r => r.id[0] === 'F' || r.id === 'Dmax').map(r => `<b>${T(r.es, r.en)}</b>`);
+  $('#ata').innerHTML = T('Limitan la ración: ', 'Binding constraints: ') + (ac.concat(af).join(' · ') || T('ninguna', 'none')) + '.';
+}
+['pm', 'ps', 'E', 'P'].forEach(id => $('#' + id).addEventListener('input', dibujaLP));
+
+/* ---------- asistente ---------- */
+const ELEC = {esp: null, uso: null, idi: null};
+$$('.opciones').forEach(o => o.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+  ELEC[o.dataset.p] = b.dataset.v; $$('button', o).forEach(x => x.classList.toggle('on', x.dataset.v === b.dataset.v)); recomienda(); }));
+function recomienda(){
+  const r = $('#recomienda'); const {esp, uso, idi} = ELEC; let app, url, por;
+  if (!esp) { r.innerHTML = `<div class="eyebrow">${T('Tu app', 'Your app')}</div><h4>${T('Elige un animal', 'Pick an animal')}</h4><p>${T('Responde las tres preguntas y aquí aparece la app que mejor te queda, con su instructivo.', 'Answer the three questions and the best app for you appears here, with its guide.')}</p>`; return; }
+  if (esp === 'cerdo') { r.innerHTML = `<div class="eyebrow">${T('Próximamente', 'Coming soon')}</div><h4>RatioSus</h4><p>${T('La app para cerdos está en desarrollo. Mientras tanto, RatioAvis te muestra cómo trabaja la familia Ratio.', 'The pig app is in development. Meanwhile, RatioAvis shows how the Ratio family works.')}</p><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis →</a>`; return; }
+  if (esp === 'bovino') { app = 'RatioBos'; url = 'https://hectortecumshe-ai.github.io/RatioBos/'; por = T('Es la única de la suite para rumiantes: NASEM (2016), clima de tu región, programa de engorda y huella ambiental.', 'It is the suite’s ruminant app: NASEM (2016), your region’s climate, feeding program and footprint.'); }
+  else if (idi === 'es' && uso === 'prod') { app = 'FormulAves'; url = 'https://hectortecumshe-ai.github.io/FormulAves/'; por = T('Toda en español y con el marco teórico en cada paso. Si quieres instructivos ilustrados o inglés, RatioAvis es su versión más completa.', 'All in Spanish with theory at every step. For illustrated guides or English, RatioAvis is its fuller version.'); }
+  else { app = 'RatioAvis'; url = 'https://hectortecumshe-ai.github.io/RatioAvis/'; por = T('Bilingüe, con vista científica (precios sombra, certificado de dualidad, exportación JSON) e instructivos de productor y de científico.', 'Bilingual, with a scientist view (shadow prices, duality certificate, JSON export) and producer and scientist guides.'); }
+  const man = uso === 'cien' ? 'instructivo-cientifico.html' : 'instructivo-productor.html';
+  r.innerHTML = `<div class="eyebrow">${T('Te recomendamos', 'We recommend')}</div><h4>${app}</h4><p>${por}</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn pri sm" href="${url}">${T('Abrir', 'Open')} ${app} →</a>${app !== 'FormulAves' ? `<a class="btn ghost sm" href="${url}${man}">${uso === 'cien' ? T('Instructivo del Científico', 'Scientist Guide') : T('Instructivo del Productor', 'Producer Guide')}</a>` : ''}</div>`;
+}
+
+/* ---------- publicaciones ---------- */
+let FILTRO = 'todo';
+const CLASE = t => t === 'software' ? 'software' : t === 'journal-article' ? 'articulo' : /book/.test(t) ? 'libro' : 'congreso';
+const ETQ = {software: ['Software', 'Software', 'var(--acc)'], articulo: ['Artículo', 'Article', 'var(--pri)'], libro: ['Libro · capítulo', 'Book · chapter', 'var(--oro)'], congreso: ['Congreso', 'Proceedings', 'var(--fav)']};
+const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function autores(l){ return l.map(a => { const [f, g] = a.split(', '); const ini = (g || '').split(/[\s-]+/).filter(Boolean).map(x => x[0] + '.').join(' ');
+  const t = `${f}${ini ? ', ' + ini : ''}`; return /Mojica/.test(f) ? `<b>${t}</b>` : t; }).join(', '); }
+const PRIO = ['10.5281/zenodo.23197134', '10.5281/zenodo.23050776', '10.5281/zenodo.23094626'];
+const orden = o => { const i = PRIO.indexOf(o.doi); return i >= 0 ? i : CLASE(o.tipo) === 'software' ? 5 : 10; };
+function pintaObras(){
+  const q = norm($('#busca').value);
+  const L = OBRAS.filter(o => (FILTRO === 'todo' || CLASE(o.tipo) === FILTRO) && (!q || norm(o.titulo + ' ' + o.autores.join(' ') + ' ' + (o.revista || '')).includes(q)))
+    .sort((a, b) => (b.anio || 0) - (a.anio || 0) || orden(a) - orden(b));
+  $('#cuenta').textContent = T(`${L.length} de ${OBRAS.length} obras`, `${L.length} of ${OBRAS.length} works`);
+  let html = '', an = null;
+  L.forEach(o => { if (o.anio !== an) { an = o.anio; html += `<div class="anio">${an}</div>`; }
+    const k = CLASE(o.tipo), e = ETQ[k];
+    html += `<div class="obra"><div class="tipo" style="--c:${e[2]}">${LANG === 'es' ? e[0] : e[1]}</div><div><div class="tit">${o.titulo}</div><div class="aut">${autores(o.autores)}</div>${o.revista ? `<div class="ven">${o.revista}</div>` : ''}${o.doi ? `<a class="d" href="https://doi.org/${o.doi}">doi.org/${o.doi}</a>` : ''}</div></div>`; });
+  $('#obras').innerHTML = html || `<p class="muted">${T('Sin resultados.', 'No results.')}</p>`;
+}
+$$('.filtros button').forEach(b => b.addEventListener('click', () => { FILTRO = b.dataset.f; $$('.filtros button').forEach(x => x.classList.toggle('on', x.dataset.f === FILTRO)); pintaObras(); }));
+$('#busca').addEventListener('input', pintaObras);
+
+/* ---------- copiar citas ---------- */
+$$('[data-copia]').forEach(b => b.addEventListener('click', () => { const t = $('#' + b.dataset.copia).innerText;
+  try { navigator.clipboard.writeText(t); toast(T('Cita copiada', 'Citation copied')); } catch (_) {} }));
+
+/* ---------- inicio ---------- */
+let L0 = 'es'; try { L0 = localStorage.getItem('ratio_lang') || ((navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en'); } catch (_) {}
+const qL = new URLSearchParams(location.search).get('lang'); if (qL === 'es' || qL === 'en') L0 = qL;
+setLang(L0);
+</script>
+</body>
+</html>
