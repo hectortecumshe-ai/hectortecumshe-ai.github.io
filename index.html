@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ratio · Nutrición animal de precisión</title>
+<title>Ratio · Suite científica abierta</title>
 <meta name="description" content="Ratio: aplicaciones gratuitas, abiertas y validadas para formular dietas de mínimo costo para pollo de engorda y bovinos de carne — RatioBos, RatioAvis y FormulAves. · Free, open and validated least-cost diet formulation apps.">
 <meta name="author" content="Héctor Tecumshé Mojica-Zárate">
-<meta property="og:title" content="Ratio · Nutrición animal de precisión">
+<meta property="og:title" content="Ratio · Suite científica abierta: Nutritio y Complexus">
 <meta property="og:description" content="Formulación de dietas de mínimo costo, abierta, validada y gratuita, para el productor y para el científico.">
 <meta property="og:image" content="img/ratiobos.jpg">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -885,7 +885,7 @@ function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('on
 function setLang(l){
   LANG = l; document.documentElement.lang = l; document.documentElement.dataset.lang = l;
   $$('.seg button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
-  document.title = T('Ratio · Nutrición animal de precisión', 'Ratio · Precision animal nutrition');
+  document.title = T('Ratio · Suite científica abierta', 'Ratio · Open scientific suite');
   $('#busca').placeholder = T('Buscar por título, autor o revista…', 'Search title, author or journal…');
   try { localStorage.setItem('ratio_lang', l); } catch (_) {}
   dibujaLP(); pintaObras(); recomienda(); if (window.casEtiquetas) casEtiquetas();
