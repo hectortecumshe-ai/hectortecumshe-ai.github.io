@@ -1,10 +1,15 @@
 <p align="center"><img src="logo.svg" width="96" alt="Ratio"></p>
 
-# Ratio · Nutrición animal de precisión
+# Ratio · Suite científica abierta
 
 👉 **https://hectortecumshe-ai.github.io/**
 
-Portal de la suite **Ratio**: aplicaciones gratuitas, abiertas y validadas para formular dietas de mínimo costo.
+Portal de la suite **Ratio**, con dos alas:
+
+- **Ratio Nutritio** — *la ración exacta, al menor costo*: formulación de dietas por programación lineal.
+- **Ratio Complexus** — *lo que está tejido junto*: aplicaciones sobre sistemas complejos adaptativos (la primera, en construcción).
+
+### Ratio Nutritio
 
 | App | Especie | DOI |
 |---|---|---|
@@ -12,7 +17,7 @@ Portal de la suite **Ratio**: aplicaciones gratuitas, abiertas y validadas para 
 | [RatioAvis](https://hectortecumshe-ai.github.io/RatioAvis/) | Pollo de engorda | [10.5281/zenodo.23123050](https://doi.org/10.5281/zenodo.23123050) |
 | [FormulAves](https://hectortecumshe-ai.github.io/FormulAves/) | Pollo de engorda | [10.5281/zenodo.23094626](https://doi.org/10.5281/zenodo.23094626) |
 
-El portal reúne el método, un formulador interactivo de programación lineal, la evidencia de validación, los instructivos, las publicaciones (sincronizadas con ORCID 0000-0002-9067-3983) y las citas. Es un solo archivo HTML, bilingüe (ES/EN), con modo oscuro y sin cookies, rastreadores ni recursos de terceros.
+El portal reúne el método, un formulador interactivo de programación lineal, una simulación de agentes que se autoorganizan (Complexus), la evidencia de validación, los instructivos, las publicaciones (sincronizadas con ORCID 0000-0002-9067-3983) y las citas. Es un solo archivo HTML, bilingüe (ES/EN), con modo oscuro y sin cookies, rastreadores ni recursos de terceros.
 
 ## Actualizar
 

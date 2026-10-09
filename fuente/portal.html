@@ -70,7 +70,7 @@ h1,h2,h3,h4{line-height:1.12;margin:0;font-weight:700}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .brand img{width:36px;height:36px}
 .brand b{font-size:21px;letter-spacing:-.01em}
-.brand small{display:block;font:600 10.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.brand small{display:block;white-space:nowrap;font:600 10.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .top nav{display:flex;gap:4px;margin-left:auto}
 .top nav a{font:600 14px/1 var(--sans);color:var(--muted);text-decoration:none;padding:9px 11px;border-radius:999px}
 .top nav a:hover,.top nav a.act{color:var(--text);background:var(--soft)}
@@ -258,6 +258,48 @@ footer a{color:var(--muted)}
 .totop{position:fixed;right:22px;bottom:22px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
 .totop.on{opacity:1;pointer-events:auto}
 
+
+/* ---------- dos alas ---------- */
+.alas-sec{padding:56px 0 8px}
+.alas{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ala{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:28px;text-decoration:none;color:var(--text);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.ala::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(var(--c),transparent 70%);opacity:.10}
+.ala:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.ala-ico{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,transparent);color:var(--c)}
+.ala-ico svg{width:58px;height:58px}
+.ala h3{font-size:40px;letter-spacing:-.015em;margin:2px 0 2px}
+.ala .lema{font-style:italic;color:var(--c);font-size:20px;margin:0 0 10px}
+.ala p{margin:0 0 12px;color:var(--muted);font-size:16.5px}
+.ala .eyebrow{color:var(--c)}
+.ala-pie{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ---------- Complexus ---------- */
+.cas{display:grid;grid-template-columns:1.25fr .75fr;overflow:hidden}
+.cas-vista{position:relative;min-height:440px;background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--fav) 10%,transparent),transparent 60%),var(--paper);border-right:1px solid var(--line);cursor:crosshair}
+.cas-vista canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cas-hud{position:absolute;left:16px;top:14px;font:600 12.5px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:color-mix(in srgb,var(--paper) 85%,transparent);padding:8px 11px;border-radius:999px;border:1px solid var(--line)}
+.cas-hud b{color:var(--fav);font-size:15px;margin-left:6px;font-variant-numeric:tabular-nums}
+.cas-serie{position:absolute;left:16px;top:50px;width:200px;height:44px;overflow:visible}
+.cas-serie path{fill:none;stroke:var(--fav);stroke-width:2;vector-effect:non-scaling-stroke}
+.cas-ayuda{position:absolute;right:16px;bottom:12px;font:600 12px var(--sans);color:var(--faint)}
+.cas-ctl{padding:26px;display:flex;flex-direction:column;gap:12px}
+.cas-ctl h3{font-size:26px}
+.cas-ctl p{margin:0;color:var(--muted);font-size:16px}
+.cas-ctl label{display:block;font:600 13px/1.35 var(--sans);color:var(--muted)}
+.cas-ctl label b{float:right;color:var(--text)}
+.cas-ctl input[type=range]{width:100%;accent-color:var(--fav);margin:6px 0 0}
+.cas-bot{display:flex;gap:8px;margin-top:4px}
+.cas-tip{font:14px/1.5 var(--sans)!important;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--fav) 9%,transparent)}
+.cas-tip b{color:var(--fav)}
+.propiedades{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:26px 0}
+.propiedades div{padding:16px 16px 14px;border-top:3px solid var(--fav);background:var(--paper);border-radius:0 0 14px 14px;font:600 13.5px/1.4 var(--sans);color:var(--muted)}
+.propiedades b{display:block;font:700 19px/1.2 var(--font);color:var(--text);margin-bottom:4px}
+.proxima{padding:26px 28px;border:1px dashed var(--fav);background:linear-gradient(135deg,color-mix(in srgb,var(--fav) 8%,var(--paper)),var(--paper))}
+.proxima h3{font-size:28px;margin:6px 0 8px}
+.proxima p{margin:0;color:var(--muted)}
+@media (max-width:980px){ .alas,.cas{grid-template-columns:1fr} .cas-vista{border-right:0;border-bottom:1px solid var(--line);min-height:360px} .propiedades{grid-template-columns:repeat(3,1fr)} }
+@media (max-width:640px){ .ala{grid-template-columns:1fr} .ala h3{font-size:34px} .propiedades{grid-template-columns:1fr 1fr} }
+
 /* ---------- adaptable ---------- */
 @media (max-width:1100px){
   .top nav{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 18px;box-shadow:var(--shadow)}
@@ -303,12 +345,13 @@ footer a{color:var(--muted)}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio"><img src="logo.svg" alt=""><span><b>Ratio</b><small lang="es">Nutrición animal de precisión</small><small lang="en">Precision animal nutrition</small></span></a>
+    <a class="brand" href="#inicio"><img src="logo.svg" alt=""><span><b>Ratio</b><small>Nutritio · Complexus</small></span></a>
     <nav id="nav">
       <a href="#historia"><span lang="es">Método</span><span lang="en">Method</span></a>
       <a href="#formulador"><span lang="es">Formulador</span><span lang="en">Try it</span></a>
       <a href="#evidencia"><span lang="es">Evidencia</span><span lang="en">Evidence</span></a>
-      <a href="#apps">Apps</a>
+      <a href="#nutritio">Nutritio</a>
+      <a href="#complexus">Complexus</a>
       <a href="#manuales"><span lang="es">Manuales</span><span lang="en">Guides</span></a>
       <a href="#publicaciones"><span lang="es">Publicaciones</span><span lang="en">Publications</span></a>
       <a href="#autores"><span lang="es">Autores</span><span lang="en">Authors</span></a>
@@ -326,14 +369,14 @@ footer a{color:var(--muted)}
 <section class="hero">
   <div class="wrap">
     <div class="rev">
-      <div class="eyebrow" lang="es">Suite abierta de formulación de dietas</div>
-      <div class="eyebrow" lang="en">Open diet-formulation suite</div>
+      <div class="eyebrow" lang="es">Suite científica abierta · Nutritio y Complexus</div>
+      <div class="eyebrow" lang="en">Open scientific suite · Nutritio and Complexus</div>
       <h1 lang="es" style="margin-top:14px">La <em>razón</em> al servicio <span class="a">del animal.</span></h1>
       <h1 lang="en" style="margin-top:14px">Reason in the <em>service</em> <span class="a">of the animal.</span></h1>
-      <p class="sub" lang="es">Aplicaciones gratuitas para formular la ración más barata que sí cumple, con la ciencia a la vista: para el productor que mezcla y para el científico que publica.</p>
-      <p class="sub" lang="en">Free apps to formulate the cheapest ration that truly meets requirements, with the science in plain sight: for the producer who mixes and the scientist who publishes.</p>
+      <p class="sub" lang="es">Aplicaciones gratuitas con la ciencia a la vista: para formular la ración más barata que sí cumple, y para comprender los sistemas complejos que sostienen al campo.</p>
+      <p class="sub" lang="en">Free apps with the science in plain sight: to formulate the cheapest ration that truly meets requirements, and to understand the complex systems that sustain the countryside.</p>
       <div class="ctas">
-        <a class="btn pri" href="#apps"><span lang="es">Explorar las apps</span><span lang="en">Explore the apps</span> →</a>
+        <a class="btn pri" href="#alas"><span lang="es">Explorar la suite</span><span lang="en">Explore the suite</span> →</a>
         <a class="btn ghost" href="#formulador"><span lang="es">Probar el formulador</span><span lang="en">Try the formulator</span></a>
       </div>
       <div class="facts">
@@ -405,6 +448,29 @@ footer a{color:var(--muted)}
     <div><b lang="es">Citable</b><b lang="en">Citable</b><span lang="es">cada versión con DOI</span><span lang="en">every version has a DOI</span></div>
   </div>
 </div>
+
+
+<!-- ============================ DOS ALAS ============================ -->
+<section class="alas-sec" id="alas">
+  <div class="wrap alas">
+    <a class="ala card rev" href="#nutritio" style="--c:var(--acc)">
+      <div class="ala-ico" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="104 138.2" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="10" stroke-dasharray="22 138.2" stroke-dashoffset="-104" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="10" stroke-dasharray="12.2 138.2" stroke-dashoffset="-126" transform="rotate(-90 32 32)"/></svg></div>
+      <div><div class="eyebrow">Ratio</div><h3>Nutritio</h3>
+        <p class="lema" lang="es">La ración exacta, al menor costo.</p><p class="lema" lang="en">The exact ration, at the lowest cost.</p>
+        <p lang="es">Formulación de dietas por programación lineal, con requerimientos de NASEM y de las casas genéticas, validada con dietas publicadas.</p>
+        <p lang="en">Diet formulation by linear programming, with NASEM and breeder requirements, validated against published diets.</p>
+        <div class="ala-pie"><span class="chip">RatioBos</span><span class="chip">RatioAvis</span><span class="chip">FormulAves</span><span class="chip">+ RatioSus</span></div></div>
+    </a>
+    <a class="ala card rev" href="#complexus" style="--c:var(--fav)">
+      <div class="ala-ico" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="1.6" stroke-opacity=".55" fill="none"><path d="M12 18L30 12L50 20L46 40L28 50L14 38Z M30 12L28 50 M12 18L46 40 M50 20L14 38"/></g><g fill="currentColor"><circle cx="12" cy="18" r="4"/><circle cx="30" cy="12" r="4.5"/><circle cx="50" cy="20" r="4"/><circle cx="46" cy="40" r="4.5"/><circle cx="28" cy="50" r="4"/><circle cx="14" cy="38" r="3.5"/><circle cx="31" cy="30" r="5.5" fill-opacity=".55"/></g></svg></div>
+      <div><div class="eyebrow">Ratio</div><h3>Complexus</h3>
+        <p class="lema" lang="es">Lo que está tejido junto.</p><p class="lema" lang="en">That which is woven together.</p>
+        <p lang="es">Aplicaciones para estudiar sistemas complejos adaptativos: agentes que interactúan, aprenden y hacen emerger el comportamiento del todo.</p>
+        <p lang="en">Apps to study complex adaptive systems: agents that interact, learn and give rise to the behaviour of the whole.</p>
+        <div class="ala-pie"><span class="chip" lang="es">Primera app en construcción</span><span class="chip" lang="en">First app under construction</span></div></div>
+    </a>
+  </div>
+</section>
 
 <!-- ============================ HISTORIA ============================ -->
 <section class="sec" id="historia">
@@ -589,13 +655,13 @@ footer a{color:var(--muted)}
 </section>
 
 <!-- ============================ APPS ============================ -->
-<section class="sec" id="apps" style="background:var(--paper);border-block:1px solid var(--line)">
+<section class="sec" id="nutritio" style="background:var(--paper);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head rev"><span class="num">04</span>
-      <div class="eyebrow">Apps</div>
-      <h2 lang="es">Una app para cada <em>especie</em>.</h2><h2 lang="en">One app for each <em>species</em>.</h2>
-      <p lang="es">Todas funcionan en la computadora, la tableta o el celular, sin instalar nada y sin conexión una vez abiertas.</p>
-      <p lang="en">They all work on computer, tablet or phone, with nothing to install and offline once opened.</p></div>
+      <div class="eyebrow">Ratio Nutritio</div>
+      <h2 lang="es">La ración exacta, <em>al menor costo</em>.</h2><h2 lang="en">The exact ration, <em>at the lowest cost</em>.</h2>
+      <p lang="es">Una app para cada especie. Todas funcionan en la computadora, la tableta o el celular, sin instalar nada y sin conexión una vez abiertas.</p>
+      <p lang="en">One app for each species. They all work on computer, tablet or phone, with nothing to install and offline once opened.</p></div>
     <div class="apps">
       <article class="app card rev" style="--c:var(--bos)">
         <div class="shot"><img src="img/ratiobos.jpg" alt="RatioBos" loading="lazy"><span class="especie" lang="es">Bovinos de carne</span><span class="especie" lang="en">Beef cattle</span></div>
@@ -656,10 +722,59 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+
+<!-- ============================ COMPLEXUS ============================ -->
+<section class="sec" id="complexus">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">05</span>
+      <div class="eyebrow">Ratio Complexus</div>
+      <h2 lang="es">Lo que está <em>tejido junto</em>.</h2><h2 lang="en">That which is <em>woven together</em>.</h2>
+      <p lang="es"><i>Complexus</i>, en latín, significa «entrelazado». Un sistema complejo adaptativo es un conjunto de agentes —animales, productores, plantas, microbios, mercados— que siguen reglas sencillas, interactúan y se adaptan; de esas interacciones emerge un orden que ningún agente dirige.</p>
+      <p lang="en"><i>Complexus</i> is Latin for “interwoven”. A complex adaptive system is a set of agents —animals, farmers, plants, microbes, markets— that follow simple rules, interact and adapt; from those interactions emerges an order no agent directs.</p></div>
+
+    <div class="cas card rev">
+      <div class="cas-vista">
+        <canvas id="casCanvas" aria-label="Simulación de agentes / Agent simulation"></canvas>
+        <div class="cas-hud"><span lang="es">Orden emergente</span><span lang="en">Emergent order</span> <b id="casPhi">0.00</b></div>
+        <svg class="cas-serie" id="casSerie" viewBox="0 0 200 44" preserveAspectRatio="none"><path d=""/></svg>
+        <div class="cas-ayuda" lang="es">Toca o haz clic para soltar una perturbación</div><div class="cas-ayuda" lang="en">Tap or click to release a disturbance</div>
+      </div>
+      <div class="cas-ctl">
+        <div class="eyebrow" lang="es">Experimento en vivo · 160 agentes</div><div class="eyebrow" lang="en">Live experiment · 160 agents</div>
+        <h3 lang="es">Tres reglas locales, un orden global.</h3><h3 lang="en">Three local rules, one global order.</h3>
+        <p lang="es">Cada agente solo mira a sus vecinos. Mueve las reglas y observa cómo el grupo pasa del desorden a la bandada, o se fragmenta. Nadie da la orden: emerge.</p>
+        <p lang="en">Each agent only looks at its neighbours. Move the rules and watch the group go from disorder to flock, or break apart. Nobody gives the order: it emerges.</p>
+        <label><span lang="es">Alineación · imitar la dirección de los vecinos</span><span lang="en">Alignment · copy neighbours’ heading</span> <b id="vAli"></b><input type="range" id="ali" min="0" max="2" step="0.05" value="1"></label>
+        <label><span lang="es">Cohesión · acercarse al grupo</span><span lang="en">Cohesion · move toward the group</span> <b id="vCoh"></b><input type="range" id="coh" min="0" max="2" step="0.05" value="0.8"></label>
+        <label><span lang="es">Separación · no amontonarse</span><span lang="en">Separation · avoid crowding</span> <b id="vSep"></b><input type="range" id="sep" min="0" max="2" step="0.05" value="1.2"></label>
+        <label><span lang="es">Ruido · azar en cada decisión</span><span lang="en">Noise · randomness in each decision</span> <b id="vRui"></b><input type="range" id="rui" min="0" max="1" step="0.02" value="0.15"></label>
+        <p class="cas-tip" lang="es"><b>Prueba:</b> sube el ruido hasta 1 y el orden se desploma; bájalo y vuelve a emerger. Es una transición de fase, como las que ocurren en hatos, mercados y ecosistemas.</p>
+        <p class="cas-tip" lang="en"><b>Try it:</b> raise the noise to 1 and order collapses; lower it and order re-emerges. It is a phase transition, like those in herds, markets and ecosystems.</p>
+        <div class="cas-bot"><button class="btn ghost sm" id="casPausa"></button><button class="btn ghost sm" id="casReinicia"><span lang="es">↺ Desordenar</span><span lang="en">↺ Scramble</span></button></div>
+      </div>
+    </div>
+
+    <div class="propiedades">
+      <div class="rev"><b lang="es">Agentes</b><b lang="en">Agents</b><span lang="es">muchos individuos con reglas propias</span><span lang="en">many individuals with their own rules</span></div>
+      <div class="rev"><b lang="es">Interacción</b><b lang="en">Interaction</b><span lang="es">cada uno responde a sus vecinos</span><span lang="en">each responds to its neighbours</span></div>
+      <div class="rev"><b lang="es">Adaptación</b><b lang="en">Adaptation</b><span lang="es">las reglas cambian con la experiencia</span><span lang="en">rules change with experience</span></div>
+      <div class="rev"><b lang="es">Emergencia</b><b lang="en">Emergence</b><span lang="es">el todo hace lo que ninguna parte</span><span lang="en">the whole does what no part does</span></div>
+      <div class="rev"><b lang="es">No linealidad</b><b lang="en">Nonlinearity</b><span lang="es">pequeños cambios, grandes efectos</span><span lang="en">small changes, large effects</span></div>
+    </div>
+
+    <div class="proxima card rev">
+      <div class="eyebrow" lang="es">En construcción</div><div class="eyebrow" lang="en">Under construction</div>
+      <h3 lang="es">La primera app de Complexus</h3><h3 lang="en">The first Complexus app</h3>
+      <p lang="es">Modelará un sistema agropecuario como lo que es: una red de agentes que se adaptan. Mantendrá lo que distingue a la suite: gratuita, en tu navegador, bilingüe, con vista de productor y de científico, validada y con DOI.</p>
+      <p lang="en">It will model an agricultural system as what it is: a network of adapting agents. It will keep what defines the suite: free, in your browser, bilingual, with producer and scientist views, validated and with a DOI.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ MANUALES ============================ -->
 <section class="sec" id="manuales">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">05</span>
+    <div class="sec-head rev"><span class="num">06</span>
       <div class="eyebrow" lang="es">Manuales</div><div class="eyebrow" lang="en">Guides</div>
       <h2 lang="es">Un instructivo para cada <em>mirada</em>.</h2><h2 lang="en">A guide for each <em>reader</em>.</h2>
       <p lang="es">El del productor sigue un caso real de principio a fin, con capturas marcadas paso a paso. El del científico documenta cada ecuación, el método y la validación, con texto listo para la sección de Métodos de un artículo.</p>
@@ -676,7 +791,7 @@ footer a{color:var(--muted)}
 <!-- ============================ PUBLICACIONES ============================ -->
 <section class="sec" id="publicaciones" style="background:var(--paper);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">06</span>
+    <div class="sec-head rev"><span class="num">07</span>
       <div class="eyebrow" lang="es">Publicaciones</div><div class="eyebrow" lang="en">Publications</div>
       <h2 lang="es">La investigación <em>detrás</em> de las apps.</h2><h2 lang="en">The research <em>behind</em> the apps.</h2>
       <p lang="es">Software, artículos, libros y memorias del grupo, sincronizados con el registro ORCID. Cada obra enlaza a su DOI.</p>
@@ -697,7 +812,7 @@ footer a{color:var(--muted)}
 <!-- ============================ AUTORES ============================ -->
 <section class="sec" id="autores">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">07</span>
+    <div class="sec-head rev"><span class="num">08</span>
       <div class="eyebrow" lang="es">Autores</div><div class="eyebrow" lang="en">Authors</div>
       <h2 lang="es">Hecho en <em>Chapingo</em>, para el campo.</h2><h2 lang="en">Made at <em>Chapingo</em>, for the field.</h2></div>
     <div class="autores">
@@ -730,7 +845,7 @@ footer a{color:var(--muted)}
 <!-- ============================ CITAR ============================ -->
 <section class="sec" id="citar" style="background:var(--paper);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">08</span>
+    <div class="sec-head rev"><span class="num">09</span>
       <div class="eyebrow" lang="es">Cómo citar</div><div class="eyebrow" lang="en">How to cite</div>
       <h2 lang="es">Si te sirvió, <em>cítalo</em>.</h2><h2 lang="en">If it helped, <em>cite it</em>.</h2>
       <p lang="es">Citar el software con su DOI permite reproducir tus resultados y sostiene el desarrollo gratuito de nuevas apps.</p>
@@ -773,7 +888,7 @@ function setLang(l){
   document.title = T('Ratio · Nutrición animal de precisión', 'Ratio · Precision animal nutrition');
   $('#busca').placeholder = T('Buscar por título, autor o revista…', 'Search title, author or journal…');
   try { localStorage.setItem('ratio_lang', l); } catch (_) {}
-  dibujaLP(); pintaObras(); recomienda();
+  dibujaLP(); pintaObras(); recomienda(); if (window.casEtiquetas) casEtiquetas();
 }
 $$('.seg button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 function setTema(t){ if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
@@ -912,6 +1027,60 @@ $('#busca').addEventListener('input', pintaObras);
 /* ---------- copiar citas ---------- */
 $$('[data-copia]').forEach(b => b.addEventListener('click', () => { const t = $('#' + b.dataset.copia).innerText;
   try { navigator.clipboard.writeText(t); toast(T('Cita copiada', 'Citation copied')); } catch (_) {} }));
+
+
+/* ---------- Complexus: bandada de agentes (Reynolds, 1987; Vicsek et al., 1995) ----------
+   Cada agente ve a sus vecinos en un radio y combina alineación, cohesión y separación,
+   con ruido. El orden emergente es la polarización φ = |Σ vᵢ/|vᵢ|| / N (0 = desorden, 1 = bandada). */
+(() => {
+  const cv = $('#casCanvas'), ctx = cv.getContext('2d'), N = 160, R = 64, VMAX = 2.1;
+  const P = {ali: 1, coh: .8, sep: 1.2, rui: .15};
+  let W = 0, H = 0, ag = [], corre = !matchMedia('(prefers-reduced-motion: reduce)').matches, visible = false, serie = [], perturba = null, dpr = 1;
+  function tam(){ const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function desordena(){ ag = Array.from({length: N}, () => { const a = Math.random() * 6.283; return {x: Math.random() * W, y: Math.random() * H, vx: Math.cos(a) * VMAX, vy: Math.sin(a) * VMAX}; }); serie = []; }
+  const col = () => getComputedStyle(document.documentElement).getPropertyValue('--fav').trim() || '#2f6f8f';
+  const acc = () => getComputedStyle(document.documentElement).getPropertyValue('--acc').trim() || '#b05434';
+  function paso(){
+    const nuevo = [];
+    for (const a of ag) {
+      let ax = 0, ay = 0, cx = 0, cy = 0, sx = 0, sy = 0, n = 0;
+      for (const b of ag) { if (a === b) continue;
+        let dx = b.x - a.x, dy = b.y - a.y; if (dx > W / 2) dx -= W; if (dx < -W / 2) dx += W; if (dy > H / 2) dy -= H; if (dy < -H / 2) dy += H;
+        const d2 = dx * dx + dy * dy; if (d2 > R * R) continue;
+        n++; ax += b.vx; ay += b.vy; cx += dx; cy += dy; if (d2 < 196) { const d = Math.sqrt(d2) || 1; sx -= dx / d; sy -= dy / d; } }
+      let vx = a.vx, vy = a.vy;
+      if (n) { vx += P.ali * .11 * (ax / n - a.vx) + P.coh * .004 * cx / n + P.sep * .09 * sx; vy += P.ali * .11 * (ay / n - a.vy) + P.coh * .004 * cy / n + P.sep * .09 * sy; }
+      if (perturba) { const dx = a.x - perturba.x, dy = a.y - perturba.y, d2 = dx * dx + dy * dy; if (d2 < 120 * 120) { const d = Math.sqrt(d2) || 1, f = 2.4 * (1 - d / 120); vx += dx / d * f; vy += dy / d * f; } }
+      const ang = Math.atan2(vy, vx) + (Math.random() - .5) * P.rui * 1.2, v = Math.min(VMAX, Math.max(.9, Math.hypot(vx, vy)));
+      vx = Math.cos(ang) * v; vy = Math.sin(ang) * v;
+      nuevo.push({x: (a.x + vx + W) % W, y: (a.y + vy + H) % H, vx, vy});
+    }
+    ag = nuevo; if (perturba && --perturba.t <= 0) perturba = null;
+  }
+  function dibuja(){
+    ctx.clearRect(0, 0, W, H); const c = col();
+    if (perturba) { ctx.beginPath(); ctx.arc(perturba.x, perturba.y, 120 * (1 - perturba.t / 40) + 10, 0, 6.283); ctx.strokeStyle = acc(); ctx.globalAlpha = perturba.t / 40; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1; }
+    let px = 0, py = 0;
+    for (const a of ag) { const v = Math.hypot(a.vx, a.vy) || 1, ux = a.vx / v, uy = a.vy / v; px += ux; py += uy;
+      ctx.beginPath(); ctx.moveTo(a.x + ux * 7, a.y + uy * 7); ctx.lineTo(a.x - ux * 5 - uy * 3.6, a.y - uy * 5 + ux * 3.6); ctx.lineTo(a.x - ux * 5 + uy * 3.6, a.y - uy * 5 - ux * 3.6); ctx.closePath(); ctx.fillStyle = c; ctx.globalAlpha = .82; ctx.fill(); }
+    ctx.globalAlpha = 1;
+    const phi = Math.hypot(px, py) / ag.length; $('#casPhi').textContent = fmt(phi, 2);
+    serie.push(phi); if (serie.length > 200) serie.shift();
+    $('#casSerie path').setAttribute('d', serie.map((v, i) => (i ? 'L' : 'M') + i + ' ' + (44 - v * 42).toFixed(1)).join(''));
+  }
+  function bucle(){ if (corre && visible) { paso(); dibuja(); } requestAnimationFrame(bucle); }
+  function etiquetas(){ $('#casPausa').textContent = corre ? T('❚❚ Pausa', '❚❚ Pause') : T('▶ Animar', '▶ Play');
+    $('#vAli').textContent = fmt(P.ali, 2); $('#vCoh').textContent = fmt(P.coh, 2); $('#vSep').textContent = fmt(P.sep, 2); $('#vRui').textContent = fmt(P.rui, 2); }
+  ['ali', 'coh', 'sep', 'rui'].forEach(k => $('#' + k).addEventListener('input', e => { P[k] = +e.target.value; etiquetas(); }));
+  $('#casPausa').addEventListener('click', () => { corre = !corre; etiquetas(); });
+  $('#casReinicia').addEventListener('click', () => { desordena(); dibuja(); });
+  $('.cas-vista').addEventListener('pointerdown', e => { const r = cv.getBoundingClientRect(); perturba = {x: e.clientX - r.left, y: e.clientY - r.top, t: 40}; if (!corre) { paso(); dibuja(); } });
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+  addEventListener('resize', () => { tam(); });
+  tam(); desordena(); dibuja(); etiquetas(); requestAnimationFrame(bucle);
+  window.casEtiquetas = etiquetas;
+  window.casPrueba = (n, p) => { Object.assign(P, p || {}); desordena(); let phi = 0; for (let i = 0; i < n; i++) paso(); let px = 0, py = 0; ag.forEach(a => { const v = Math.hypot(a.vx, a.vy); px += a.vx / v; py += a.vy / v; }); dibuja(); return Math.hypot(px, py) / ag.length; };
+})();
 
 /* ---------- inicio ---------- */
 let L0 = 'es'; try { L0 = localStorage.getItem('ratio_lang') || ((navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en'); } catch (_) {}
