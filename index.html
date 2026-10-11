@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ratio · Suite científica abierta</title>
-<meta name="description" content="Ratio: aplicaciones gratuitas, abiertas y validadas para formular dietas de mínimo costo para pollo de engorda y bovinos de carne — RatioBos, RatioAvis y FormulAves. · Free, open and validated least-cost diet formulation apps.">
+<meta name="description" content="Ratio: aplicaciones gratuitas, abiertas y validadas. Nutritio: dietas de mínimo costo (RatioBos, RatioAvis, FormulAves). Complexus: sistemas complejos adaptativos (Ratio Telar). · Free, open and validated apps.">
 <meta name="author" content="Héctor Tecumshé Mojica-Zárate">
 <meta property="og:title" content="Ratio · Suite científica abierta: Nutritio y Complexus">
 <meta property="og:description" content="Formulación de dietas de mínimo costo, abierta, validada y gratuita, para el productor y para el científico.">
@@ -294,6 +294,8 @@ footer a{color:var(--muted)}
 .propiedades{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:26px 0}
 .propiedades div{padding:16px 16px 14px;border-top:3px solid var(--fav);background:var(--paper);border-radius:0 0 14px 14px;font:600 13.5px/1.4 var(--sans);color:var(--muted)}
 .propiedades b{display:block;font:700 19px/1.2 var(--font);color:var(--text);margin-bottom:4px}
+.telar-uno{grid-template-columns:minmax(0,1fr)!important;margin-top:18px}
+@media(min-width:900px){.telar-uno .app{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto}.telar-uno .shot{grid-row:span 2}}
 .proxima{padding:26px 28px;border:1px dashed var(--fav);background:linear-gradient(135deg,color-mix(in srgb,var(--fav) 8%,var(--paper)),var(--paper))}
 .proxima h3{font-size:28px;margin:6px 0 8px}
 .proxima p{margin:0;color:var(--muted)}
@@ -467,7 +469,7 @@ footer a{color:var(--muted)}
         <p class="lema" lang="es">Lo que está tejido junto.</p><p class="lema" lang="en">That which is woven together.</p>
         <p lang="es">Aplicaciones para estudiar sistemas complejos adaptativos: agentes que interactúan, aprenden y hacen emerger el comportamiento del todo.</p>
         <p lang="en">Apps to study complex adaptive systems: agents that interact, learn and give rise to the behaviour of the whole.</p>
-        <div class="ala-pie"><span class="chip" lang="es">Primera app en construcción</span><span class="chip" lang="en">First app under construction</span></div></div>
+        <div class="ala-pie"><span class="chip">Ratio Telar</span><span class="chip" lang="es">+ nuevas apps</span><span class="chip" lang="en">+ new apps</span></div></div>
     </a>
   </div>
 </section>
@@ -762,11 +764,19 @@ footer a{color:var(--muted)}
       <div class="rev"><b lang="es">No linealidad</b><b lang="en">Nonlinearity</b><span lang="es">pequeños cambios, grandes efectos</span><span lang="en">small changes, large effects</span></div>
     </div>
 
-    <div class="proxima card rev">
-      <div class="eyebrow" lang="es">En construcción</div><div class="eyebrow" lang="en">Under construction</div>
-      <h3 lang="es">La primera app de Complexus</h3><h3 lang="en">The first Complexus app</h3>
-      <p lang="es">Modelará un sistema agropecuario como lo que es: una red de agentes que se adaptan. Mantendrá lo que distingue a la suite: gratuita, en tu navegador, bilingüe, con vista de productor y de científico, validada y con DOI.</p>
-      <p lang="en">It will model an agricultural system as what it is: a network of adapting agents. It will keep what defines the suite: free, in your browser, bilingual, with producer and scientist views, validated and with a DOI.</p>
+    <div class="apps telar-uno">
+      <article class="app card rev" style="--c:var(--fav)">
+        <div class="shot"><img src="img/ratiotelar.jpg" alt="Ratio Telar" loading="lazy"><span class="especie" lang="es">Primera app de Complexus</span><span class="especie" lang="en">First Complexus app</span></div>
+        <div class="in">
+          <h3>Ratio<i>Telar</i></h3>
+          <p lang="es">El saber agrícola local como sistema complejo adaptativo: una milpa, una parcela, un viñedo o una granja de traspatio tejidos con sus actores, recursos, conocimientos y mercados, de la región a la localidad.</p>
+          <p lang="en">Local farming knowledge as a complex adaptive system: a milpa, plot, vineyard or backyard farm woven with its actors, resources, knowledge and markets, from region to locality.</p>
+          <ul lang="es"><li>Diez bloques: cultivo (uva, 64 razas de maíz, chayote…), región con 54,357 localidades, manejo con calendario circular</li><li>Red ponderada, comunidades, correlaciones y modelo del sistema, validados con NetworkX</li><li>Sostenibilidad de Sarandón, 17 ODS y huella de carbono; caso documentado: maíz criollo de Calpan</li></ul>
+          <ul lang="en"><li>Ten blocks: crop (grape, 64 maize races, chayote…), region with 54,357 localities, management with circular calendar</li><li>Weighted network, communities, correlations and system model, validated with NetworkX</li><li>Sarandón sustainability, 17 SDGs and carbon footprint; documented case: Calpan landrace maize</li></ul>
+          <div class="meta"><a class="doi" href="https://doi.org/10.5281/zenodo.23290104">DOI<b>10.5281/zenodo.23290104</b></a><span class="chip">v0.2.0 · ES/EN</span></div>
+        </div>
+        <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioTelar/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/RatioTelar">GitHub</a></div>
+      </article>
     </div>
   </div>
 </section>
@@ -853,6 +863,7 @@ footer a{color:var(--muted)}
     <div class="citas">
       <div class="cita card rev" style="--c:var(--bos)"><div><div class="c">RatioBos</div><p id="c1">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Version 1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23197134</p></div><button class="btn ghost sm" data-copia="c1"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
       <div class="cita card rev" style="--c:var(--avis)"><div><div class="c">RatioAvis</div><p id="c2">Mojica-Zárate, H. T., Barrera-Guzmán, L. A., &amp; Velázquez-Vázquez, G. (2026). <i>RatioAvis: Guided least-cost diet formulation for broiler chickens</i> (Version 1.1.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23123050</p></div><button class="btn ghost sm" data-copia="c2"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+      <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">Ratio Telar</div><p id="c4">Mojica-Zárate, H. T., Díaz-José, O., Barrera-Guzmán, L. A., &amp; Velázquez-Vázquez, G. (2026). <i>Ratio Telar: el conocimiento agrícola local como sistema complejo adaptativo</i> (Versión 0.2.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23290104</p></div><button class="btn ghost sm" data-copia="c4"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
       <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">FormulAves</div><p id="c3">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>FormulAves: Plataforma guiada para la formulación de dietas de mínimo costo para pollo de engorda</i> (Versión 2.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23094626</p></div><button class="btn ghost sm" data-copia="c3"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
     </div>
   </div>
@@ -864,7 +875,7 @@ footer a{color:var(--muted)}
     <div><b>Ratio</b> · <span lang="es">Nutrición animal de precisión</span><span lang="en">Precision animal nutrition</span><br>
       <span lang="es">Herramientas de apoyo: los resultados deben revisarse con un profesional en nutrición animal.</span><span lang="en">Decision-support tools: results should be reviewed by a qualified animal nutritionist.</span><br>
       © 2026 Héctor Tecumshé Mojica-Zárate · <span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
-    <div><b lang="es">Apps</b><b lang="en">Apps</b><br><a href="https://hectortecumshe-ai.github.io/RatioBos/">RatioBos</a> · <a href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis</a> · <a href="https://hectortecumshe-ai.github.io/FormulAves/">FormulAves</a></div>
+    <div><b lang="es">Apps</b><b lang="en">Apps</b><br><a href="https://hectortecumshe-ai.github.io/RatioBos/">RatioBos</a> · <a href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis</a> · <a href="https://hectortecumshe-ai.github.io/FormulAves/">FormulAves</a> · <a href="https://hectortecumshe-ai.github.io/RatioTelar/">Ratio Telar</a></div>
     <div><b lang="es">Esta página</b><b lang="en">This page</b><br><span lang="es">Sin cookies, sin rastreadores y sin recursos de terceros. Actualizada en octubre de 2026.</span><span lang="en">No cookies, no trackers and no third-party resources. Updated October 2026.</span></div>
   </div>
 </footer>
@@ -1008,7 +1019,7 @@ const ETQ = {software: ['Software', 'Software', 'var(--acc)'], articulo: ['Artí
 const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 function autores(l){ return l.map(a => { const [f, g] = a.split(', '); const ini = (g || '').split(/[\s-]+/).filter(Boolean).map(x => x[0] + '.').join(' ');
   const t = `${f}${ini ? ', ' + ini : ''}`; return /Mojica/.test(f) ? `<b>${t}</b>` : t; }).join(', '); }
-const PRIO = ['10.5281/zenodo.23197134', '10.5281/zenodo.23050776', '10.5281/zenodo.23094626'];
+const PRIO = ['10.5281/zenodo.23290104', '10.5281/zenodo.23197134', '10.5281/zenodo.23050776', '10.5281/zenodo.23094626'];
 const orden = o => { const i = PRIO.indexOf(o.doi); return i >= 0 ? i : CLASE(o.tipo) === 'software' ? 5 : 10; };
 function pintaObras(){
   const q = norm($('#busca').value);
