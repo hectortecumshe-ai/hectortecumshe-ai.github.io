@@ -1373,7 +1373,7 @@ setLang(L0);
     requestAnimationFrame(cuadro); }
   requestAnimationFrame(cuadro);
 })();
-/* ---------- Metamorfosis del centro: roca → hoja de vid → cazahuate → suelo rojo de Sonora → agua → cactus → animal → sistema caórdico ---------- */
+/* ---------- Metamorfosis del centro: roca → hoja de vid → cazahuate → suelo rojo de Sonora → agua → cactus → pecarí de collar → monstruo de Gila → sistema caórdico ---------- */
 (function(){
   const f=document.getElementById('forma'); if(!f) return; const tex=document.getElementById('formaTex'), et=document.getElementById('etapa'), g0=document.getElementById('gF0'), g1=document.getElementById('gF1');
   const CX=280, CY=262, R=128, M=220, quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1389,7 +1389,8 @@ setLang(L0);
     {n:['suelo rojo de Sonora','Sonoran red soil'], c:['#d0683c','#7a2e1c'], r:rayo((x,y)=>Math.abs(x)<0.95&&y<0.62&&y>-0.32+0.07*Math.sin(7*x)+0.05*Math.sin(17*x+1)), tx:'estratos'},
     {n:['agua','water'], c:['#8fd3f0','#2d78b0'], r:rayo((x,y)=>circ(x,y,0,0.28,0.56)||(y<0.28&&y>-0.9&&Math.abs(x)<0.56*Math.pow((y+0.9)/1.18,1.35))), tx:'brillo'},
     {n:['cactus (saguaro)','cactus (saguaro)'], c:['#7fb05a','#2f5d2a'], r:rayo((x,y)=>(rect(x,y,-0.17,0.17,-0.78,0.92)||circ(x,y,0,-0.78,0.17))||rect(x,y,-0.62,-0.42,-0.5,0.16)||circ(x,y,-0.52,-0.5,0.1)||rect(x,y,-0.62,-0.17,0.02,0.18)||rect(x,y,0.42,0.6,-0.66,-0.04)||circ(x,y,0.51,-0.66,0.09)||rect(x,y,0.17,0.6,-0.16,0.0)), tx:'costillas'},
-    {n:['animal (bovino)','animal (cattle)'], c:['#b0703e','#5a2e1c'], r:rayo((x,y)=>((x+0.08)/0.62)**2+(y/0.33)**2<1||circ(x,y,0.68,-0.22,0.2)||rect(x,y,0.45,0.66,-0.3,0.0)||rect(x,y,-0.55,-0.44,0.15,0.74)||rect(x,y,-0.32,-0.21,0.15,0.74)||rect(x,y,0.18,0.29,0.15,0.74)||rect(x,y,0.38,0.49,0.15,0.74)||rect(x,y,0.62,0.72,-0.5,-0.36)||(x<-0.66&&x>-0.82&&Math.abs(y-(x+0.66)*-1.4-0.05)<0.04)), tx:''},
+    {n:['pecarí de collar','collared peccary'], c:['#8a7c6e','#3b322b'], r:rayo((x,y)=>((x+0.12)/0.58)**2+(y/0.34)**2<1||((x+0.05)/0.45)**2+((y+0.3)/0.13)**2<1||((x-0.52)/0.3)**2+((y+0.02)/0.24)**2<1||rect(x,y,0.7,0.93,-0.04,0.13)||circ(x,y,0.44,-0.28,0.08)||rect(x,y,-0.56,-0.47,0.2,0.66)||rect(x,y,-0.36,-0.27,0.2,0.66)||rect(x,y,0.1,0.19,0.2,0.66)||rect(x,y,0.29,0.38,0.2,0.62)), tx:'collar'},
+    {n:['monstruo de Gila','Gila monster'], c:['#f2a072','#3a2018'], r:rayo((x,y)=>((x-0.02)/0.5)**2+(y/0.25)**2<1||((x-0.64)/0.22)**2+(y/0.17)**2<1||(x>-1.0&&x<-0.4&&Math.abs(y-0.07*Math.sin(6*x))<0.2*(x+1.0)/0.6)||(Math.abs(y)<0.56&&Math.abs(y)>0.1&&Math.abs(x-0.26-0.3*(Math.abs(y)-0.1))<0.07)||(Math.abs(y)<0.56&&Math.abs(y)>0.1&&Math.abs(x+0.26+0.3*(Math.abs(y)-0.1))<0.07)||circ(x,y,0.4,-0.56,0.1)||circ(x,y,0.4,0.56,0.1)||circ(x,y,-0.4,-0.56,0.1)||circ(x,y,-0.4,0.56,0.1)), tx:'bandas'},
     {n:['sistema caórdico','chaordic system'], c:['#9b6cff','#3fd0b0'], caos:true, tx:''}
   ];
   const caos=(t)=>polar(a=>0.62+0.16*Math.sin(5*a+t)+0.11*Math.sin(13*a-1.7*t)+0.07*Math.sin(29*a+2.3*t)+0.05*Math.sin(41*a-3.1*t));
@@ -1403,6 +1404,8 @@ setLang(L0);
     if(i===3) return [-.05,.15,.35].map(y=>`M${CX-R*.9},${CY+R*y}C${CX-R*.3},${CY+R*(y+.06)} ${CX+R*.3},${CY+R*(y-.06)} ${CX+R*.9},${CY+R*y}`).join('');
     if(i===4) return `M${CX-R*.25},${CY+R*.15}C${CX-R*.3},${CY+R*.35} ${CX-R*.18},${CY+R*.55} ${CX},${CY+R*.6}`;
     if(i===5) return `M${CX},${CY-R*.7}L${CX},${CY+R*.85}M${CX-R*.08},${CY-R*.6}L${CX-R*.08},${CY+R*.85}M${CX+R*.08},${CY-R*.6}L${CX+R*.08},${CY+R*.85}`;
+    if(i===6) return `M${CX+R*.3},${CY-R*.36}C${CX+R*.36},${CY-R*.1} ${CX+R*.36},${CY+R*.1} ${CX+R*.28},${CY+R*.3}`;
+    if(i===7) return [-.38,-.19,0,.19,.38,-.6,-.8].map(x=>`M${CX+R*x},${CY-R*(x<-.4?.12:.22)}Q${CX+R*(x+.06)},${CY} ${CX+R*x},${CY+R*(x<-.4?.12:.22)}`).join('');
     if(i===2){ let d=''; [[0,-.5],[-.3,-.2],[.32,-.25],[-.15,-.7],[.2,-.75],[.05,-.2]].forEach(([x,y])=>{ d+=`M${CX+R*x-4},${CY+R*y}a4,4 0 1,0 8,0a4,4 0 1,0 -8,0`; }); return d; }
     return ''; };
   let i=0, t0=performance.now(); const QUIETO=2600, CAMBIO=1500;
@@ -1410,7 +1413,7 @@ setLang(L0);
   const rad=(k,t)=>FORMAS[k].caos?caos(t/700):FORMAS[k].r;
   function etiqueta(k){ et.textContent=FORMAS[k].n[document.documentElement.lang==='en'?1:0]; et.style.opacity=1; }
   function cuadro(t){ const dt=t-t0, j=(i+1)%FORMAS.length;
-    if(dt<QUIETO){ pinta(rad(i,t),i,i,0); tex.setAttribute('d',textura(i)); tex.style.opacity=1; }
+    if(dt<QUIETO){ pinta(rad(i,t),i,i,0); tex.setAttribute('d',textura(i)); tex.setAttribute('stroke-width',i===6?9:i===7?5:1.6); tex.setAttribute('stroke',i===7?'rgba(30,18,12,.55)':'rgba(255,255,255,.4)'); tex.style.opacity=1; }
     else if(dt<QUIETO+CAMBIO){ const u=facil((dt-QUIETO)/CAMBIO); pinta(mezcla(rad(i,t),rad(j,t),u),i,j,u); tex.style.opacity=1-u; if(u>.5) etiqueta(j); }
     else { i=j; t0=t; etiqueta(i); }
     requestAnimationFrame(cuadro); }
