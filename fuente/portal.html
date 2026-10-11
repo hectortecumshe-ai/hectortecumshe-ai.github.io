@@ -1019,7 +1019,7 @@ const ETQ = {software: ['Software', 'Software', 'var(--acc)'], articulo: ['Artí
 const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 function autores(l){ return l.map(a => { const [f, g] = a.split(', '); const ini = (g || '').split(/[\s-]+/).filter(Boolean).map(x => x[0] + '.').join(' ');
   const t = `${f}${ini ? ', ' + ini : ''}`; return /Mojica/.test(f) ? `<b>${t}</b>` : t; }).join(', '); }
-const PRIO = ['10.5281/zenodo.23290104', '10.5281/zenodo.23197134', '10.5281/zenodo.23050776', '10.5281/zenodo.23094626'];
+const PRIO = ['10.5281/zenodo.23290103', '10.5281/zenodo.23290104', '10.5281/zenodo.23197134', '10.5281/zenodo.23050776', '10.5281/zenodo.23094626'];
 const orden = o => { const i = PRIO.indexOf(o.doi); return i >= 0 ? i : CLASE(o.tipo) === 'software' ? 5 : 10; };
 function pintaObras(){
   const q = norm($('#busca').value);
