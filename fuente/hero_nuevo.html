@@ -1,0 +1,112 @@
+<section class="hero hero-c" id="escena">
+  <canvas id="chispas" aria-hidden="true"></canvas>
+  <div class="esc-capas" aria-hidden="true">
+    <svg class="flt" data-p="28" style="left:6%;top:12%;width:110px;height:132px"><use href="#c-maiz"/></svg>
+    <svg class="flt" data-p="-22" style="left:3%;top:72%;width:120px;height:100px"><use href="#i-chicken"/></svg>
+    <svg class="flt" data-p="18" style="left:2%;top:38%;width:96px;height:115px"><use href="#c-chayote"/></svg>
+    <svg class="flt" data-p="-30" style="right:5%;top:10%;width:110px;height:132px"><use href="#c-uva"/></svg>
+    <svg class="flt" data-p="24" style="right:3%;top:72%;width:150px;height:106px"><use href="#i-steer"/></svg>
+    <svg class="flt" data-p="-16" style="right:2%;top:38%;width:104px;height:87px"><use href="#a-cerdo"/></svg>
+    <svg class="flt" data-p="34" style="left:24%;top:4%;width:70px;height:58px"><use href="#a-abeja"/></svg>
+    <svg class="flt" data-p="-26" style="right:24%;top:4%;width:86px;height:86px"><use href="#i-telar"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="emblema-c" id="emblema" aria-hidden="true">
+      <svg viewBox="0 0 560 560">
+        <defs>
+          <radialGradient id="halo2"><stop offset="0" stop-color="var(--oro)" stop-opacity=".28"/><stop offset=".7" stop-color="var(--oro)" stop-opacity=".05"/><stop offset="1" stop-color="var(--oro)" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hexg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b5a"/><stop offset="1" stop-color="#132e27"/></linearGradient>
+          <linearGradient id="iri" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#7ff0d8"><animate attributeName="stop-color" values="#7ff0d8;#b48cff;#ffd36e;#ff9ab8;#7ff0d8" dur="6s" repeatCount="indefinite"/></stop>
+            <stop offset=".5" stop-color="#ffd36e"><animate attributeName="stop-color" values="#ffd36e;#ff9ab8;#7ff0d8;#b48cff;#ffd36e" dur="6s" repeatCount="indefinite"/></stop>
+            <stop offset="1" stop-color="#b48cff"><animate attributeName="stop-color" values="#b48cff;#7ff0d8;#ffd36e;#ff9ab8;#b48cff" dur="6s" repeatCount="indefinite"/></stop>
+            <animateTransform attributeName="gradientTransform" type="rotate" values="0 .5 .5;360 .5 .5" dur="9s" repeatCount="indefinite"/>
+          </linearGradient>
+          <linearGradient id="brillo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <clipPath id="cHex"><polygon points="280,120 418,200 418,360 280,440 142,360 142,200"/></clipPath>
+        </defs>
+        <circle cx="280" cy="280" r="275" fill="url(#halo2)"/>
+        <g class="anillos" fill="none" stroke="var(--oro)">
+          <ellipse cx="280" cy="280" rx="262" ry="96" transform="rotate(-16 280 280)" stroke-opacity=".5"/>
+          <ellipse cx="280" cy="280" rx="262" ry="96" transform="rotate(34 280 280)" stroke-opacity=".32"/>
+          <ellipse cx="280" cy="280" rx="230" ry="230" stroke-dasharray="2 8" stroke-opacity=".5"/>
+        </g>
+        <g class="viajeros"><circle r="5" fill="var(--oro)"><animateMotion dur="11s" repeatCount="indefinite" path="M18,280a262,96 -16 1,0 524,0a262,96 -16 1,0 -524,0" rotate="auto"/></circle>
+          <circle r="4" fill="#7ff0d8"><animateMotion dur="15s" repeatCount="indefinite" path="M542,280a262,96 34 1,0 -524,0a262,96 34 1,0 524,0"/></circle></g>
+        <g class="hexa">
+          <polygon points="280,120 418,200 418,360 280,440 142,360 142,200" fill="url(#hexg2)" stroke="var(--oro)" stroke-width="5"/>
+          <polygon points="280,138 402,209 402,351 280,422 158,351 158,209" fill="none" stroke="var(--oro)" stroke-opacity=".35"/>
+          <g transform="translate(200 186) scale(2.5)">
+            <rect x="11" y="27" width="7" height="25" rx="2" fill="url(#iri)"/><rect x="23" y="21" width="7" height="31" rx="2" fill="url(#iri)"/><rect x="11" y="35" width="19" height="5" rx="1.5" fill="url(#iri)"/>
+            <rect x="39" y="25" width="7" height="27" rx="2" fill="url(#iri)"/><rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="url(#iri)"/>
+            <path d="M42.5 20.5V9" stroke="url(#iri)" stroke-width="1.6" stroke-linecap="round"/>
+            <g fill="url(#iri)"><ellipse cx="40.2" cy="15.6" rx="1.5" ry="2.8" transform="rotate(-32 40.2 15.6)"/><ellipse cx="44.8" cy="15.6" rx="1.5" ry="2.8" transform="rotate(32 44.8 15.6)"/><ellipse cx="40.4" cy="11.2" rx="1.4" ry="2.5" transform="rotate(-32 40.4 11.2)"/><ellipse cx="44.6" cy="11.2" rx="1.4" ry="2.5" transform="rotate(32 44.6 11.2)"/><ellipse cx="42.5" cy="7.4" rx="1.4" ry="2.4"/></g>
+          </g>
+          <g clip-path="url(#cHex)"><rect class="reflejo" x="-200" y="100" width="120" height="360" fill="url(#brillo)" transform="skewX(-18)" opacity=".35"/></g>
+          <text x="280" y="402" text-anchor="middle" font-family="var(--sans)" font-size="17" font-weight="700" letter-spacing="7" fill="url(#iri)">RATIO</text>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-txt rev">
+      <div class="eyebrow" lang="es">Suite científica abierta · Nutritio y Complexus</div>
+      <div class="eyebrow" lang="en">Open scientific suite · Nutritio and Complexus</div>
+      <h1 lang="es">La <em>razón</em> al servicio <span class="a">del campo.</span></h1>
+      <h1 lang="en">Reason in the <em>service</em> <span class="a">of the land.</span></h1>
+      <p class="sub" lang="es">Aplicaciones gratuitas con la ciencia a la vista: para formular la ración más barata que sí cumple, y para comprender los sistemas complejos que sostienen al campo.</p>
+      <p class="sub" lang="en">Free apps with the science in plain sight: to formulate the cheapest ration that truly meets requirements, and to understand the complex systems that sustain the countryside.</p>
+      <div class="ctas">
+        <a class="btn pri" href="#carrusel"><span lang="es">Ver las aplicaciones</span><span lang="en">See the apps</span> →</a>
+        <a class="btn ghost" href="#formulador"><span lang="es">Probar el formulador</span><span lang="en">Try the formulator</span></a>
+      </div>
+      <div class="facts">
+        <span class="chip" lang="es">4 apps · 2 alas</span><span class="chip" lang="en">4 apps · 2 wings</span>
+        <span class="chip" lang="es">33 dietas publicadas reproducidas</span><span class="chip" lang="en">33 published diets reproduced</span>
+        <span class="chip" lang="es">Redes validadas con NetworkX</span><span class="chip" lang="en">Networks validated with NetworkX</span>
+      </div>
+      <p class="pista" lang="es">Pasa el cursor por la escena ✦</p><p class="pista" lang="en">Move your pointer across the scene ✦</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CARRUSEL DE APLICACIONES ============================ -->
+<section class="carr-sec" id="carrusel">
+  <div class="wrap">
+    <div class="carr-head rev"><div class="eyebrow" lang="es">La suite</div><div class="eyebrow" lang="en">The suite</div>
+      <h2 lang="es">Cuatro aplicaciones, <em>un mismo telar</em>.</h2><h2 lang="en">Four apps, <em>one loom</em>.</h2></div>
+    <div class="carr" id="carr" tabindex="0" aria-roledescription="carrusel" aria-label="Aplicaciones de la suite Ratio">
+      <div class="pista-c" id="pistaC">
+        <article class="diapo" style="--c:var(--fav)" data-i="0">
+          <img src="img/ratiotelar.jpg" alt="Ratio Telar" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Complexus</span><h3>Ratio<i>Telar</i></h3>
+            <p lang="es">El saber agrícola local como sistema complejo adaptativo: red ponderada, calendario circular, sostenibilidad y 17 ODS, de la región a la localidad.</p>
+            <p lang="en">Local farming knowledge as a complex adaptive system: weighted network, circular calendar, sustainability and 17 SDGs, from region to locality.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23290104">DOI<b>10.5281/zenodo.23290104</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioTelar/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--bos)" data-i="1">
+          <img src="img/ratiobos.jpg" alt="RatioBos" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Bos</i></h3>
+            <p lang="es">Raciones de mínimo costo para bovinos de carne con NASEM (2016), clima de tu región, programa de engorda y huella ambiental.</p>
+            <p lang="en">Least-cost rations for beef cattle with NASEM (2016), your region’s climate, feeding program and footprint.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23197134">DOI<b>10.5281/zenodo.23197134</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioBos/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--avis)" data-i="2">
+          <img src="img/ratioavis.jpg" alt="RatioAvis" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Avis</i></h3>
+            <p lang="es">Dietas por fase para pollo de engorda con aminoácidos digestibles, ajustes por altitud y calor, y certificado de optimalidad.</p>
+            <p lang="en">Phase diets for broilers with digestible amino acids, altitude and heat adjustments, and an optimality certificate.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23123050">DOI<b>10.5281/zenodo.23123050</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioAvis/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--acc)" data-i="3">
+          <img src="img/formulaves.jpg" alt="FormulAves" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Formul<i>Aves</i></h3>
+            <p lang="es">La primera de la familia: formular, mezclar y costear la dieta del pollo paso a paso, con marco teórico en cada bloque.</p>
+            <p lang="en">The first of the family: formulate, mix and cost broiler diets step by step, with theory in every block.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23094626">DOI<b>10.5281/zenodo.23094626</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/FormulAves/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+      </div>
+      <button class="carr-btn ant" id="cAnt" aria-label="Anterior / Previous">‹</button>
+      <button class="carr-btn sig" id="cSig" aria-label="Siguiente / Next">›</button>
+    </div>
+    <div class="puntos" id="puntos"></div>
+  </div>
+</section>

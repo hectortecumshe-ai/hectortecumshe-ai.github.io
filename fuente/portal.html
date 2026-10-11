@@ -194,8 +194,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .app ul{margin:2px 0 0;padding-left:18px;font:14px/1.55 var(--sans);color:var(--muted)}
 .app .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
 .app .links{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 22px}
-.app .doi{font:600 12px/1 var(--sans);text-decoration:none;color:var(--paper);background:#24425e;padding:6px 9px;border-radius:6px}
-.app .doi b{background:#3b6a97;margin:-6px -9px -6px 7px;padding:6px 8px;border-radius:0 6px 6px 0;display:inline-block}
+.app .doi,.diapo .doi{font:600 12px/1 var(--sans);text-decoration:none;color:var(--paper);background:#24425e;padding:6px 9px;border-radius:6px}
+.app .doi b,.diapo .doi b{background:#3b6a97;margin:-6px -9px -6px 7px;padding:6px 8px;border-radius:0 6px 6px 0;display:inline-block}
 .pronto{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
 .pronto div{padding:18px 20px;border:1px dashed var(--line2);border-radius:var(--r);color:var(--muted);font-size:16px}
 .pronto b{color:var(--text)}
@@ -341,9 +341,58 @@ footer a{color:var(--muted)}
   .principios div{border-right:0!important;border-bottom:1px solid var(--line)}
 }
 @media print{ .top,.totop,#toast{display:none} .rev{opacity:1;transform:none} }
+/*HERO_CSS*/
+/* ---------- Portada centrada con escena interactiva ---------- */
+.hero-c{padding:30px 0 30px;min-height:min(92vh,980px)}
+.hero-c .wrap{display:flex!important;flex-direction:column;align-items:center;text-align:center;gap:0;position:relative;z-index:2}
+#chispas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.esc-capas{position:absolute;inset:0;z-index:1;pointer-events:none}
+.esc-capas .flt{position:absolute;filter:drop-shadow(0 8px 14px rgba(0,0,0,.12));transition:transform .5s cubic-bezier(.2,.7,.2,1);animation:flotar2 7s ease-in-out infinite;--anim:running}
+.esc-capas .flt:nth-child(2n){animation-delay:-2.3s}.esc-capas .flt:nth-child(3n){animation-delay:-4.1s}
+@keyframes flotar2{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.emblema-c{width:min(520px,82vw);aspect-ratio:1;margin:-10px auto -40px;transition:transform .4s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+.emblema-c svg{width:100%;height:100%;overflow:visible}
+.emblema-c .anillos{transform-origin:280px 280px;animation:giro 80s linear infinite}
+.emblema-c .hexa{transform-origin:280px 280px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.emblema-c:hover .hexa{transform:scale(1.04)}
+.emblema-c .reflejo{animation:reflejo 5.5s ease-in-out infinite}
+@keyframes reflejo{0%,60%{transform:skewX(-18deg) translateX(0)}100%{transform:skewX(-18deg) translateX(820px)}}
+.hero-txt{max-width:900px}
+.hero-c h1{font-size:clamp(40px,5.8vw,82px);letter-spacing:-.025em;line-height:1.02;margin:12px 0 0}
+.hero-c p.sub{margin:18px auto 24px;max-width:46ch}
+.hero-c .ctas,.hero-c .facts{justify-content:center}
+.pista{font-size:13px;color:var(--muted);letter-spacing:.06em;margin-top:14px}
+/* carrusel */
+.carr-sec{padding:56px 0 30px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--oro) 7%,transparent))}
+.carr-head{text-align:center;margin-bottom:22px}
+.carr-head h2{font-size:clamp(30px,4vw,52px);margin:8px 0 0}
+.carr-head h2 em{font-style:italic;color:var(--pri)}
+.carr{position:relative;height:500px;perspective:1600px;outline:none}
+.pista-c{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.diapo{position:absolute;left:50%;top:0;width:min(760px,86vw);height:460px;margin-left:calc(min(760px,86vw) / -2);border-radius:22px;overflow:hidden;background:var(--paper);border:1px solid var(--line);
+  box-shadow:0 20px 60px rgba(0,0,0,.18);display:grid;grid-template-rows:56% 44%;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s,filter .8s;cursor:pointer}
+.diapo img{width:100%;height:100%;object-fit:cover;object-position:top;border-bottom:4px solid var(--c)}
+.diapo .d-txt{padding:16px 24px;text-align:left}
+.diapo h3{font-size:30px;margin:4px 0 6px}
+.diapo h3 i{color:var(--c);font-style:italic}
+.diapo p{margin:0;color:var(--muted);font-size:16px;line-height:1.45}
+.diapo .d-pie{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap}
+.ala-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--c);border-radius:999px;padding:3px 10px}
+.diapo.act{cursor:default}
+.carr-btn{position:absolute;top:44%;z-index:30;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:30px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15);transition:transform .2s}
+.carr-btn:hover{transform:scale(1.1)}
+.carr-btn.ant{left:2%}.carr-btn.sig{right:2%}
+.puntos{display:flex;justify-content:center;gap:10px;margin-top:4px}
+.puntos button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:width .3s,background .3s}
+.puntos button.on{width:34px;border-radius:6px;background:var(--pri)}
+@media (max-width:760px){ .carr{height:540px} .diapo{height:510px;grid-template-rows:44% 56%} .esc-capas .flt{opacity:.55;transform:scale(.7)} .carr-btn{top:auto;bottom:-6px} }
+@media (prefers-reduced-motion:reduce){ .esc-capas .flt,.emblema-c .anillos,.emblema-c .reflejo{animation:none!important} .diapo{transition:none} }
+
+/*/HERO_CSS*/
 </style>
 </head>
 <body>
+<!--SPRITE-->
 
 <header class="top">
   <div class="wrap">
@@ -368,77 +417,119 @@ footer a{color:var(--muted)}
 
 <main id="inicio">
 <!-- ============================ PORTADA ============================ -->
-<section class="hero">
+<!--HERO_NUEVO--><section class="hero hero-c" id="escena">
+  <canvas id="chispas" aria-hidden="true"></canvas>
+  <div class="esc-capas" aria-hidden="true">
+    <svg class="flt" data-p="28" style="left:6%;top:12%;width:110px;height:132px"><use href="#c-maiz"/></svg>
+    <svg class="flt" data-p="-22" style="left:3%;top:72%;width:120px;height:100px"><use href="#i-chicken"/></svg>
+    <svg class="flt" data-p="18" style="left:2%;top:38%;width:96px;height:115px"><use href="#c-chayote"/></svg>
+    <svg class="flt" data-p="-30" style="right:5%;top:10%;width:110px;height:132px"><use href="#c-uva"/></svg>
+    <svg class="flt" data-p="24" style="right:3%;top:72%;width:150px;height:106px"><use href="#i-steer"/></svg>
+    <svg class="flt" data-p="-16" style="right:2%;top:38%;width:104px;height:87px"><use href="#a-cerdo"/></svg>
+    <svg class="flt" data-p="34" style="left:24%;top:4%;width:70px;height:58px"><use href="#a-abeja"/></svg>
+    <svg class="flt" data-p="-26" style="right:24%;top:4%;width:86px;height:86px"><use href="#i-telar"/></svg>
+  </div>
   <div class="wrap">
-    <div class="rev">
-      <div class="eyebrow" lang="es">Suite científica abierta · Nutritio y Complexus</div>
-      <div class="eyebrow" lang="en">Open scientific suite · Nutritio and Complexus</div>
-      <h1 lang="es" style="margin-top:14px">La <em>razón</em> al servicio <span class="a">del animal.</span></h1>
-      <h1 lang="en" style="margin-top:14px">Reason in the <em>service</em> <span class="a">of the animal.</span></h1>
-      <p class="sub" lang="es">Aplicaciones gratuitas con la ciencia a la vista: para formular la ración más barata que sí cumple, y para comprender los sistemas complejos que sostienen al campo.</p>
-      <p class="sub" lang="en">Free apps with the science in plain sight: to formulate the cheapest ration that truly meets requirements, and to understand the complex systems that sustain the countryside.</p>
-      <div class="ctas">
-        <a class="btn pri" href="#alas"><span lang="es">Explorar la suite</span><span lang="en">Explore the suite</span> →</a>
-        <a class="btn ghost" href="#formulador"><span lang="es">Probar el formulador</span><span lang="en">Try the formulator</span></a>
-      </div>
-      <div class="facts">
-        <span class="chip" lang="es">3 apps · 2 especies</span><span class="chip" lang="en">3 apps · 2 species</span>
-        <span class="chip" lang="es">33 dietas publicadas reproducidas</span><span class="chip" lang="en">33 published diets reproduced</span>
-        <span class="chip" lang="es">1,300 problemas idénticos a HiGHS</span><span class="chip" lang="en">1,300 problems identical to HiGHS</span>
-      </div>
-    </div>
-    <div class="orbita rev" aria-hidden="true">
-      <svg viewBox="0 0 540 540">
+    <div class="emblema-c" id="emblema" aria-hidden="true">
+      <svg viewBox="0 0 560 560">
         <defs>
-          <radialGradient id="halo"><stop offset="0" stop-color="var(--oro)" stop-opacity=".22"/><stop offset="1" stop-color="var(--oro)" stop-opacity="0"/></radialGradient>
-          <linearGradient id="hexg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b5a"/><stop offset="1" stop-color="#173a31"/></linearGradient>
+          <radialGradient id="halo2"><stop offset="0" stop-color="var(--oro)" stop-opacity=".28"/><stop offset=".7" stop-color="var(--oro)" stop-opacity=".05"/><stop offset="1" stop-color="var(--oro)" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hexg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b5a"/><stop offset="1" stop-color="#132e27"/></linearGradient>
+          <linearGradient id="iri" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#7ff0d8"><animate attributeName="stop-color" values="#7ff0d8;#b48cff;#ffd36e;#ff9ab8;#7ff0d8" dur="6s" repeatCount="indefinite"/></stop>
+            <stop offset=".5" stop-color="#ffd36e"><animate attributeName="stop-color" values="#ffd36e;#ff9ab8;#7ff0d8;#b48cff;#ffd36e" dur="6s" repeatCount="indefinite"/></stop>
+            <stop offset="1" stop-color="#b48cff"><animate attributeName="stop-color" values="#b48cff;#7ff0d8;#ffd36e;#ff9ab8;#b48cff" dur="6s" repeatCount="indefinite"/></stop>
+            <animateTransform attributeName="gradientTransform" type="rotate" values="0 .5 .5;360 .5 .5" dur="9s" repeatCount="indefinite"/>
+          </linearGradient>
+          <linearGradient id="brillo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <clipPath id="cHex"><polygon points="280,120 418,200 418,360 280,440 142,360 142,200"/></clipPath>
         </defs>
-        <circle cx="270" cy="270" r="260" fill="url(#halo)"/>
-        <g fill="none" stroke="var(--oro)" stroke-opacity=".55">
-          <ellipse cx="270" cy="270" rx="236" ry="92" transform="rotate(-18 270 270)"/>
-          <ellipse cx="270" cy="270" rx="236" ry="92" transform="rotate(32 270 270)" stroke-opacity=".35"/>
-          <circle cx="270" cy="270" r="200" stroke-dasharray="2 7"/>
+        <circle cx="280" cy="280" r="275" fill="url(#halo2)"/>
+        <g class="anillos" fill="none" stroke="var(--oro)">
+          <ellipse cx="280" cy="280" rx="262" ry="96" transform="rotate(-16 280 280)" stroke-opacity=".5"/>
+          <ellipse cx="280" cy="280" rx="262" ry="96" transform="rotate(34 280 280)" stroke-opacity=".32"/>
+          <ellipse cx="280" cy="280" rx="230" ry="230" stroke-dasharray="2 8" stroke-opacity=".5"/>
         </g>
-        <!-- granos que caen -->
-        <g fill="var(--oro)">
-          <ellipse class="grano" cx="232" cy="150" rx="4" ry="6" style="animation-delay:0s"/>
-          <ellipse class="grano" cx="300" cy="140" rx="4" ry="6" style="animation-delay:2.2s"/>
-          <ellipse class="grano" cx="262" cy="130" rx="4" ry="6" style="animation-delay:4.5s"/>
-          <ellipse class="grano" cx="318" cy="160" rx="4" ry="6" style="animation-delay:6.6s"/>
-        </g>
-        <!-- emblema -->
-        <g class="flota">
-          <polygon points="270,150 374,210 374,330 270,390 166,330 166,210" fill="url(#hexg)" stroke="var(--oro)" stroke-width="4"/>
-          <g transform="translate(206 206) scale(2)">
-            <rect x="11" y="27" width="7" height="25" rx="2" fill="#f6f1e4"/><rect x="23" y="21" width="7" height="31" rx="2" fill="#f6f1e4"/><rect x="11" y="35" width="19" height="5" rx="1.5" fill="#f6f1e4"/>
-            <rect x="39" y="25" width="7" height="27" rx="2" fill="#e3bd6a"/><rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="#e3bd6a"/>
-            <path d="M42.5 20.5V9" stroke="#e3bd6a" stroke-width="1.6" stroke-linecap="round"/>
-            <g fill="#e3bd6a"><ellipse cx="40.2" cy="15.6" rx="1.5" ry="2.8" transform="rotate(-32 40.2 15.6)"/><ellipse cx="44.8" cy="15.6" rx="1.5" ry="2.8" transform="rotate(32 44.8 15.6)"/><ellipse cx="40.4" cy="11.2" rx="1.4" ry="2.5" transform="rotate(-32 40.4 11.2)"/><ellipse cx="44.6" cy="11.2" rx="1.4" ry="2.5" transform="rotate(32 44.6 11.2)"/><ellipse cx="42.5" cy="7.4" rx="1.4" ry="2.4"/></g>
+        <g class="viajeros"><circle r="5" fill="var(--oro)"><animateMotion dur="11s" repeatCount="indefinite" path="M18,280a262,96 -16 1,0 524,0a262,96 -16 1,0 -524,0" rotate="auto"/></circle>
+          <circle r="4" fill="#7ff0d8"><animateMotion dur="15s" repeatCount="indefinite" path="M542,280a262,96 34 1,0 -524,0a262,96 34 1,0 524,0"/></circle></g>
+        <g class="hexa">
+          <polygon points="280,120 418,200 418,360 280,440 142,360 142,200" fill="url(#hexg2)" stroke="var(--oro)" stroke-width="5"/>
+          <polygon points="280,138 402,209 402,351 280,422 158,351 158,209" fill="none" stroke="var(--oro)" stroke-opacity=".35"/>
+          <g transform="translate(200 186) scale(2.5)">
+            <rect x="11" y="27" width="7" height="25" rx="2" fill="url(#iri)"/><rect x="23" y="21" width="7" height="31" rx="2" fill="url(#iri)"/><rect x="11" y="35" width="19" height="5" rx="1.5" fill="url(#iri)"/>
+            <rect x="39" y="25" width="7" height="27" rx="2" fill="url(#iri)"/><rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="url(#iri)"/>
+            <path d="M42.5 20.5V9" stroke="url(#iri)" stroke-width="1.6" stroke-linecap="round"/>
+            <g fill="url(#iri)"><ellipse cx="40.2" cy="15.6" rx="1.5" ry="2.8" transform="rotate(-32 40.2 15.6)"/><ellipse cx="44.8" cy="15.6" rx="1.5" ry="2.8" transform="rotate(32 44.8 15.6)"/><ellipse cx="40.4" cy="11.2" rx="1.4" ry="2.5" transform="rotate(-32 40.4 11.2)"/><ellipse cx="44.6" cy="11.2" rx="1.4" ry="2.5" transform="rotate(32 44.6 11.2)"/><ellipse cx="42.5" cy="7.4" rx="1.4" ry="2.4"/></g>
           </g>
-          <text x="270" y="372" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" letter-spacing="5" fill="#e3bd6a">RATIO</text>
-        </g>
-        <!-- medallones en órbita -->
-        <g class="giro">
-          <g transform="translate(270 70)"><g class="contra" style="transform-origin:0 0">
-            <circle r="42" fill="var(--paper)" stroke="var(--avis)" stroke-width="2.5"/>
-            <!-- pollo -->
-            <g transform="translate(-22 -22) scale(.44)" fill="var(--avis)"><path d="M62 30c-3-9 4-16 10-12 2-6 10-6 11 0 5-2 9 4 5 9 5 2 4 9-2 9l2 6c10 4 17 14 17 26 0 18-16 30-36 30-17 0-31-9-35-23-2-7 4-9 8-4-3-10 3-21 13-26-6-3-8-10-4-15z"/><path d="M84 37l12 4-11 5z" fill="#d9a441"/><circle cx="75" cy="33" r="3" fill="var(--paper)"/><path d="M50 100l-6 14h14M70 100l-2 14h12" stroke="var(--avis)" stroke-width="5" fill="none" stroke-linecap="round"/></g>
-          </g></g>
-          <g transform="translate(443 370)"><g class="contra" style="transform-origin:0 0">
-            <circle r="42" fill="var(--paper)" stroke="var(--bos)" stroke-width="2.5"/>
-            <!-- bovino -->
-            <g transform="translate(-27 -20) scale(.5)" fill="var(--bos)"><path d="M18 30c-8-1-14-7-15-14 6 4 12 5 18 4l6-4h50l6 4c6 1 12 0 18-4-1 7-7 13-15 14l-2 12c8 4 12 12 10 20l-6 18c-2 6-8 9-14 9H36c-6 0-12-3-14-9l-6-18c-2-8 2-16 10-20z"/><ellipse cx="54" cy="70" rx="20" ry="13" fill="var(--paper)" opacity=".85"/><circle cx="46" cy="70" r="3" fill="var(--bos)"/><circle cx="62" cy="70" r="3" fill="var(--bos)"/><circle cx="38" cy="46" r="4" fill="var(--paper)"/><circle cx="70" cy="46" r="4" fill="var(--paper)"/></g>
-          </g></g>
-          <g transform="translate(97 370)"><g class="contra" style="transform-origin:0 0">
-            <circle r="42" fill="var(--paper)" stroke="var(--sus)" stroke-width="2.5" stroke-dasharray="5 5"/>
-            <!-- cerdo (próximamente) -->
-            <g transform="translate(-26 -17) scale(.48)" fill="var(--sus)"><path d="M20 40c0-18 18-30 42-30 16 0 30 6 38 16l8-6-2 14c4 6 4 12 0 18l6 4-8 4c-6 12-20 20-40 20H40l-4 14H26l-2-16C14 70 10 56 20 40z"/><circle cx="84" cy="34" r="3.5" fill="var(--paper)"/><ellipse cx="100" cy="47" rx="6" ry="8" fill="var(--paper)" opacity=".8"/></g>
-          </g></g>
+          <g clip-path="url(#cHex)"><rect class="reflejo" x="-200" y="100" width="120" height="360" fill="url(#brillo)" transform="skewX(-18)" opacity=".35"/></g>
+          <text x="280" y="402" text-anchor="middle" font-family="var(--sans)" font-size="17" font-weight="700" letter-spacing="7" fill="url(#iri)">RATIO</text>
         </g>
       </svg>
     </div>
+    <div class="hero-txt rev">
+      <div class="eyebrow" lang="es">Suite científica abierta · Nutritio y Complexus</div>
+      <div class="eyebrow" lang="en">Open scientific suite · Nutritio and Complexus</div>
+      <h1 lang="es">La <em>razón</em> al servicio <span class="a">del campo.</span></h1>
+      <h1 lang="en">Reason in the <em>service</em> <span class="a">of the land.</span></h1>
+      <p class="sub" lang="es">Aplicaciones gratuitas con la ciencia a la vista: para formular la ración más barata que sí cumple, y para comprender los sistemas complejos que sostienen al campo.</p>
+      <p class="sub" lang="en">Free apps with the science in plain sight: to formulate the cheapest ration that truly meets requirements, and to understand the complex systems that sustain the countryside.</p>
+      <div class="ctas">
+        <a class="btn pri" href="#carrusel"><span lang="es">Ver las aplicaciones</span><span lang="en">See the apps</span> →</a>
+        <a class="btn ghost" href="#formulador"><span lang="es">Probar el formulador</span><span lang="en">Try the formulator</span></a>
+      </div>
+      <div class="facts">
+        <span class="chip" lang="es">4 apps · 2 alas</span><span class="chip" lang="en">4 apps · 2 wings</span>
+        <span class="chip" lang="es">33 dietas publicadas reproducidas</span><span class="chip" lang="en">33 published diets reproduced</span>
+        <span class="chip" lang="es">Redes validadas con NetworkX</span><span class="chip" lang="en">Networks validated with NetworkX</span>
+      </div>
+      <p class="pista" lang="es">Pasa el cursor por la escena ✦</p><p class="pista" lang="en">Move your pointer across the scene ✦</p>
+    </div>
   </div>
 </section>
+
+<!-- ============================ CARRUSEL DE APLICACIONES ============================ -->
+<section class="carr-sec" id="carrusel">
+  <div class="wrap">
+    <div class="carr-head rev"><div class="eyebrow" lang="es">La suite</div><div class="eyebrow" lang="en">The suite</div>
+      <h2 lang="es">Cuatro aplicaciones, <em>un mismo telar</em>.</h2><h2 lang="en">Four apps, <em>one loom</em>.</h2></div>
+    <div class="carr" id="carr" tabindex="0" aria-roledescription="carrusel" aria-label="Aplicaciones de la suite Ratio">
+      <div class="pista-c" id="pistaC">
+        <article class="diapo" style="--c:var(--fav)" data-i="0">
+          <img src="img/ratiotelar.jpg" alt="Ratio Telar" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Complexus</span><h3>Ratio<i>Telar</i></h3>
+            <p lang="es">El saber agrícola local como sistema complejo adaptativo: red ponderada, calendario circular, sostenibilidad y 17 ODS, de la región a la localidad.</p>
+            <p lang="en">Local farming knowledge as a complex adaptive system: weighted network, circular calendar, sustainability and 17 SDGs, from region to locality.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23290104">DOI<b>10.5281/zenodo.23290104</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioTelar/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--bos)" data-i="1">
+          <img src="img/ratiobos.jpg" alt="RatioBos" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Bos</i></h3>
+            <p lang="es">Raciones de mínimo costo para bovinos de carne con NASEM (2016), clima de tu región, programa de engorda y huella ambiental.</p>
+            <p lang="en">Least-cost rations for beef cattle with NASEM (2016), your region’s climate, feeding program and footprint.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23197134">DOI<b>10.5281/zenodo.23197134</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioBos/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--avis)" data-i="2">
+          <img src="img/ratioavis.jpg" alt="RatioAvis" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Avis</i></h3>
+            <p lang="es">Dietas por fase para pollo de engorda con aminoácidos digestibles, ajustes por altitud y calor, y certificado de optimalidad.</p>
+            <p lang="en">Phase diets for broilers with digestible amino acids, altitude and heat adjustments, and an optimality certificate.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23123050">DOI<b>10.5281/zenodo.23123050</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioAvis/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--acc)" data-i="3">
+          <img src="img/formulaves.jpg" alt="FormulAves" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Formul<i>Aves</i></h3>
+            <p lang="es">La primera de la familia: formular, mezclar y costear la dieta del pollo paso a paso, con marco teórico en cada bloque.</p>
+            <p lang="en">The first of the family: formulate, mix and cost broiler diets step by step, with theory in every block.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23094626">DOI<b>10.5281/zenodo.23094626</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/FormulAves/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+      </div>
+      <button class="carr-btn ant" id="cAnt" aria-label="Anterior / Previous">‹</button>
+      <button class="carr-btn sig" id="cSig" aria-label="Siguiente / Next">›</button>
+    </div>
+    <div class="puntos" id="puntos"></div>
+  </div>
+</section>
+<!--/HERO_NUEVO-->
 
 <div class="principios">
   <div class="wrap">
@@ -1097,6 +1188,69 @@ $$('[data-copia]').forEach(b => b.addEventListener('click', () => { const t = $(
 let L0 = 'es'; try { L0 = localStorage.getItem('ratio_lang') || ((navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en'); } catch (_) {}
 const qL = new URLSearchParams(location.search).get('lang'); if (qL === 'es' || qL === 'en') L0 = qL;
 setLang(L0);
+
+/*HERO_JS*/
+/* ---------- Escena de portada: paralaje, inclinación del emblema y destellos en red (sistema complejo) ---------- */
+(function(){
+  const esc=document.getElementById('escena'), cv=document.getElementById('chispas'); if(!esc||!cv) return;
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx=cv.getContext('2d'); let W=0,H=0,dpr=1;
+  const ajusta=()=>{ dpr=Math.min(2,window.devicePixelRatio||1); W=esc.clientWidth; H=esc.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+  ajusta(); addEventListener('resize',ajusta);
+  const flt=[...esc.querySelectorAll('.flt')], emb=document.getElementById('emblema');
+  const P=[]; const COL=['127,240,216','180,140,255','255,211,110','255,154,184','131,196,172'];
+  let mx=-1e4, my=-1e4, activo=false, ultimo=0;
+  function nace(x,y,n){ for(let i=0;i<n;i++){ const a=Math.random()*Math.PI*2, v=0.4+Math.random()*1.6;
+    P.push({x:x+(Math.random()-.5)*30, y:y+(Math.random()-.5)*30, vx:Math.cos(a)*v, vy:Math.sin(a)*v, r:1.4+Math.random()*2.6, vida:1, c:COL[(Math.random()*COL.length)|0]}); }
+    if(P.length>170) P.splice(0,P.length-170); }
+  esc.addEventListener('pointermove',e=>{ const r=esc.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; activo=true;
+    const dx=(mx/W-.5), dy=(my/H-.5);
+    flt.forEach(f=>{ const p=+f.dataset.p; f.style.transform=`translate(${dx*p}px,${dy*p}px) rotate(${dx*p*.25}deg)`; });
+    if(emb) emb.style.transform=`perspective(900px) rotateY(${dx*14}deg) rotateX(${-dy*14}deg)`;
+    const t=performance.now(); if(!quieto && t-ultimo>28){ nace(mx,my,3); ultimo=t; } });
+  esc.addEventListener('pointerleave',()=>{ activo=false; mx=my=-1e4; flt.forEach(f=>f.style.transform=''); if(emb) emb.style.transform=''; });
+  esc.addEventListener('click',e=>{ const r=esc.getBoundingClientRect(); nace(e.clientX-r.left, e.clientY-r.top, 40); });
+  if(emb) emb.addEventListener('mouseenter',()=>{ const r=emb.getBoundingClientRect(), s=esc.getBoundingClientRect(); nace(r.left-s.left+r.width/2, r.top-s.top+r.height/2, 50); });
+  function cuadro(){ ctx.clearRect(0,0,W,H);
+    // núcleos fijos: las imágenes flotantes también son nodos del sistema
+    const nodos=flt.map(f=>{ const r=f.getBoundingClientRect(), s=esc.getBoundingClientRect(); return {x:r.left-s.left+r.width/2, y:r.top-s.top+r.height/2}; });
+    for(const p of P){ p.x+=p.vx; p.y+=p.vy; p.vx*=.985; p.vy*=.985; p.vy+=.006; p.vida-=.008; }
+    for(let i=P.length-1;i>=0;i--) if(P[i].vida<=0) P.splice(i,1);
+    // vínculos entre chispas cercanas (grafo de proximidad)
+    ctx.lineWidth=1;
+    for(let i=0;i<P.length;i++){ const a=P[i];
+      for(let j=i+1;j<P.length;j++){ const b=P[j], d=Math.hypot(a.x-b.x,a.y-b.y); if(d<95){ ctx.strokeStyle=`rgba(${a.c},${(1-d/95)*Math.min(a.vida,b.vida)*.7})`; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } }
+      for(const n of nodos){ const d=Math.hypot(a.x-n.x,a.y-n.y); if(d<170){ ctx.strokeStyle=`rgba(${a.c},${(1-d/170)*a.vida*.55})`; ctx.setLineDash([3,4]); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(n.x,n.y); ctx.stroke(); ctx.setLineDash([]); } } }
+    for(const p of P){ const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4); g.addColorStop(0,`rgba(${p.c},${p.vida})`); g.addColorStop(1,`rgba(${p.c},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=`rgba(255,255,255,${p.vida})`; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*.6,0,Math.PI*2); ctx.fill(); }
+    // destello en estrella junto al puntero
+    if(activo){ ctx.save(); ctx.translate(mx,my); ctx.rotate(performance.now()/600); ctx.strokeStyle='rgba(255,236,170,.75)'; ctx.lineWidth=1.4;
+      for(let k=0;k<4;k++){ ctx.rotate(Math.PI/4); ctx.beginPath(); ctx.moveTo(-9,0); ctx.lineTo(9,0); ctx.stroke(); } ctx.restore(); }
+    requestAnimationFrame(cuadro); }
+  if(!quieto) requestAnimationFrame(cuadro);
+})();
+/* ---------- Carrusel de aplicaciones (3D, automático, con flechas, puntos, teclado y deslizamiento) ---------- */
+(function(){
+  const carr=document.getElementById('carr'); if(!carr) return;
+  const d=[...carr.querySelectorAll('.diapo')], n=d.length, pts=document.getElementById('puntos'); let i=0, t=null;
+  pts.innerHTML=d.map((_,k)=>`<button aria-label="${k+1}"></button>`).join('');
+  const pon=()=>{ d.forEach((el,k)=>{ let o=((k-i)%n+n)%n; if(o>n/2) o-=n; const a=Math.abs(o);
+      el.style.transform=`translateX(${o*58}%) translateZ(${-a*260}px) rotateY(${-o*28}deg)`; el.style.opacity=a>1?0:a?0.55:1; el.style.filter=a?'blur(1.5px) saturate(.8)':'none'; el.style.zIndex=10-a; el.classList.toggle('act',a===0); el.setAttribute('aria-hidden',a?'true':'false'); });
+    [...pts.children].forEach((b,k)=>b.classList.toggle('on',k===i)); };
+  const ir=(k)=>{ i=((k%n)+n)%n; pon(); };
+  const auto=()=>{ clearInterval(t); t=setInterval(()=>ir(i+1),6000); };
+  document.getElementById('cAnt').onclick=()=>{ ir(i-1); auto(); }; document.getElementById('cSig').onclick=()=>{ ir(i+1); auto(); };
+  [...pts.children].forEach((b,k)=>b.onclick=()=>{ ir(k); auto(); });
+  d.forEach((el,k)=>el.addEventListener('click',e=>{ if(!el.classList.contains('act')){ e.preventDefault(); ir(k); auto(); } }));
+  carr.addEventListener('mouseenter',()=>clearInterval(t)); carr.addEventListener('mouseleave',auto);
+  carr.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft'){ ir(i-1); auto(); } if(e.key==='ArrowRight'){ ir(i+1); auto(); } });
+  let x0=null; carr.addEventListener('touchstart',e=>{ x0=e.touches[0].clientX; },{passive:true});
+  carr.addEventListener('touchend',e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){ ir(i+(dx<0?1:-1)); auto(); } x0=null; });
+  pon(); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) auto();
+})();
+
+/*/HERO_JS*/
 </script>
 </body>
 </html>

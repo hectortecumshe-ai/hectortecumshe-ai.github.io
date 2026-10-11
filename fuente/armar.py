@@ -52,11 +52,30 @@ def limpiar(obras):
     return obras
 
 
+def sprite():
+    """Ilustraciones vectoriales propias de la suite (Ratio Telar, RatioBos, RatioAvis) para la escena de portada."""
+    D = os.path.dirname(RAIZ)
+    fuentes = [(os.path.join(D, 'RatioTelar', 'src', '04_sprite_telar.svg'), ['c-maiz', 'c-uva', 'c-chayote', 'a-cerdo', 'a-abeja', 'i-telar']),
+               (os.path.join(D, 'RatioBos', 'src', '03_sprite_bos.svg'), ['i-steer']),
+               (os.path.join(D, 'RatioBos', 'src', 'ref_sprite_avis.svg'), ['i-chicken'])]
+    out = []
+    for ruta, ids in fuentes:
+        txt = open(ruta, encoding='utf-8').read()
+        for i in ids:
+            m = re.search(r'(?s)<symbol id="' + i + r'".*?</symbol>', txt)
+            if not m: raise SystemExit('Falta el símbolo ' + i)
+            out.append(m.group(0))
+    defs = ('<defs><linearGradient id="lg-corn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f7d25c"/><stop offset="1" stop-color="#e9ad2f"/></linearGradient>'
+            '<linearGradient id="lg-logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b5a"/><stop offset="1" stop-color="#173a31"/></linearGradient></defs>')
+    return '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">' + defs + '\n'.join(out) + '</svg>'
+
+
 if __name__ == '__main__':
     obras = descargar() if '--orcid' in sys.argv else json.load(open(os.path.join(AQUI, 'obras.json'), encoding='utf-8'))
     obras = limpiar(obras)
     pagina = open(os.path.join(AQUI, 'portal.html'), encoding='utf-8').read()
     assert '/*OBRAS*/[]' in pagina
+    pagina = pagina.replace('<!--SPRITE-->', sprite(), 1)
     pagina = pagina.replace('/*OBRAS*/[]', json.dumps(obras, ensure_ascii=False, separators=(',', ':')))
     open(os.path.join(RAIZ, 'index.html'), 'w', encoding='utf-8', newline='\n').write(pagina)
     print('index.html', round(len(pagina.encode('utf-8')) / 1024), 'KB ·', len(obras), 'obras')

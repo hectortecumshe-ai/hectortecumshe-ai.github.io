@@ -1,0 +1,45 @@
+/* ---------- Portada centrada con escena interactiva ---------- */
+.hero-c{padding:30px 0 30px;min-height:min(92vh,980px)}
+.hero-c .wrap{display:flex!important;flex-direction:column;align-items:center;text-align:center;gap:0;position:relative;z-index:2}
+#chispas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.esc-capas{position:absolute;inset:0;z-index:1;pointer-events:none}
+.esc-capas .flt{position:absolute;filter:drop-shadow(0 8px 14px rgba(0,0,0,.12));transition:transform .5s cubic-bezier(.2,.7,.2,1);animation:flotar2 7s ease-in-out infinite;--anim:running}
+.esc-capas .flt:nth-child(2n){animation-delay:-2.3s}.esc-capas .flt:nth-child(3n){animation-delay:-4.1s}
+@keyframes flotar2{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.emblema-c{width:min(520px,82vw);aspect-ratio:1;margin:-10px auto -40px;transition:transform .4s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+.emblema-c svg{width:100%;height:100%;overflow:visible}
+.emblema-c .anillos{transform-origin:280px 280px;animation:giro 80s linear infinite}
+.emblema-c .hexa{transform-origin:280px 280px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.emblema-c:hover .hexa{transform:scale(1.04)}
+.emblema-c .reflejo{animation:reflejo 5.5s ease-in-out infinite}
+@keyframes reflejo{0%,60%{transform:skewX(-18deg) translateX(0)}100%{transform:skewX(-18deg) translateX(820px)}}
+.hero-txt{max-width:900px}
+.hero-c h1{font-size:clamp(40px,5.8vw,82px);letter-spacing:-.025em;line-height:1.02;margin:12px 0 0}
+.hero-c p.sub{margin:18px auto 24px;max-width:46ch}
+.hero-c .ctas,.hero-c .facts{justify-content:center}
+.pista{font-size:13px;color:var(--muted);letter-spacing:.06em;margin-top:14px}
+/* carrusel */
+.carr-sec{padding:56px 0 30px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--oro) 7%,transparent))}
+.carr-head{text-align:center;margin-bottom:22px}
+.carr-head h2{font-size:clamp(30px,4vw,52px);margin:8px 0 0}
+.carr-head h2 em{font-style:italic;color:var(--pri)}
+.carr{position:relative;height:500px;perspective:1600px;outline:none}
+.pista-c{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.diapo{position:absolute;left:50%;top:0;width:min(760px,86vw);height:460px;margin-left:calc(min(760px,86vw) / -2);border-radius:22px;overflow:hidden;background:var(--paper);border:1px solid var(--line);
+  box-shadow:0 20px 60px rgba(0,0,0,.18);display:grid;grid-template-rows:56% 44%;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s,filter .8s;cursor:pointer}
+.diapo img{width:100%;height:100%;object-fit:cover;object-position:top;border-bottom:4px solid var(--c)}
+.diapo .d-txt{padding:16px 24px;text-align:left}
+.diapo h3{font-size:30px;margin:4px 0 6px}
+.diapo h3 i{color:var(--c);font-style:italic}
+.diapo p{margin:0;color:var(--muted);font-size:16px;line-height:1.45}
+.diapo .d-pie{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap}
+.ala-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--c);border-radius:999px;padding:3px 10px}
+.diapo.act{cursor:default}
+.carr-btn{position:absolute;top:44%;z-index:30;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:30px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.15);transition:transform .2s}
+.carr-btn:hover{transform:scale(1.1)}
+.carr-btn.ant{left:2%}.carr-btn.sig{right:2%}
+.puntos{display:flex;justify-content:center;gap:10px;margin-top:4px}
+.puntos button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:width .3s,background .3s}
+.puntos button.on{width:34px;border-radius:6px;background:var(--pri)}
+@media (max-width:760px){ .carr{height:540px} .diapo{height:510px;grid-template-rows:44% 56%} .esc-capas .flt{opacity:.55;transform:scale(.7)} .carr-btn{top:auto;bottom:-6px} }
+@media (prefers-reduced-motion:reduce){ .esc-capas .flt,.emblema-c .anillos,.emblema-c .reflejo{animation:none!important} .diapo{transition:none} }
