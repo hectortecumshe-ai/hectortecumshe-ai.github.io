@@ -1,5 +1,34 @@
 [
  {
+  "titulo": "Ratio Telar: el conocimiento agrícola local como sistema complejo adaptativo",
+  "tipo": "software",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23290103",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Díaz-José, Óscar",
+   "Barrera-Guzmán, Luis Ángel",
+   "Velázquez-Vázquez, Guadalupe"
+  ]
+ },
+ {
+  "titulo": "Advances and Challenges in the Mineral Nutrition of Passion Fruit (Passiflora edulis Sims) and Its Implications for Productivity and Quality: A Review",
+  "tipo": "journal-article",
+  "anio": "2026",
+  "revista": "Crops",
+  "doi": "10.3390/crops6050096",
+  "autores": [
+   "Barrera-Guzmán, Luis Ángel",
+   "Ramírez-Ojeda, Gabriela",
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Cadena-Iñiguez, Jorge",
+   "Cadena-Zamudio, Daniel Alejandro",
+   "Cadena-Zamudio, Jorge David",
+   "Tinoco-Rueda, Juan Ángel"
+  ]
+ },
+ {
   "titulo": "RatioBos: Guided least-cost diet formulation for beef cattle",
   "tipo": "software",
   "anio": "2026",
@@ -49,7 +78,7 @@
   ]
  },
  {
-  "titulo": "Diversidad morfológica de Vitis tiliifolia Humb. Bonpl. ex Roem. Schult. (Vitaceae) en poblaciones silvestres de cuatro localidades del estado de Veracruz, México",
+  "titulo": "Diversidad morfológica de Vitis tiliifolia Humb.  Bonpl. ex Roem.  Schult. (Vitaceae) en poblaciones silvestres de cuatro localidades del estado de Veracruz, México",
   "tipo": "journal-article",
   "anio": "2026",
   "revista": "Polibotánica",
@@ -238,7 +267,7 @@
   ]
  },
  {
-  "titulo": "Harvest Flight Synapse of Apis mellifera on the Vegetative Architecture of Cacti in the Sonoran Desert, Mexico",
+  "titulo": "Harvest Flight Synapse of &amp;lt;em&amp;gt;Apis mellifera&amp;lt;/em&amp;gt; on the Vegetative Architecture of Cacti in the Sonoran Desert, Mexico",
   "tipo": "conference-paper",
   "anio": "2021",
   "revista": "Proceedings of The 1st International Electronic Conference on Entomology",
