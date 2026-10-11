@@ -359,6 +359,8 @@ footer a{color:var(--muted)}
 @keyframes latir2{0%,100%{transform:scale(.92);opacity:.8}50%{transform:scale(1.08);opacity:1}}
 #redAristas line{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:tejer 1.6s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes tejer{to{stroke-dashoffset:0}}
+#etapa{transition:opacity .4s}
+#formaTex{transition:opacity .3s}
 #redNodos circle{transform-box:fill-box;transform-origin:center;animation:brotar2 .7s cubic-bezier(.2,.7,.2,1) both}
 @keyframes brotar2{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}
 .hero-txt{max-width:900px}
@@ -532,19 +534,22 @@ footer a{color:var(--muted)}
           </linearGradient>
           <filter id="resplandor" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <circle cx="280" cy="280" r="150" fill="url(#nucleo)" class="latido"/>
+        <circle cx="280" cy="270" r="160" fill="url(#nucleo)" class="latido" opacity=".55"/>
         <g id="redAristas"></g>
         <g id="redPulsos"></g>
         <g id="redNodos"></g>
+        <linearGradient id="gForma" x1="0" y1="0" x2="0" y2="1"><stop id="gF0" offset="0" stop-color="#9aa39b"/><stop id="gF1" offset="1" stop-color="#5e665f"/></linearGradient>
+        <g id="formaG"><path id="forma" fill="url(#gForma)" stroke="rgba(255,255,255,.55)" stroke-width="2" d=""/><path id="formaTex" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.6" d=""/></g>
         <g class="ht-emerge" filter="url(#resplandor)">
-          <g transform="translate(193 186) scale(2.8)">
+          <g transform="translate(193 176) scale(2.8)" stroke="rgba(255,255,255,.9)" stroke-width=".7" paint-order="stroke">
             <rect x="11" y="27" width="7" height="25" rx="2" fill="url(#iri)"/><rect x="23" y="21" width="7" height="31" rx="2" fill="url(#iri)"/><rect x="11" y="35" width="19" height="5" rx="1.5" fill="url(#iri)"/>
             <rect x="39" y="25" width="7" height="27" rx="2" fill="url(#iri)"/><rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="url(#iri)"/>
             <path d="M42.5 20.5V9" stroke="url(#iri)" stroke-width="1.6" stroke-linecap="round"/>
             <g fill="url(#iri)"><ellipse cx="40.2" cy="15.6" rx="1.5" ry="2.8" transform="rotate(-32 40.2 15.6)"/><ellipse cx="44.8" cy="15.6" rx="1.5" ry="2.8" transform="rotate(32 44.8 15.6)"/><ellipse cx="40.4" cy="11.2" rx="1.4" ry="2.5" transform="rotate(-32 40.4 11.2)"/><ellipse cx="44.6" cy="11.2" rx="1.4" ry="2.5" transform="rotate(32 44.6 11.2)"/><ellipse cx="42.5" cy="7.4" rx="1.4" ry="2.4"/></g>
           </g>
-          <text x="280" y="370" text-anchor="middle" font-family="var(--sans)" font-size="18" font-weight="700" letter-spacing="9" fill="url(#iri)">RATIO</text>
+          <text x="280" y="420" text-anchor="middle" font-family="var(--sans)" font-size="18" font-weight="700" letter-spacing="9" fill="url(#iri)">RATIO</text>
         </g>
+        <text id="etapa" x="280" y="446" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="17" fill="var(--muted)"></text>
       </svg>
     </div>
     <div class="hero-txt rev">
@@ -1367,6 +1372,52 @@ setLang(L0);
       circ[i].setAttribute('cx',n.x+dx); circ[i].setAttribute('cy',n.y+dy); circ[i].setAttribute('r',n.r*(1+f*1.4)); circ[i].setAttribute('fill-opacity',.85+f*.15); });
     requestAnimationFrame(cuadro); }
   requestAnimationFrame(cuadro);
+})();
+/* ---------- Metamorfosis del centro: roca → hoja de vid → cazahuate → suelo rojo de Sonora → agua → cactus → animal → sistema caórdico ---------- */
+(function(){
+  const f=document.getElementById('forma'); if(!f) return; const tex=document.getElementById('formaTex'), et=document.getElementById('etapa'), g0=document.getElementById('gF0'), g1=document.getElementById('gF1');
+  const CX=280, CY=262, R=128, M=220, quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ES=document.documentElement.lang!=='en';
+  const circ=(x,y,cx,cy,r)=>(x-cx)**2+(y-cy)**2<r*r, rect=(x,y,a,b,c,d)=>x>=a&&x<=b&&y>=c&&y<=d;
+  // cada forma: radio polar r(θ) (θ medido desde la derecha, y hacia abajo), escala 1 = R píxeles
+  const polar=(fn)=>Array.from({length:M},(_,k)=>fn(2*Math.PI*k/M));
+  const rayo=(dentro)=>polar(t=>{ let ult=0.05; for(let r=0;r<=1.25;r+=0.006){ if(dentro(r*Math.cos(t), r*Math.sin(t))) ult=r; } return ult; });
+  const FORMAS=[
+    {n:['roca amorfa','amorphous rock'], c:['#a7aea6','#5e665f'], r:polar(t=>0.72+0.1*Math.sin(3*t+1)+0.07*Math.sin(7*t+2)+0.04*Math.sin(11*t+.5)), tx:'grietas'},
+    {n:['hoja de vid','vine leaf'], c:['#8cc063','#3f6b2a'], r:polar(t=>{ const u=t+Math.PI/2; let r=0.42+0.48*Math.pow(Math.abs(Math.cos(2.5*u)),0.7)+0.025*Math.sin(46*t); const d=Math.abs(((t-Math.PI/2+Math.PI)%(2*Math.PI))-Math.PI); if(d<0.32) r=Math.min(r,0.2+d*1.2); return r; }), tx:'nervios'},
+    {n:['árbol de cazahuate','cazahuate tree'], c:['#d8e6c2','#6b8f4e'], r:rayo((x,y)=>circ(x,y,0,-0.32,0.45)||circ(x,y,-0.42,-0.12,0.32)||circ(x,y,0.42,-0.12,0.32)||circ(x,y,-0.22,-0.66,0.3)||circ(x,y,0.24,-0.64,0.28)||rect(x,y,-0.09,0.09,-0.1,0.92)||(y>0.1&&y<0.35&&Math.abs(x-(y-0.1)*0.9)<0.06)), tx:'flores'},
+    {n:['suelo rojo de Sonora','Sonoran red soil'], c:['#d0683c','#7a2e1c'], r:rayo((x,y)=>Math.abs(x)<0.95&&y<0.62&&y>-0.32+0.07*Math.sin(7*x)+0.05*Math.sin(17*x+1)), tx:'estratos'},
+    {n:['agua','water'], c:['#8fd3f0','#2d78b0'], r:rayo((x,y)=>circ(x,y,0,0.28,0.56)||(y<0.28&&y>-0.9&&Math.abs(x)<0.56*Math.pow((y+0.9)/1.18,1.35))), tx:'brillo'},
+    {n:['cactus (saguaro)','cactus (saguaro)'], c:['#7fb05a','#2f5d2a'], r:rayo((x,y)=>(rect(x,y,-0.17,0.17,-0.78,0.92)||circ(x,y,0,-0.78,0.17))||rect(x,y,-0.62,-0.42,-0.5,0.16)||circ(x,y,-0.52,-0.5,0.1)||rect(x,y,-0.62,-0.17,0.02,0.18)||rect(x,y,0.42,0.6,-0.66,-0.04)||circ(x,y,0.51,-0.66,0.09)||rect(x,y,0.17,0.6,-0.16,0.0)), tx:'costillas'},
+    {n:['animal (bovino)','animal (cattle)'], c:['#b0703e','#5a2e1c'], r:rayo((x,y)=>((x+0.08)/0.62)**2+(y/0.33)**2<1||circ(x,y,0.68,-0.22,0.2)||rect(x,y,0.45,0.66,-0.3,0.0)||rect(x,y,-0.55,-0.44,0.15,0.74)||rect(x,y,-0.32,-0.21,0.15,0.74)||rect(x,y,0.18,0.29,0.15,0.74)||rect(x,y,0.38,0.49,0.15,0.74)||rect(x,y,0.62,0.72,-0.5,-0.36)||(x<-0.66&&x>-0.82&&Math.abs(y-(x+0.66)*-1.4-0.05)<0.04)), tx:''},
+    {n:['sistema caórdico','chaordic system'], c:['#9b6cff','#3fd0b0'], caos:true, tx:''}
+  ];
+  const caos=(t)=>polar(a=>0.62+0.16*Math.sin(5*a+t)+0.11*Math.sin(13*a-1.7*t)+0.07*Math.sin(29*a+2.3*t)+0.05*Math.sin(41*a-3.1*t));
+  const camino=(r)=>{ let d=''; for(let k=0;k<M;k++){ const a=2*Math.PI*k/M, x=CX+R*r[k]*Math.cos(a), y=CY+R*r[k]*Math.sin(a); d+=(k?'L':'M')+x.toFixed(1)+','+y.toFixed(1); } return d+'Z'; };
+  const mezcla=(a,b,u)=>a.map((v,k)=>v+(b[k]-v)*u);
+  const hex=(h)=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)), col=(a,b,u)=>{ const A=hex(a),B=hex(b); return 'rgb('+A.map((v,i)=>Math.round(v+(B[i]-v)*u)).join(',')+')'; };
+  const facil=(u)=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+  const textura=(i,r)=>{ const X=(rr,a)=>(CX+R*rr*Math.cos(a)).toFixed(1), Y=(rr,a)=>(CY+R*rr*Math.sin(a)).toFixed(1);
+    if(i===0) return `M${X(.1,-2.4)},${Y(.1,-2.4)}L${X(.35,-2.1)},${Y(.35,-2.1)}L${X(.5,-2.5)},${Y(.5,-2.5)}M${X(.2,.6)},${Y(.2,.6)}L${X(.5,.9)},${Y(.5,.9)}`;
+    if(i===1){ let d=''; for(const a of [-Math.PI/2,-Math.PI/2-1.26,-Math.PI/2+1.26,-Math.PI/2-2.4,-Math.PI/2+2.4]) d+=`M${CX},${CY+R*.18}L${X(.75,a)},${Y(.75,a)}`; return d; }
+    if(i===3) return [-.05,.15,.35].map(y=>`M${CX-R*.9},${CY+R*y}C${CX-R*.3},${CY+R*(y+.06)} ${CX+R*.3},${CY+R*(y-.06)} ${CX+R*.9},${CY+R*y}`).join('');
+    if(i===4) return `M${CX-R*.25},${CY+R*.15}C${CX-R*.3},${CY+R*.35} ${CX-R*.18},${CY+R*.55} ${CX},${CY+R*.6}`;
+    if(i===5) return `M${CX},${CY-R*.7}L${CX},${CY+R*.85}M${CX-R*.08},${CY-R*.6}L${CX-R*.08},${CY+R*.85}M${CX+R*.08},${CY-R*.6}L${CX+R*.08},${CY+R*.85}`;
+    if(i===2){ let d=''; [[0,-.5],[-.3,-.2],[.32,-.25],[-.15,-.7],[.2,-.75],[.05,-.2]].forEach(([x,y])=>{ d+=`M${CX+R*x-4},${CY+R*y}a4,4 0 1,0 8,0a4,4 0 1,0 -8,0`; }); return d; }
+    return ''; };
+  let i=0, t0=performance.now(); const QUIETO=2600, CAMBIO=1500;
+  const pinta=(r,ci,cj,u)=>{ f.setAttribute('d',camino(r)); g0.setAttribute('stop-color',col(FORMAS[ci].c[0],FORMAS[cj].c[0],u)); g1.setAttribute('stop-color',col(FORMAS[ci].c[1],FORMAS[cj].c[1],u)); };
+  const rad=(k,t)=>FORMAS[k].caos?caos(t/700):FORMAS[k].r;
+  function etiqueta(k){ et.textContent=FORMAS[k].n[document.documentElement.lang==='en'?1:0]; et.style.opacity=1; }
+  function cuadro(t){ const dt=t-t0, j=(i+1)%FORMAS.length;
+    if(dt<QUIETO){ pinta(rad(i,t),i,i,0); tex.setAttribute('d',textura(i)); tex.style.opacity=1; }
+    else if(dt<QUIETO+CAMBIO){ const u=facil((dt-QUIETO)/CAMBIO); pinta(mezcla(rad(i,t),rad(j,t),u),i,j,u); tex.style.opacity=1-u; if(u>.5) etiqueta(j); }
+    else { i=j; t0=t; etiqueta(i); }
+    requestAnimationFrame(cuadro); }
+  etiqueta(0);
+  if(quieto){ pinta(FORMAS[1].r,1,1,0); tex.setAttribute('d',textura(1)); etiqueta(1); return; }
+  requestAnimationFrame(cuadro);
+  document.getElementById('emblema').addEventListener('click',()=>{ t0=performance.now()-QUIETO; });
 })();
 /*/HERO_JS*/
 </script>
