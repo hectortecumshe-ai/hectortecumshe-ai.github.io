@@ -194,8 +194,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .app ul{margin:2px 0 0;padding-left:18px;font:14px/1.55 var(--sans);color:var(--muted)}
 .app .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
 .app .links{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 22px}
-.app .doi,.diapo .doi{font:600 12px/1 var(--sans);text-decoration:none;color:var(--paper);background:#24425e;padding:6px 9px;border-radius:6px}
-.app .doi b,.diapo .doi b{background:#3b6a97;margin:-6px -9px -6px 7px;padding:6px 8px;border-radius:0 6px 6px 0;display:inline-block}
+.app .doi,.diapo .doi,.manual .doi{font:600 12px/1 var(--sans);text-decoration:none;color:var(--paper);background:#24425e;padding:6px 9px;border-radius:6px}
+.app .doi b,.diapo .doi b,.manual .doi b{background:#3b6a97;margin:-6px -9px -6px 7px;padding:6px 8px;border-radius:0 6px 6px 0;display:inline-block}
 .pronto{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
 .pronto div{padding:18px 20px;border:1px dashed var(--line2);border-radius:var(--r);color:var(--muted);font-size:16px}
 .pronto b{color:var(--text)}
@@ -216,7 +216,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .manual::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c)}
 .manual h4{font-size:21px}
 .manual p{margin:0;font:14px/1.5 var(--sans);color:var(--muted);flex:1}
-.manual .acc{display:flex;gap:8px;flex-wrap:wrap}
+.manual .acc{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.manual .acc .doi{margin-left:auto}
 
 /* ---------- publicaciones ---------- */
 .filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:22px}
@@ -594,21 +595,28 @@ footer a{color:var(--muted)}
             <p lang="en">National study of local maize knowledge: 64 races, a baseline questionnaire each locality answers and an atlas of Mexico that combines files without a server.</p>
             <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23432657">DOI<b>10.5281/zenodo.23432657</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
         </article>
-        <article class="diapo" style="--c:var(--bos)" data-i="2">
+        <article class="diapo" style="--c:var(--fav)" data-i="2">
+          <img src="img/ratiovina.jpg" alt="Ratio Viña" loading="lazy">
+          <div class="d-txt"><span class="ala-tag">Complexus</span><h3>Ratio<i>Viña</i></h3>
+            <p lang="es">El conocimiento local de la vid en México: clima vitícola (Winkler, Huglin, frescor nocturno), historial del viñedo, regeneración, riesgo y un atlas nacional sin servidor.</p>
+            <p lang="en">Local grapevine knowledge in Mexico: viticultural climate (Winkler, Huglin, cool nights), vineyard history, regeneration, risk and a serverless national atlas.</p>
+            <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23439306">DOI<b>10.5281/zenodo.23439306</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioVina/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
+        </article>
+        <article class="diapo" style="--c:var(--bos)" data-i="3">
           <img src="img/ratiobos.jpg" alt="RatioBos" loading="lazy">
           <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Bos</i></h3>
             <p lang="es">Raciones de mínimo costo para bovinos de carne con NASEM (2016), clima de tu región, programa de engorda y huella ambiental.</p>
             <p lang="en">Least-cost rations for beef cattle with NASEM (2016), your region’s climate, feeding program and footprint.</p>
             <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23197134">DOI<b>10.5281/zenodo.23197134</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioBos/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
         </article>
-        <article class="diapo" style="--c:var(--avis)" data-i="3">
+        <article class="diapo" style="--c:var(--avis)" data-i="4">
           <img src="img/ratioavis.jpg" alt="RatioAvis" loading="lazy">
           <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Ratio<i>Avis</i></h3>
             <p lang="es">Dietas por fase para pollo de engorda con aminoácidos digestibles, ajustes por altitud y calor, y certificado de optimalidad.</p>
             <p lang="en">Phase diets for broilers with digestible amino acids, altitude and heat adjustments, and an optimality certificate.</p>
             <div class="d-pie"><a class="doi" href="https://doi.org/10.5281/zenodo.23123050">DOI<b>10.5281/zenodo.23123050</b></a><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioAvis/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a></div></div>
         </article>
-        <article class="diapo" style="--c:var(--acc)" data-i="4">
+        <article class="diapo" style="--c:var(--acc)" data-i="5">
           <img src="img/formulaves.jpg" alt="FormulAves" loading="lazy">
           <div class="d-txt"><span class="ala-tag">Nutritio</span><h3>Formul<i>Aves</i></h3>
             <p lang="es">La primera de la familia: formular, mezclar y costear la dieta del pollo paso a paso, con marco teórico en cada bloque.</p>
@@ -653,7 +661,7 @@ footer a{color:var(--muted)}
         <p class="lema" lang="es">Lo que está tejido junto.</p><p class="lema" lang="en">That which is woven together.</p>
         <p lang="es">Aplicaciones para estudiar sistemas complejos adaptativos: agentes que interactúan, aprenden y hacen emerger el comportamiento del todo.</p>
         <p lang="en">Apps to study complex adaptive systems: agents that interact, learn and give rise to the behaviour of the whole.</p>
-        <div class="ala-pie"><span class="chip">Ratio Telar</span><span class="chip">Ratio Milpa</span><span class="chip" lang="es">+ Ratio Viña</span><span class="chip" lang="en">+ Ratio Viña</span></div></div>
+        <div class="ala-pie"><span class="chip">Ratio Telar</span><span class="chip">Ratio Milpa</span><span class="chip">Ratio Viña</span></div></div>
     </a>
   </div>
 </section>
@@ -973,6 +981,18 @@ footer a{color:var(--muted)}
         </div>
         <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/RatioMilpa">GitHub</a></div>
       </article>
+      <article class="app card rev" style="--c:var(--fav)">
+        <div class="shot"><img src="img/ratiovina.jpg" alt="Ratio Viña" loading="lazy"><span class="especie" lang="es">Estudio nacional de la vid</span><span class="especie" lang="en">National grapevine study</span></div>
+        <div class="in">
+          <h3>Ratio<i>Viña</i></h3>
+          <p lang="es">El conocimiento local de la vid en México como sistema complejo adaptativo, con índices de regeneración y riesgo, viñedo por viñedo y con un mismo cuestionario.</p>
+          <p lang="en">Local grapevine knowledge in Mexico as a complex adaptive system, with regeneration and risk indices, vineyard by vineyard and with the same questionnaire.</p>
+          <ul lang="es"><li>Destino, variedad, portainjerto, conducción e historial del viñedo: plantación y registro de podas; arranca en blanco</li><li>Clima vitícola: grados día de Winkler, índice de Huglin y frescor nocturno, con ayuda que explica cómo se obtienen</li><li>Cuestionario base de 31 pasos y 52 actividades por etapas BBCH, red, sostenibilidad, prospectiva y atlas nacional sin servidor</li></ul>
+          <ul lang="en"><li>Use, variety, rootstock, training system and vineyard history: planting and pruning records; starts blank</li><li>Viticultural climate: Winkler degree-days, Huglin index and cool-night index, with help on how they are obtained</li><li>Baseline questionnaire of 31 steps and 52 activities by BBCH stages, network, sustainability, outlook and serverless national atlas</li></ul>
+          <div class="meta"><a class="doi" href="https://doi.org/10.5281/zenodo.23439306">DOI<b>10.5281/zenodo.23439306</b></a><span class="chip">v0.1.0 · ES/EN</span><span class="chip">Mojica-Zárate et al.</span></div>
+        </div>
+        <div class="links"><a class="btn pri sm" href="https://hectortecumshe-ai.github.io/RatioVina/"><span lang="es">Abrir</span><span lang="en">Open</span> →</a><a class="btn ghost sm" href="https://github.com/hectortecumshe-ai/RatioVina">GitHub</a></div>
+      </article>
     </div>
   </div>
 </section>
@@ -990,6 +1010,10 @@ footer a{color:var(--muted)}
       <div class="manual card rev" style="--c:var(--bos)"><div class="eyebrow" style="color:var(--bos)">RatioBos</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">NASEM en ecuaciones, punto fijo energía–consumo, frontera costo–huella y validación. 30 páginas.</p><p lang="en">NASEM in equations, energy–intake fixed point, cost–footprint frontier and validation. 29 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioBos/instructivo/RatioBos-Scientist-Guide.pdf">PDF EN</a></div></div>
       <div class="manual card rev" style="--c:var(--avis)"><div class="eyebrow" style="color:var(--avis)">RatioAvis</div><h4 lang="es">Instructivo del Productor</h4><h4 lang="en">Producer Guide</h4><p lang="es">10,000 pollos Ross 308 a 2,200 m de altitud: de la genética a la mezcladora.</p><p lang="en">10,000 Ross 308 birds at 2,200 m altitude: from genetics to the mixer.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-productor.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Instructivo-Productor.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Producer-Guide.pdf">PDF EN</a></div></div>
       <div class="manual card rev" style="--c:var(--avis)"><div class="eyebrow" style="color:var(--avis)">RatioAvis</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">Del modelo lineal al certificado de optimalidad, con el guion de verificación en SciPy.</p><p lang="en">From the linear model to the optimality certificate, with the SciPy verification script.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioAvis/instructivo/RatioAvis-Scientist-Guide.pdf">PDF EN</a></div></div>
+      <div class="manual card rev" style="--c:var(--fav)"><div class="eyebrow" style="color:var(--fav)">Ratio Telar</div><h4 lang="es">Instructivo del Productor</h4><h4 lang="en">Producer Guide</h4><p lang="es">El maíz criollo de Calpan, Puebla, bloque por bloque, con guía de entrevista y hojas de campo. 70 páginas.</p><p lang="en">Calpan, Puebla landrace maize block by block, with an interview guide and field sheets. 70 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo-productor.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo/RatioTelar-Instructivo-Productor.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo/RatioTelar-Producer-Guide.pdf">PDF EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.23433185">DOI<b>10.5281/zenodo.23433185</b></a></div></div>
+      <div class="manual card rev" style="--c:var(--fav)"><div class="eyebrow" style="color:var(--fav)">Ratio Telar</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">Red ponderada, cladograma, sostenibilidad, regeneración, riesgo y escenarios en ecuaciones, con validación. 33 páginas.</p><p lang="en">Weighted network, cladogram, sustainability, regeneration, risk and scenarios as equations, with validation. 33 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo/RatioTelar-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioTelar/instructivo/RatioTelar-Scientist-Guide.pdf">PDF EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.23433187">DOI<b>10.5281/zenodo.23433187</b></a></div></div>
+      <div class="manual card rev" style="--c:var(--fav)"><div class="eyebrow" style="color:var(--fav)">Ratio Milpa</div><h4 lang="es">Instructivo del Productor</h4><h4 lang="en">Producer Guide</h4><p lang="es">Documentar una localidad con el cuestionario base y juntar muchas en el atlas nacional. 68 páginas.</p><p lang="en">Documenting a locality with the baseline questionnaire and combining many in the national atlas. 68 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo-productor.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo/RatioMilpa-Instructivo-Productor.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo/RatioMilpa-Producer-Guide.pdf">PDF EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.23433189">DOI<b>10.5281/zenodo.23433189</b></a></div></div>
+      <div class="manual card rev" style="--c:var(--fav)"><div class="eyebrow" style="color:var(--fav)">Ratio Milpa</div><h4 lang="es">Instructivo del Científico</h4><h4 lang="en">Scientist Guide</h4><p lang="es">Modelo de datos, red, índices y la agregación del atlas nacional en ecuaciones, con validación. 34 páginas.</p><p lang="en">Data model, network, indices and national-atlas aggregation as equations, with validation. 34 pages.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo-cientifico.html">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo/RatioMilpa-Instructivo-Cientifico.pdf">PDF ES</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/RatioMilpa/instructivo/RatioMilpa-Scientist-Guide.pdf">PDF EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.23433192">DOI<b>10.5281/zenodo.23433192</b></a></div></div>
     </div>
   </div>
 </section>
@@ -1061,6 +1085,7 @@ footer a{color:var(--muted)}
       <div class="cita card rev" style="--c:var(--avis)"><div><div class="c">RatioAvis</div><p id="c2">Mojica-Zárate, H. T., Barrera-Guzmán, L. A., &amp; Velázquez-Vázquez, G. (2026). <i>RatioAvis: Guided least-cost diet formulation for broiler chickens</i> (Version 1.1.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23123050</p></div><button class="btn ghost sm" data-copia="c2"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
       <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">Ratio Telar</div><p id="c4">Mojica-Zárate, H. T., Díaz-José, O., Barrera-Guzmán, L. A., &amp; Velázquez-Vázquez, G. (2026). <i>Ratio Telar: el conocimiento agrícola local como sistema complejo adaptativo</i> (Versión 0.5.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23429007</p></div><button class="btn ghost sm" data-copia="c4"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
       <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">Ratio Milpa</div><p id="c5">Mojica-Zárate, H. T., &amp; Díaz-José, O. (2026). <i>Ratio Milpa: el conocimiento local del maíz en México como sistema complejo adaptativo</i> (Versión 0.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23432657</p></div><button class="btn ghost sm" data-copia="c5"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+      <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">Ratio Viña</div><p id="c6">Mojica-Zárate, H. T., Díaz-José, O., Sánchez-Moreno, E. A., &amp; Alejo-Bello, S. (2026). <i>Ratio Viña: el conocimiento local de la vid en México como sistema complejo adaptativo, con índices de regeneración y riesgo</i> (Versión 0.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23439306</p></div><button class="btn ghost sm" data-copia="c6"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
       <div class="cita card rev" style="--c:var(--fav)"><div><div class="c">FormulAves</div><p id="c3">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>FormulAves: Plataforma guiada para la formulación de dietas de mínimo costo para pollo de engorda</i> (Versión 2.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23094626</p></div><button class="btn ghost sm" data-copia="c3"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
     </div>
   </div>
@@ -1072,7 +1097,7 @@ footer a{color:var(--muted)}
     <div><b>Ratio</b> · <span lang="es">Nutrición animal de precisión</span><span lang="en">Precision animal nutrition</span><br>
       <span lang="es">Herramientas de apoyo: los resultados deben revisarse con un profesional en nutrición animal.</span><span lang="en">Decision-support tools: results should be reviewed by a qualified animal nutritionist.</span><br>
       © 2026 Héctor Tecumshé Mojica-Zárate · <span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
-    <div><b lang="es">Apps</b><b lang="en">Apps</b><br><a href="https://hectortecumshe-ai.github.io/RatioBos/">RatioBos</a> · <a href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis</a> · <a href="https://hectortecumshe-ai.github.io/FormulAves/">FormulAves</a> · <a href="https://hectortecumshe-ai.github.io/RatioTelar/">Ratio Telar</a> · <a href="https://hectortecumshe-ai.github.io/RatioMilpa/">Ratio Milpa</a></div>
+    <div><b lang="es">Apps</b><b lang="en">Apps</b><br><a href="https://hectortecumshe-ai.github.io/RatioBos/">RatioBos</a> · <a href="https://hectortecumshe-ai.github.io/RatioAvis/">RatioAvis</a> · <a href="https://hectortecumshe-ai.github.io/FormulAves/">FormulAves</a> · <a href="https://hectortecumshe-ai.github.io/RatioTelar/">Ratio Telar</a> · <a href="https://hectortecumshe-ai.github.io/RatioMilpa/">Ratio Milpa</a> · <a href="https://hectortecumshe-ai.github.io/RatioVina/">Ratio Viña</a></div>
     <div><b lang="es">Esta página</b><b lang="en">This page</b><br><span lang="es">Sin cookies, sin rastreadores y sin recursos de terceros. Actualizada en octubre de 2026.</span><span lang="en">No cookies, no trackers and no third-party resources. Updated October 2026.</span></div>
   </div>
 </footer>
