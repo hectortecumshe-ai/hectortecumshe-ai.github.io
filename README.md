@@ -21,10 +21,10 @@ Portal de la suite **Ratio**, con dos alas:
 
 | Obra | Enlaces | DOI |
 |---|---|---|
-| Antología de recorridos SOMEXA 2026 (108 p.) | [HTML](https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/) · [PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/Antologia-recorridos-SOMEXA-2026.pdf) | [10.5281/zenodo.23845759](https://doi.org/10.5281/zenodo.23845759) |
-| Ruta 1 · Zonas tropicales de agricultura agroecológica | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-1/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-1-itinerario.pdf) | [10.5281/zenodo.23787066](https://doi.org/10.5281/zenodo.23787066) |
-| Ruta 2 · Ruta de Altura | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-2/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-2-itinerario.pdf) | [10.5281/zenodo.23787064](https://doi.org/10.5281/zenodo.23787064) |
-| Ruta 3 · Ruta del Café y el Chayote | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-3/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-3-itinerario.pdf) | [10.5281/zenodo.23843072](https://doi.org/10.5281/zenodo.23843072) |
+| Antología de recorridos SOMEXA 2026 (108 p.) | [HTML](https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/) · [PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/Antologia-recorridos-SOMEXA-2026.pdf) | [10.5281/zenodo.23847722](https://doi.org/10.5281/zenodo.23847722) |
+| Ruta 1 · Zonas tropicales de agricultura agroecológica | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-1/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-1-itinerario.pdf) | [10.5281/zenodo.23847716](https://doi.org/10.5281/zenodo.23847716) |
+| Ruta 2 · Ruta de Altura | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-2/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-2-itinerario.pdf) | [10.5281/zenodo.23847717](https://doi.org/10.5281/zenodo.23847717) |
+| Ruta 3 · Ruta del Café y el Chayote | [App](https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-3/) · [Itinerario PDF](https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-3-itinerario.pdf) | [10.5281/zenodo.23847718](https://doi.org/10.5281/zenodo.23847718) |
 | Huatusco · Mapas del Congreso | [CAR](https://hectortecumshe-ai.github.io/recorridos-somexa/mapas/#car) · [Huatusco](https://hectortecumshe-ai.github.io/recorridos-somexa/mapas/#huatusco) | — |
 | Viaje de Estudio Integrador I · Propedéutico grupo 21 | [App](https://hectortecumshe-ai.github.io/viajes-de-estudio-propedeutico/2026-grupo-21/) | [10.5281/zenodo.23791654](https://doi.org/10.5281/zenodo.23791654) |
 
