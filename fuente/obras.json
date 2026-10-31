@@ -1,5 +1,71 @@
 [
  {
+  "titulo": "Antología de recorridos SOMEXA 2026: monografías e información socioambiental y agroecológica de las localidades visitadas desde un enfoque de Sistemas Complejos Adaptativos en la Agroecología",
+  "tipo": "book",
+  "anio": "2026",
+  "revista": "Universidad Autónoma Chapingo · Zenodo",
+  "doi": "10.5281/zenodo.23845759",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Díaz-José, Óscar",
+   "Alejo-Bello, Sergio",
+   "Partida-Sedas, José Gervasio",
+   "Rojas-Reyes, José Orlando"
+  ]
+ },
+ {
+  "titulo": "Ruta del Café y el Chayote: guía de campo para celular del recorrido SOMEXA 2026, Ruta 3",
+  "tipo": "software",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23843072",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Díaz-José, Óscar",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando"
+  ]
+ },
+ {
+  "titulo": "Ruta de Altura: guía de campo para celular del recorrido SOMEXA 2026, Ruta 2",
+  "tipo": "software",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23787064",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Díaz-José, Óscar",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando"
+  ]
+ },
+ {
+  "titulo": "Recorrido por zonas tropicales de agricultura agroecológica: guía de campo para celular del recorrido SOMEXA 2026, Ruta 1",
+  "tipo": "software",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23787066",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando",
+   "Díaz-José, Óscar"
+  ]
+ },
+ {
+  "titulo": "Viaje Generacional de Estudios: guía para celular del Viaje de Estudio Integrador I, Propedéutico grupo 21, 2026",
+  "tipo": "software",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23791654",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé"
+  ]
+ },
+ {
   "titulo": "Ratio Telar: el conocimiento agrícola local como sistema complejo adaptativo",
   "tipo": "software",
   "anio": "2026",

@@ -212,6 +212,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 
 /* ---------- manuales ---------- */
 .manuales{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.manuales.campo{grid-template-columns:repeat(3,1fr)}
 .manual{padding:22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
 .manual::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c)}
 .manual h4{font-size:21px}
@@ -315,7 +316,7 @@ footer a{color:var(--muted)}
   .historia:nth-child(even) .lienzo{order:0}
   .lp .graf{border-right:0;border-bottom:1px solid var(--line)}
   .apps{grid-template-columns:1fr 1fr}
-  .manuales,.kpis{grid-template-columns:1fr 1fr}
+  .manuales,.manuales.campo,.kpis{grid-template-columns:1fr 1fr}
   .principios .wrap{grid-template-columns:repeat(3,1fr)}
   .principios div:nth-child(3){border-right:0}
   .principios div:nth-child(-n+3){border-bottom:1px solid var(--line)}
@@ -325,7 +326,7 @@ footer a{color:var(--muted)}
   body{font-size:17px}
   .wrap{padding:0 16px}
   .hero{padding:40px 0 20px}
-  .apps,.manuales,.pronto{grid-template-columns:1fr}
+  .apps,.manuales,.manuales.campo,.pronto{grid-template-columns:1fr}
   .kpis{grid-template-columns:1fr 1fr}
   .kpi b{font-size:36px}
   .sec-head{grid-template-columns:1fr}
@@ -411,6 +412,7 @@ footer a{color:var(--muted)}
       <a href="#nutritio">Nutritio</a>
       <a href="#complexus">Complexus</a>
       <a href="#manuales"><span lang="es">Manuales</span><span lang="en">Guides</span></a>
+      <a href="#campo"><span lang="es">Campo</span><span lang="en">Field</span></a>
       <a href="#publicaciones"><span lang="es">Publicaciones</span><span lang="en">Publications</span></a>
       <a href="#autores"><span lang="es">Autores</span><span lang="en">Authors</span></a>
     </nav>
@@ -934,10 +936,29 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<!-- ============================ CAMPO ============================ -->
+<section class="sec" id="campo">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="num">07</span>
+      <div class="eyebrow" lang="es">Recorridos y viajes de estudio</div><div class="eyebrow" lang="en">Field trips and study tours</div>
+      <h2 lang="es">La ciencia también se <em>camina</em>.</h2><h2 lang="en">Science is also <em>walked</em>.</h2>
+      <p lang="es">Guías de campo para celular que funcionan sin internet, los itinerarios y la antología de los recorridos del IV Congreso Mexicano de Agroecología 2026 (SOMEXA), y la guía del viaje de estudio integrador. Cada obra tiene su DOI.</p>
+      <p lang="en">Offline phone field guides, itineraries and the anthology of the IV Mexican Congress of Agroecology 2026 (SOMEXA) field trips, plus the integrative study-trip guide. Every work has its DOI.</p></div>
+    <div class="manuales campo">
+      <div class="manual card rev" style="--c:#2f5d50"><div class="eyebrow" style="color:#2f5d50">Recorridos SOMEXA · 2026</div><h4 lang="es">Antología de recorridos SOMEXA 2026</h4><h4 lang="en">SOMEXA 2026 Field Trip Anthology</h4><p lang="es">Trece monografías de las localidades visitadas desde un enfoque de sistemas complejos adaptativos: climograma, red del agroecosistema, síntesis comparada e instructivos de las tres guías. 108 páginas.</p><p lang="en">Thirteen monographs of the visited localities from a complex adaptive systems perspective: climate charts, agroecosystem networks, comparative synthesis and the three app guides. 108 pages (Spanish).</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/">HTML</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/antologia/Antologia-recorridos-SOMEXA-2026.pdf">PDF</a><a class="doi" href="https://doi.org/10.5281/zenodo.23845759">DOI<b>10.5281/zenodo.23845759</b></a></div></div>
+      <div class="manual card rev" style="--c:#b5651d"><div class="eyebrow" style="color:#b5651d">Recorridos SOMEXA · Ruta 1</div><h4 lang="es">Zonas tropicales de agricultura agroecológica</h4><h4 lang="en">Tropical agroecological farming zones</h4><p lang="es">Guía de campo para celular: vid en el trópico, pulpa de fruta, queso jarocho y maíz criollo en Puente Nacional y Comapa, Veracruz.</p><p lang="en">Phone field guide: tropical grapes, fruit pulp, jarocho cheese and landrace maize in Puente Nacional and Comapa, Veracruz.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-1/">App</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-1-itinerario.pdf">Itinerario PDF</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-1-itinerario.docx">Word</a><a class="doi" href="https://doi.org/10.5281/zenodo.23787066">DOI<b>10.5281/zenodo.23787066</b></a></div></div>
+      <div class="manual card rev" style="--c:#3d6fa0"><div class="eyebrow" style="color:#3d6fa0">Recorridos SOMEXA · Ruta 2</div><h4 lang="es">Ruta de Altura</h4><h4 lang="en">Highland Route</h4><p lang="es">Frutales de montaña y agroecología en las faldas del Citlaltépetl: kiwi, arándanos, huertos agroecológicos, bosque y agua en Veracruz y Puebla.</p><p lang="en">Mountain fruit and agroecology on the slopes of Citlaltépetl: kiwi, blueberries, agroecological gardens, forest and water in Veracruz and Puebla.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-2/">App</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-2-itinerario.pdf">Itinerario PDF</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-2-itinerario.docx">Word</a><a class="doi" href="https://doi.org/10.5281/zenodo.23787064">DOI<b>10.5281/zenodo.23787064</b></a></div></div>
+      <div class="manual card rev" style="--c:#7a4a2a"><div class="eyebrow" style="color:#7a4a2a">Recorridos SOMEXA · Ruta 3</div><h4 lang="es">Ruta del Café y el Chayote</h4><h4 lang="en">Coffee and Chayote Route</h4><p lang="es">De la semilla a la empresa: café junto al bosque de niebla, el Banco Nacional de Germoplasma de Chayote, Rancho Contla y Hortín Fortín.</p><p lang="en">From seed to enterprise: coffee beside the cloud forest, the National Chayote Germplasm Bank, Rancho Contla and Hortín Fortín.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/2026-ruta-3/">App</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-3-itinerario.pdf">Itinerario PDF</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/itinerarios/2026-ruta-3-itinerario.docx">Word</a><a class="doi" href="https://doi.org/10.5281/zenodo.23843072">DOI<b>10.5281/zenodo.23843072</b></a></div></div>
+      <div class="manual card rev" style="--c:#4f7d3a"><div class="eyebrow" style="color:#4f7d3a">Recorridos SOMEXA · Huatusco</div><h4 lang="es">Mapas del Congreso</h4><h4 lang="en">Congress Maps</h4><p lang="es">El campus CAR Huatusco y la ciudad: edificios, hoteles, restaurantes, transporte y servicios, con «Cómo llegar» y GPS sin internet.</p><p lang="en">The CAR Huatusco campus and the town: buildings, hotels, restaurants, transport and services, with directions and offline GPS.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/mapas/#car">CAR</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/mapas/#huatusco">Huatusco</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/recorridos-somexa/">Todos los recorridos</a></div></div>
+      <div class="manual card rev" style="--c:#2f6f8f"><div class="eyebrow" style="color:#2f6f8f">Viajes de Estudio Integradores</div><h4 lang="es">Integrador I · Propedéutico grupo 21</h4><h4 lang="en">Integrative Study Trip I · Group 21</h4><p lang="es">Guía para celular del Viaje Generacional de Estudios: nueve días por Veracruz, Puebla, Tlaxcala, el Estado de México y la Ciudad de México, con reportes diarios en Word.</p><p lang="en">Phone guide for the generational study trip: nine days across Veracruz, Puebla, Tlaxcala, the State of Mexico and Mexico City, with daily Word reports.</p><div class="acc"><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/viajes-de-estudio-propedeutico/2026-grupo-21/">App</a><a class="btn ghost sm" href="https://hectortecumshe-ai.github.io/viajes-de-estudio-propedeutico/">Todos los viajes</a><a class="doi" href="https://doi.org/10.5281/zenodo.23791654">DOI<b>10.5281/zenodo.23791654</b></a></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ PUBLICACIONES ============================ -->
 <section class="sec" id="publicaciones" style="background:var(--paper);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">07</span>
+    <div class="sec-head rev"><span class="num">08</span>
       <div class="eyebrow" lang="es">Publicaciones</div><div class="eyebrow" lang="en">Publications</div>
       <h2 lang="es">La investigación <em>detrás</em> de las apps.</h2><h2 lang="en">The research <em>behind</em> the apps.</h2>
       <p lang="es">Software, artículos, libros y memorias del grupo, sincronizados con el registro ORCID. Cada obra enlaza a su DOI.</p>
@@ -958,7 +979,7 @@ footer a{color:var(--muted)}
 <!-- ============================ AUTORES ============================ -->
 <section class="sec" id="autores">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">08</span>
+    <div class="sec-head rev"><span class="num">09</span>
       <div class="eyebrow" lang="es">Autores</div><div class="eyebrow" lang="en">Authors</div>
       <h2 lang="es">Hecho en <em>Chapingo</em>, para el campo.</h2><h2 lang="en">Made at <em>Chapingo</em>, for the field.</h2></div>
     <div class="autores">
@@ -991,7 +1012,7 @@ footer a{color:var(--muted)}
 <!-- ============================ CITAR ============================ -->
 <section class="sec" id="citar" style="background:var(--paper);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rev"><span class="num">09</span>
+    <div class="sec-head rev"><span class="num">10</span>
       <div class="eyebrow" lang="es">Cómo citar</div><div class="eyebrow" lang="en">How to cite</div>
       <h2 lang="es">Si te sirvió, <em>cítalo</em>.</h2><h2 lang="en">If it helped, <em>cite it</em>.</h2>
       <p lang="es">Citar el software con su DOI permite reproducir tus resultados y sostiene el desarrollo gratuito de nuevas apps.</p>
