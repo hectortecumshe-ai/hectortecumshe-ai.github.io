@@ -1,5 +1,47 @@
 [
  {
+  "titulo": "Ruta 1 · Zonas tropicales de agricultura agroecológica: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "tipo": "book",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23906864",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando",
+   "Díaz-José, Óscar"
+  ]
+ },
+ {
+  "titulo": "Ruta 2 · Ruta de Altura: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "tipo": "book",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23906866",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Díaz-José, Óscar",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando"
+  ]
+ },
+ {
+  "titulo": "Ruta 3 · Ruta del Café y el Chayote: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "tipo": "book",
+  "anio": "2026",
+  "revista": "Zenodo",
+  "doi": "10.5281/zenodo.23906868",
+  "autores": [
+   "Mojica-Zárate, Héctor Tecumshé",
+   "Partida-Sedas, José Gervasio",
+   "Díaz-José, Óscar",
+   "Alejo-Bello, Sergio",
+   "Rojas-Reyes, José Orlando"
+  ]
+ },
+ {
   "titulo": "Antología de recorridos SOMEXA 2026: monografías e información socioambiental y agroecológica de las localidades visitadas desde un enfoque de Sistemas Complejos Adaptativos en la Agroecología",
   "tipo": "book",
   "anio": "2026",
