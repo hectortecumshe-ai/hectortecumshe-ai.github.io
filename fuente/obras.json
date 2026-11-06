@@ -28,11 +28,11 @@
   ]
  },
  {
-  "titulo": "Ruta 1 · Zonas tropicales de agricultura agroecológica: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "titulo": "Ruta 3. Zona baja. Piso agroecológico de llanura costera: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
   "tipo": "book",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23906864",
+  "doi": "10.5281/zenodo.24014258",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
@@ -42,11 +42,11 @@
   ]
  },
  {
-  "titulo": "Ruta 2 · Ruta de Altura: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "titulo": "Ruta 1. Zona alta. Piso agroecológico de montaña: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
   "tipo": "book",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23906866",
+  "doi": "10.5281/zenodo.24014259",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
@@ -56,11 +56,11 @@
   ]
  },
  {
-  "titulo": "Ruta 3 · Ruta del Café y el Chayote: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
+  "titulo": "Ruta 2. Zona media. Piso agroecológico de lomerío: guía de campo en PDF del recorrido SOMEXA 2026 (IV Congreso Mexicano de Agroecología)",
   "tipo": "book",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23906868",
+  "doi": "10.5281/zenodo.24014260",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
@@ -74,7 +74,7 @@
   "tipo": "book",
   "anio": "2026",
   "revista": "Universidad Autónoma Chapingo · Zenodo",
-  "doi": "10.5281/zenodo.23847722",
+  "doi": "10.5281/zenodo.24014262",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Díaz-José, Óscar",
@@ -84,11 +84,11 @@
   ]
  },
  {
-  "titulo": "Ruta del Café y el Chayote: guía de campo para celular del recorrido SOMEXA 2026, Ruta 3",
+  "titulo": "Ruta 2. Zona media. Piso agroecológico de lomerío: guía de campo para celular del recorrido SOMEXA 2026",
   "tipo": "software",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23905760",
+  "doi": "10.5281/zenodo.24014254",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
@@ -98,11 +98,11 @@
   ]
  },
  {
-  "titulo": "Ruta de Altura: guía de campo para celular del recorrido SOMEXA 2026, Ruta 2",
+  "titulo": "Ruta 1. Zona alta. Piso agroecológico de montaña: guía de campo para celular del recorrido SOMEXA 2026",
   "tipo": "software",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23905759",
+  "doi": "10.5281/zenodo.24014249",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
@@ -112,11 +112,11 @@
   ]
  },
  {
-  "titulo": "Recorrido por zonas tropicales de agricultura agroecológica: guía de campo para celular del recorrido SOMEXA 2026, Ruta 1",
+  "titulo": "Ruta 3. Zona baja. Piso agroecológico de llanura costera: guía de campo para celular del recorrido SOMEXA 2026",
   "tipo": "software",
   "anio": "2026",
   "revista": "Zenodo",
-  "doi": "10.5281/zenodo.23905758",
+  "doi": "10.5281/zenodo.24014255",
   "autores": [
    "Mojica-Zárate, Héctor Tecumshé",
    "Partida-Sedas, José Gervasio",
